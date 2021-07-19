@@ -81,8 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Luca dove sei ci manchi
                 </div>
+                e non ho più la chat
+
+                mi sembra strano che i branch abbiano lo stesso identificativo 
+
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
