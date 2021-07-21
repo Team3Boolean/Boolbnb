@@ -35,6 +35,6 @@ class CreateDailyPageViewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_views');
+        Schema::dropIfExists('daily_page_views');
     }
 }

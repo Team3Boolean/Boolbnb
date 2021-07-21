@@ -25,14 +25,15 @@ class CreateApartmentsTable extends Migration
             $table->float('gps_lng', 9, 6);
             $table->float('gps_lat', 8, 6);
             $table->string('img_cover')->nullable();
+            $table->integer('price')->default(25);
             $table->boolean('searchable')->default(true);
 
             //collegamento tabella users(agnese)
             $table->unsignedBigInteger('user_id'); 
             $table->foreign("user_id")
                 ->references("id")
-                ->on("users")
-                ->onDelete('cascade');
+                ->on("users");
+                
 
             $table->timestamps();
         });
@@ -45,6 +46,13 @@ class CreateApartmentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('apartments', function(Blueprint $table) {
+            $table->dropForeign('apartments_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
+        
+        Schema::disableForeignKeyConstraints();  
         Schema::dropIfExists('apartments');
+        
     }
 }

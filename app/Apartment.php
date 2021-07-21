@@ -18,7 +18,8 @@ class Apartment extends Model
         'gps_lat', 
         'img_cover', 
         'searchable', 
-        'user_id'
+        'user_id',
+        'price'
     ];
 
     public function user()
