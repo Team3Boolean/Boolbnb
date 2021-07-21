@@ -15,6 +15,11 @@ class Sponsorship extends Model
 
     public function apartments()
     {
-        return $this->belongsToMany('App\Apartment');
-    } 
+        return $this->ManyToMany('App\Apartment')
+            ->withPivot('starting_at', 'expiring_at')
+            ->using('App\ApartmentSponsorship')
+            ->withTimestamps();
+
+    }
+
 }
