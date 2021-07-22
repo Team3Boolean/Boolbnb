@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// HOMEPAGE
+Route::get('/', 'HomeController@index')->name('home.index');
+// rotta per show singolo appartamento
+Route::get('/apartments/{id}', 'ApartmentController@show')->name('apartments.show');
 
 Auth::routes();
 
-
-
 // rotte admin
-
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
