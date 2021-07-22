@@ -18,9 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-// rotte users
-Route::get('/users', 'UserController@index')->name('users.index');
+Auth::routes();
+
+
+
+// rotte admin
+
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->middleware('auth')
+    ->name("admin.")
+    ->group(function () {
+        Route::get('/', 'HomeController@index')->name('index');
+        Route::get('/users', 'UserController@index')->name('users.index');
+    });

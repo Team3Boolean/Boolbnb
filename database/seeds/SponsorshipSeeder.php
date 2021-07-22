@@ -19,19 +19,16 @@ class SponsorshipSeeder extends Seeder
                 'name' => 'bronze',
                 'price' => 2.99,
                 'duration' => 24,
-                'payment_response' => false
             ],
             1 => [
                 'name' => 'silver',
                 'price' => 5.99,
                 'duration' => 72,
-                'payment_response' => false
             ],
             2 => [
                 'name' => 'gold',
                 'price' => 9.99,
                 'duration' => 144,
-                'payment_response' => false
             ],
         ];
 
@@ -46,7 +43,6 @@ class SponsorshipSeeder extends Seeder
             $newSponsorship->name = $type['name'];
             $newSponsorship->price = $type['price'];
             $newSponsorship->duration = $type['duration'];
-            $newSponsorship->payment_response = $type['payment_response'];
 
             $newSponsorship->save();
 

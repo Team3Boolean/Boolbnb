@@ -10,7 +10,6 @@ class Sponsorship extends Model
         'name',
         'price',
         'duration',
-        'payment_response'
     ];
 
     public function apartments()

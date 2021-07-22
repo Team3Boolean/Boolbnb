@@ -18,7 +18,6 @@ class CreateSponsorshipsTable extends Migration
             $table->string('name');
             $table->float('price', 6, 2);
             $table->unsignedTinyInteger('duration');
-            $table->boolean('payment_response')->default(false)->comment('false = denied, true = success');
             $table->timestamps();
         });
     }
