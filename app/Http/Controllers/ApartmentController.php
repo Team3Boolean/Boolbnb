@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Apartment;
 
 class ApartmentController extends Controller
-{
+{    
     public function show($id){
         
         $apartment = Apartment::findOrFail($id);
