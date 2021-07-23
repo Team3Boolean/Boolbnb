@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Apartment;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,20 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // Prendo tutti gli appartamenti e li invio alla view
+        // dump($request);
+        // $apartments = Apartment::all();
+
+        $data = [
+            'apartments' => Apartment::orderBy("created_at", "DESC")
+            ->where("user_id", $request->user()->id)
+            ->get()
+        ];
+
+        
+        return view("admin.apartments.index", $data);
     }
 
     /**
@@ -24,7 +37,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        // ritorno la pagina di create
+        return view('admin.apartments.create');
     }
 
     /**
@@ -35,7 +49,21 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // prendiamo i dati
+        $form_data = $request->all();
+
+        // istanziamo un nuovo oggetto Apartment
+        $new_apartment = new Apartment();
+
+        // inseriamo tutti i dati con fill nel nuovo oggetto
+        $new_apartment->fill($form_data);
+
+        // inseriamo i dati utente che crea il post,non lo lasciamo al fillable per ragioni di sicurezza
+        $new_apartment->user_id = $request->user()->id;
+
+        // salvo e reindirizzo l' utente
+        $new_apartment->save();
+        return redirect()->route('admin.apartments.index');
     }
 
     /**
@@ -44,9 +72,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Apartment $apartment)
     {
-        //
+        // ritorno la pagina di show e invio l appartamento
+        return view('admin.apartments.show', ['apartment' => $apartment]);
     }
 
     /**
@@ -55,9 +84,9 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        return view('admin.apartments.edit', ["apartment" => $apartment]);
     }
 
     /**
@@ -67,9 +96,12 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $form_data = $request->all();
+
+        $apartment->update($form_data);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -78,8 +110,9 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->delete();
+        return redirect()->route('admin.apartments.index');
     }
 }
