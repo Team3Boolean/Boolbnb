@@ -32,9 +32,11 @@ Route::prefix('admin')
     ->middleware('auth')
     ->name("admin.")
     ->group(function () {
-        // Route::get('/', 'HomeController@index')->name('index');
-        // Route::get('/users', 'UserController@index')->name('users.index');
+    // Route::get('/', 'HomeController@index')->name('index');
+    // Route::get('/users', 'UserController@index')->name('users.index');
 
-        // inseriamo la rotta per gli apartments degli admin con il resource che prenderà tutte le rotte della crud
-        Route::resource('/apartments', 'ApartmentController');
+Route::get('/', 'HomeController@index')->name('index');
+
+// inseriamo la rotta per gli apartments degli admin con il resource che prenderà tutte le rotte della crud
+Route::resource('/apartments', 'ApartmentController');
     });

@@ -26,6 +26,18 @@
             </get-lon-lan>
         </div>
 
+        <label for="rooms">Rooms</label>
+        <input type="number" name="rooms" id="rooms">
+
+        <label for="bed">Bed</label>
+        <input type="number" name="bed" id="bed">
+
+        <label for="bathrooms">Bathrooms</label>
+        <input type="number" name="bathrooms" id="bathrooms">
+
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price">
+
         {{-- <label for="gps_lng">Longitudine</label>
         <input type="text" name="gps_lng" id="gps_lng">
 
