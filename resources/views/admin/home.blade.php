@@ -1,7 +1,7 @@
-@extends('layouts/app')
-{{-- @section('pageTitle', 'Home Page') --}}
+@extends('layouts.layoutAdmin')
+@section('pageTitle', 'Dashboard')
 @section('content')
-  <h1>dashboard admin</h1>
+<h1>dashboard admin</h1>
   <div>
     <a href="{{ route('home.index') }}">Visualizza tutti gli appartamenti</a>
   </div>
@@ -13,6 +13,4 @@
   </div>
   <div>
     <a href="">I tuoi messaggi ciao ste</a>
-  </div>
-  
-@endsection
+  </div>@endsection

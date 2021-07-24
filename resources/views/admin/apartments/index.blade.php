@@ -1,8 +1,8 @@
-@extends('layouts/app')
-{{-- @section('pageTitle', 'Home Page') --}}
+@extends('layouts.layoutAdmin')
+@section('pageTitle', 'I Miei Appartamenti')
 @section('content')
-    <h1>admin/apartments</h1>
-    <div><a href="{{ route('admin.apartments.create') }}">Aggiungi un appartamento</a></div>
+<h1>admin/apartments</h1>
+    {{-- <div><a href="{{ route('admin.apartments.create') }}">Aggiungi un appartamento</a></div> --}}
     @foreach($apartments as $apartment)
         <div>
             <h2>{{ $apartment->id }}</h2>
@@ -24,4 +24,5 @@
             </button>
         </form>
     @endforeach
-@endsection
+    
+    @endsection
