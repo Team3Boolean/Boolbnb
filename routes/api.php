@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::get("/apartments", "Api\ApartmentController@index");
+//Route::post('/apartments', 'Api\MessageController@store');
+Route::resource('messages', 'Api\MessageController');

@@ -21,24 +21,26 @@
    <h2>{{ $apartment->title }}</h2>
     <img src="{{ $apartment->img_cover }}" alt="casa">
 
+    <!-- aggiunta boxmessaggi con componente vue -->
+    <message-box/>
 
 
 
-
-
-
-
-
-    <div id="map" style="width: 30vw; height: 30vh;">Benvenuti nelle mappa TomTom!!!</div>
-
+    <!-- tentativo di aggiungere mappa tomtom -->
+    <div id="map" style="height: 50vh; width: 50vw;">Benvenuti nelle mappa TomTom!!!</div>
     <script type="application/javascript">
         var map = tt.map({
-            key: "AtGqnHY32ooY98VM06Pxm6dZtVvn8PGb",
+            key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
             container: "map",
             zoom: 5,
-            // center: [12.4818, 41.9109],
+            center: [12.4818, 41.9109],
         });
+
+        var marker = new tt.Marker()
+            .setLngLat([12.4818, 41.9109])
+            .addTo(map);
     </script>
+    
 
     
 @endsection
