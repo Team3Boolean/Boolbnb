@@ -12,5 +12,6 @@
     <a href="{{ route('admin.apartments.create') }}">Aggiungi appartamento</a>
   </div>
   <div>
-    <a href="">I tuoi messaggi ciao ste</a>
-  </div>@endsection
+    <a href="{{ route('admin.messages.index') }}">I tuoi messaggi ciao ste</a>
+  </div>
+  @endsection
