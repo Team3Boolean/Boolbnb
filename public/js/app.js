@@ -2053,17 +2053,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "single-apartment-map",
   props: {},
   data: function data() {
     return {
-      /* map: tt.map({
-          key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
-          container: "map",
-          zoom: 5,
-          center: [12.4818, 41.9109],
-      }), */
+      map: tt.map({
+        key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+        container: "map",
+        zoom: 14,
+        center: [12.4818, 41.9109]
+      })
     };
   },
   methods: {
@@ -2071,7 +2074,7 @@ __webpack_require__.r(__webpack_exports__);
       tt.map({
         key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
         container: "map",
-        zoom: 5,
+        zoom: 14,
         center: [12.4818, 41.9109]
       });
     }
@@ -37741,24 +37744,72 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.address,
+          expression: "address"
+        }
+      ],
+      attrs: { type: "text", name: "address", id: "address" },
+      domProps: { value: _vm.address },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.address = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.gps_lng,
+          expression: "gps_lng"
+        }
+      ],
+      attrs: { type: "hidden", name: "gps_lng", id: "gps_lng" },
+      domProps: { value: _vm.gps_lng },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.gps_lng = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.gps_lat,
+          expression: "gps_lat"
+        }
+      ],
+      attrs: { type: "hidden", name: "gps_lat", id: "gps_lat" },
+      domProps: { value: _vm.gps_lat },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.gps_lat = $event.target.value
+        }
+      }
+    })
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("p", [_vm._v("lorem")]),
-      _vm._v(" "),
-      _c("input", {
-        attrs: { type: "hidden", name: "gps_lng", id: "gps_lng" }
-      }),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "hidden", name: "gps_lat", id: "gps_lat" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37924,14 +37975,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticStyle: { width: "80vw", height: "80vh" },
-      attrs: { id: _vm.getMap() }
-    },
-    [_vm._v("Benvenuti nelle mappa TomTom!!!")]
-  )
+  return _c("div", [
+    _c("p", [_vm._v("Benvenuti nelle mappa TomTom!!!")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      _vm._g(
+        {
+          staticStyle: { width: "350px", height: "250px" },
+          attrs: { id: _vm.map }
+        },
+        _vm.getMap()
+      )
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

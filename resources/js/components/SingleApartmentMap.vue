@@ -1,5 +1,8 @@
 <template>
-    <div :id="getMap()" style="width: 80vw; height: 80vh;">Benvenuti nelle mappa TomTom!!!</div>
+    <div>
+        <p>Benvenuti nelle mappa TomTom!!!</p>
+        <div :id="map" v-on="getMap()" style="width: 350px; height: 250px;"></div>
+    </div>
 </template>
 
 <script>
@@ -8,12 +11,12 @@ export default {
     props: {},
     data() {
         return {
-            /* map: tt.map({
+            map: tt.map({
                 key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
                 container: "map",
-                zoom: 5,
+                zoom: 14,
                 center: [12.4818, 41.9109],
-            }), */
+            }),
         }
     },
     methods: {
@@ -21,7 +24,7 @@ export default {
             tt.map({
                 key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
                 container: "map",
-                zoom: 5,
+                zoom: 14,
                 center: [12.4818, 41.9109],
             })
         }
