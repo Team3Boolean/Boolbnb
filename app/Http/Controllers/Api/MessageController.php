@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MessageResource;
 use Illuminate\Http\Request;
 
 use App\Message;
@@ -17,16 +18,29 @@ class MessageController extends Controller
             "results" => $messages
         ]);
     }
+    
+    //ritorna dati sottoforma di array - converte json
+    /**
+     * @param Message $message
+     * @return MessageResource
+     */
+    public function show(Message $message):MessageResource{
+        return new MessageResource($message);       
+    }
+
     public function store(Request $request){
+
+        //creare un messaggio
+        //controllo validazioni
         $request->validate([
             'text' => 'required|max:255|min:10',
             'email' => 'required',
-            'ip' => 'required'
         ]);
 
-        $message = Message::create($request->validated());
-
-        return $message;
+        $message = Message::create($request->all());
+        
+        //return con messaggio creato. uso MessageResource
+        return new MessageResource($message);
 
     }
 }

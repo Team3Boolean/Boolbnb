@@ -1958,21 +1958,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SendMessage',
   props: {},
   data: function data() {
     return {
-      users: null,
       messages: null,
+      success: false,
+      errors: {},
       fields: {}
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/messages').then(function (resp) {
-      _this.messages = resp.data.results;
+    // axios.get('/api/messages')
+    // .then(resp =>{
+    //     this.messages = resp.data.results;
+    // });
+    axios.get('/api/apartments').then(function (resp) {
+      _this.apartments = resp.data.results;
     }); //come fare a recuperare user da auth? La chiamata è settata già con Middleware
     // axios.get('/api/users')
     // .then(resp =>{
@@ -1984,11 +2008,20 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
-      axios.post('api/messages', this.fields).then(function (resp) {
+      axios.post('/api/messages', this.fields).then(function (resp) {
         _this2.fields = {};
+        _this2.success = true;
+        _this2.errors = {};
       })["catch"](function (error) {
+        if (error) {
+          _this2.errors = error.response.data.errors;
+        }
+
         console.log('Errore in invio messaggio');
       });
+    },
+    unsetSuccess: function unsetSuccess() {
+      this.success = false;
     }
   }
 });
@@ -37705,82 +37738,144 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "form-group" }, [
-      _c("form", { attrs: { action: "", method: "post" } }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.email,
-              expression: "fields.email"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "email", id: "email" },
-          domProps: { value: _vm.fields.email },
+      _c(
+        "form",
+        {
+          attrs: { action: "", method: "POST" },
           on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.fields, "email", $event.target.value)
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit.apply(null, arguments)
             }
           }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "text" } }, [_vm._v("Messaggio:")]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
+        },
+        [
+          _c(
+            "div",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.text,
-              expression: "fields.text"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "text", id: "text", rows: "10" },
-          domProps: { value: _vm.fields.text },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.success,
+                  expression: "success"
+                }
+              ],
+              staticClass: "alert alert-success"
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-8" }, [
+                  _vm._v(
+                    "\n                    messaggio inviato correttamento\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-4", on: { click: _vm.unsetSuccess } },
+                  [_c("span", { staticClass: "btn-close" }, [_vm._v("close")])]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.email,
+                expression: "fields.email"
               }
-              _vm.$set(_vm.fields, "text", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.apartment_id,
-              expression: "fields.apartment_id"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "hidden", name: "apartment_id", id: "apartment_id" },
-          domProps: { value: _vm.fields.apartment_id },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "email", id: "email" },
+            domProps: { value: _vm.fields.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "email", $event.target.value)
               }
-              _vm.$set(_vm.fields, "apartment_id", $event.target.value)
             }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "btn btn-primary",
-          attrs: { type: "submit", value: "salva" }
-        })
-      ])
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.email
+            ? _c("div", { staticClass: "alert alert-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.email[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "text" } }, [_vm._v("Messaggio:")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.text,
+                expression: "fields.text"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "text", id: "text", rows: "10" },
+            domProps: { value: _vm.fields.text },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "text", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.text
+            ? _c("div", { staticClass: "alert alert-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.text[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.apartment_id,
+                expression: "fields.apartment_id"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "apartment_id", id: "apartment_id" },
+            domProps: { value: _vm.fields.apartment_id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "apartment_id", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "btn btn-primary",
+            attrs: { type: "submit", value: "save" }
+          })
+        ]
+      )
     ])
   ])
 }

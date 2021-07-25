@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApartmentResource;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\User;
@@ -34,5 +35,13 @@ class ApartmentController extends Controller
             "success" => true,
             "results" => $apartments
           ]); 
+    }
+    //ritorna dati sottoforma di array - converte json
+    /**
+     * @param Apartment $apartment
+     * @return ApartmentResource
+     */
+    public function show(Apartment $apartment):ApartmentResource{
+      return new ApartmentResource($apartment);       
     }
 }

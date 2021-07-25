@@ -9,10 +9,10 @@ class Message extends Model
     protected $fillable = [
         'text',
         'email',
-        'date',
-        'ip',
         'apartment_id'
     ];
+
+    const UPDATED_AT = null;
 
     public function apartment()
     {

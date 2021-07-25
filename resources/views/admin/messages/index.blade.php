@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     {{-- modifico affinchè entri in messaggi se ci sono --}}
-    @if()
+    {{-- @if()
         @foreach($messages as $messages)
         <div class="row">
             <div class="col">
@@ -22,6 +22,6 @@
             <p>non abbiamo ricevuto richieste di contatto per i suoi appartamenti</p>
         </div>
     </div>
-    @endif    
+    @endif     --}}
 </div>
 @endsection
