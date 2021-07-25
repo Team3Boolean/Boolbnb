@@ -28,7 +28,7 @@
 
             <div>
                  <a href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    home
                 </a>
             </div>
 
