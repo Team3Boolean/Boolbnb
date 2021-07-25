@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Route::get("/apartments", "Api\ApartmentController@index");
-//Route::post('/apartments', 'Api\MessageController@store');
-Route::resource('messages', 'Api\MessageController');
+//Route::post('/apartments/{id}', 'Api\MessageController@store');
+Route::resource('/messages', 'Api\MessageController');

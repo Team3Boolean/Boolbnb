@@ -2006,10 +2006,8 @@ __webpack_require__.r(__webpack_exports__);
         text: this.text,
         date: this.date,
         ip: this.ip
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      }).then(function (resp) {
+        console.log(resp.data);
       });
     }
   }
@@ -37867,7 +37865,7 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("button", [_vm._v("Invia")])
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Invia")])
       ]
     )
   ])

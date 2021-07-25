@@ -9,7 +9,7 @@
             <br>
             <textarea v-model="text" name="text" id="text" cols="30" rows="1"></textarea>
             
-            <button>Invia</button>
+            <button type="submit">Invia</button>
         </form>
     </div>
 </template>
@@ -38,6 +38,8 @@ export default {
                 text: this.text,
                 date: this.date,
                 ip: this.ip
+            }).then(resp => {
+                console.log(resp.data);
             })
         }
     }

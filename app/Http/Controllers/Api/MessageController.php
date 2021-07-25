@@ -49,10 +49,10 @@ class MessageController extends Controller
 
         $newMessage->save(); */
 
-        
+        //dump($data);
 
 
-        return (['message' => 'messaggio salvato']);
+        return response()->json($data);
     }
 
     /**
