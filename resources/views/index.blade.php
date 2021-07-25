@@ -1,66 +1,68 @@
 @extends('layouts/app')
 
 @section('content')
-    <div class="container">
+    <homepage-apartment></homepage-apartment>
+    {{-- <div class="container">
         <h1>Ciao dalla home</h1>
-    </div>
-    <div class="container">
+    </div> --}}
+    <!--<div class="container">
         <section class="jumbotron">
             {{--componente per ricerca appartamento --}}
             <search-apartment> </search-apartment>
         </section>
-        <section>
-            {{--componente mostrare appartamenti cercati --}}
-            <show-apartment> </show-apartment>
-        </section>
-        <section>
-         <div class="row">   
-    <div class="col-sm-4">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">appartamenti sponsorizzati</h5>
-            <p class="card-text">mettere info appartamento</p>
-            <!-- link diretto a blade.php singolo appartamento -->
-            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
-        </div>
-        </div>
+        {{-- <section>
+            {{--componente mostrare appartamenti cercati 
+            <show-apartment/>
+        </section>--}}
+        {{-- <section>
+            <div class="row">   
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">appartamenti sponsorizzati</h5>
+                            <p class="card-text">mettere info appartamento</p>
+                            <!-- link diretto a blade.php singolo appartamento -->
+                            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">appartamenti sponsorizzati</h5>
+                            <p class="card-text">mettere info appartamento</p>
+                            <!-- link diretto a blade.php singolo appartamento -->
+                            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">appartamenti sponsorizzati</h5>
+                            <p class="card-text">mettere info appartamento</p>
+                            <!-- link diretto a blade.php singolo appartamento -->
+                            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> --}}   
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">appartamenti sponsorizzati</h5>
-            <p class="card-text">mettere info appartamento</p>
-            <!-- link diretto a blade.php singolo appartamento -->
-            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
-        </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">appartamenti sponsorizzati</h5>
-            <p class="card-text">mettere info appartamento</p>
-            <!-- link diretto a blade.php singolo appartamento -->
-            <a href="#" class="btn btn-primary">Mostra Dettagli</a>
-        </div>
-        </div>
-    </div>
-    </div>
-        </section>
         
-    </div>
-        
+    {{-- <div v-for="i in 10" :key="i">
+        <span v-text="'Testo in vue' + i"></span>
+    </div> --}}
     
-    {{-- --}}
     
-    @foreach($apartments as $apartment)
-        <div>
-            <h2>{{ $apartment->id }}</h2>
-            <h3>{{ $apartment->title }}</h3>
-            <p>{{ $apartment->description }}</p>
-            <a href="{{ route('apartments.show', $apartment->id) }}">Vai ai dettagli...</a>
-        </div>
-    @endforeach
+    {{-- @foreach($apartments as $apartment)
+        <apartment-card
+            id="{{ $apartment->id }}"
+            title="{{ $apartment->title }}"
+            description="{{ $apartment->description }}"
+            link="{{ route('apartments.show', $apartment->id) }}"
+        ></apartment-card>
+    @endforeach --}}
   
 
 @endsection

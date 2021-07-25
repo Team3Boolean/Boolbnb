@@ -21,7 +21,7 @@ class ApartmentController extends Controller
         
         foreach ($apartments as $apartment) {
           $apartment->img_cover = $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/250';
-          //$apartment->link = route("apartments.show", ['apartment' => $apartment]);
+          $apartment->link = route("apartments.show", $apartment->id);
     
           if (strlen($apartment->description) > 100) {
             $apartment->description = substr($apartment->description, 0, 100) . "...";
