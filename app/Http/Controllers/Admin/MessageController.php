@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Message;
 use App\Apartment;
@@ -17,8 +18,7 @@ class MessageController extends Controller
     public function index(Request $request)
     {   
         $data = [
-            'messages' => Message::orderBy("created_at", "DESC")
-            ->where("user_id", $request->user()->id)
+            'messages' => Message::join("apartments", "apartments.id", "=", "messages.apartment_id")
             ->get()
         ];
         return view("admin.messages.index", $data);

@@ -1,7 +1,8 @@
 @extends('layouts/layoutAdmin')
 @section('content')
 <div class="container">
-    @if($messages)
+    {{-- modifico affinchè entri in messaggi se ci sono --}}
+    @if()
         @foreach($messages as $messages)
         <div class="row">
             <div class="col">
