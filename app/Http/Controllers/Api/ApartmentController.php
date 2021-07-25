@@ -33,8 +33,41 @@ class ApartmentController extends Controller
           "results" => $apartments
         ]);
     }
-    public function apartmentSearch(){
-        //funzione per filtrare appartamenti in ricerca no refresh
+    public function filter(Request $request){
+      $filters = $request->only(["title", "address", "services", "sponsorships"]);
+
+      $result = Apartment::with(["services","sponsorships"]);
+    
+      foreach ($filters as $filter => $value) {
+         
+         if($filter === "services") {	  
+    
+           if(!is_array($value)){
+              $value = explode(",", $value);
+           }
+    
+           $result->whereIn("category_id", $value);
+           //$result->whereNotNull("category_id");
+           
+      } else if ($filter === "sponsorships") {
+             if (!is_array($value)) {
+        $value = explode(",", $value);
+             }
+    
+           $result->join("post_tag", "post.id", "=", "post_tag.post_id")
+                  ->whereIn("post_tag.tag_id", $value);
+        } else {
+        $result->where($filter, "LIKE", "%$value%");
+              }
+      }
+    
+    
+      return response()->json([
+          "success"=> true,
+          "filters" => $filters,
+          "query" => $result->getQuery()->toSql(),
+          "results" => $result->get()
+      ]);
     }
 
 }

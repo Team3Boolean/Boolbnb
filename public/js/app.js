@@ -1918,6 +1918,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "search-apartment",
   props: {},
@@ -1926,7 +1929,8 @@ __webpack_require__.r(__webpack_exports__);
       allApartments: [],
       searchedApartment: [],
       latitude: "",
-      longitude: ""
+      longitude: "",
+      userInput: ""
     };
   },
   mounted: function mounted() {
@@ -1936,6 +1940,17 @@ __webpack_require__.r(__webpack_exports__);
       _this.allApartments = resp.data.results;
       console.log(_this.allApartments);
     });
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      axios.get("/api/apartments/filter", {
+        params: {
+          address: this.userInput
+        }
+      }).then(function (resp) {
+        console.log(resp);
+      });
+    }
   }
 });
 
@@ -37654,27 +37669,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("input", {
-      staticClass: "form-control",
-      attrs: {
-        type: "search",
-        id: "",
-        name: "indirizzo",
-        placeholder: "Dove vuoi andare?"
-      }
-    }),
-    _vm._v(" "),
-    _c("input", {
-      staticClass: "form-control",
-      attrs: { type: "hidden", id: "lat", name: "lat" },
-      domProps: { value: _vm.latitude }
-    }),
-    _vm._v(" "),
-    _c("input", {
-      staticClass: "form-control",
-      attrs: { type: "hidden", id: "lng", name: "lng" },
-      domProps: { value: _vm.longitude }
-    })
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.onSubmit()
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userInput,
+              expression: "userInput"
+            }
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.userInput },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.userInput = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Filtra")])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -50006,8 +50035,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 //  files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('search-apartment', __webpack_require__(/*! ./components/SearchApartment.vue */ "./resources/js/components/SearchApartment.vue")["default"]);
-Vue.component('show-apartment', __webpack_require__(/*! ./components/ShowApartment.vue */ "./resources/js/components/ShowApartment.vue")["default"]);
-Vue.component('map-apartment', __webpack_require__(/*! ./components/MapApartment.vue */ "./resources/js/components/MapApartment.vue")["default"]); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('show-apartment', __webpack_require__(/*! ./components/ShowApartment.vue */ "./resources/js/components/ShowApartment.vue")["default"]); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -50063,38 +50091,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/MapApartment.vue":
-/*!**************************************************!*\
-  !*** ./resources/js/components/MapApartment.vue ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
-  script,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-component.options.__file = "resources/js/components/MapApartment.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
@@ -50254,8 +50250,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
