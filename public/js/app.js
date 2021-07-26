@@ -50247,11 +50247,8 @@ Vue.component('apartment-card', __webpack_require__(/*! ./components/ApartmentCa
 Vue.component('search-apartment', __webpack_require__(/*! ./components/SearchApartment.vue */ "./resources/js/components/SearchApartment.vue")["default"]);
 Vue.component('show-apartment', __webpack_require__(/*! ./components/ShowApartment.vue */ "./resources/js/components/ShowApartment.vue")["default"]); //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-<<<<<<< HEAD
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]); // Vue.component('get-lon-lan', require('./components/GetLonLan.vue').default);
 
-=======
->>>>>>> filterResearchVue
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50603,13 +50600,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> filterResearchVue
+/* __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js "./resources/js/app.js");
+module.exports =/* __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss "./resources/sass/app.scss"); */
 
 
 /***/ })
