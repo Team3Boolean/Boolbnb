@@ -5,8 +5,11 @@
     <a href="{{ route('admin.apartments.index') }}">Torna alla Homepage</a>
     <h2>Modifica il tuo appartamento</h2>
 
-    <form action="{{ route('admin.apartments.store') }}" method="post">
+    <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
+
+        <input type="file" name="img_cover" accept=".jpg,.png,.svg,.jpeg">
 
         <label for="title">Titolo</label>
         <input type="text" name="title" id="title" value="{{ old('title', $apartment->title) }}">
