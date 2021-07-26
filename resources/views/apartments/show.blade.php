@@ -23,7 +23,7 @@
                     <label for="text">Messaggio:</label>
                     <textarea type="text" name="text" id="text" class="form-control" rows="10" required></textarea> 
                 </div>
-                 @if (Session::has('success'))
+                @if (Session::has('success'))
                         <div class="form-group">
                             <div class="alert alert-success">
                                 <p>{{ Session::get('success') }}</p>
