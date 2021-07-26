@@ -17,8 +17,6 @@ class CreateMessagesTable extends Migration
             $table->id();
             $table->longText('text');
             $table->string('email');
-            $table->date('date');
-            $table->ipAddress('ip');
 
             // collegamento appartamenti
             $table->unsignedBigInteger('apartment_id');
