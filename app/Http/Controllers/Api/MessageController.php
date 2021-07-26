@@ -33,7 +33,7 @@ class MessageController extends Controller
         //creare un messaggio
         //controllo validazioni
         $request->validate([
-            'text' => 'required|max:255|min:10',
+            'text' => 'required|max:1000|min:10',
             'email' => 'required',
         ]);
 

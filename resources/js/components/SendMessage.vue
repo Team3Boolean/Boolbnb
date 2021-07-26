@@ -1,4 +1,14 @@
 <template>
+    
+    <!-- {{-- <div class="container">
+        <h3>sei interessato? Invia un messaggio all'host</h3>
+        component vue per inviare messaggi
+        <send-message>
+            
+        </send-message>
+
+    </div> --}} -->
+
     <div>
         <div class="form-group">
             <form action="" method="POST" @submit.prevent="submit">
@@ -9,7 +19,7 @@
                         </div>
 
                         <div class="col-4" @click="unsetSuccess"> 
-                            <span class="btn-close">close</span>                     
+                            <span class="btn-close text-center">close</span>                     
                         </div>
 
                     </div>
@@ -28,7 +38,7 @@
                     {{errors.text[0]}}
                 </div> 
                 <input type="text" name="apartment_id" id="apartment_id" class="form-control" v-model="fields.apartment_id">             
-                <input  class="btn btn-primary" type="submit" value="save">
+                <input  class="btn btn-primary" type="submit" value="invia">
             </form>
         </div>
     </div>
@@ -82,9 +92,20 @@ export default {
                 console.log('Errore in invio messaggio');
             });
         },
+        //metodo per uscire da pop-up "messaggio inviato"
         unsetSuccess(){
             this.success = false;
-        }
+        },
+        //metodo per prendere apartment_id
+         getIdFromUrl() {
+        // prendo id appartamento da url - nel mio caso: /apartment/{id}  
+             let path = window.location.pathname;
+        // la divido in segmenti
+             let segments = path.split("/");
+        // ritorno segmento /{id}
+             let apartmentId = segments[2];
+             return apartmentId;
+         }
     }
 }
 </script>

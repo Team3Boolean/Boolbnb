@@ -23,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home.index');
 // rotta per show singolo appartamento
 Route::get('/apartments/{id}', 'ApartmentController@show')->name('apartments.show');
-
+// per compilare form messaggio
+//Route::resource('/messages', 'MessageController',
+//               ['only' => ['store']]);
+Route::post('/messages', 'MessageController@store')->name('messages.store');
 Auth::routes();
 
 // rotte admin

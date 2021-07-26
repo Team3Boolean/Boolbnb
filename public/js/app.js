@@ -2020,8 +2020,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log('Errore in invio messaggio');
       });
     },
+    //metodo per uscire da pop-up "messaggio inviato"
     unsetSuccess: function unsetSuccess() {
       this.success = false;
+    },
+    //metodo per prendere apartment_id
+    getIdFromUrl: function getIdFromUrl() {
+      // prendo id appartamento da url - nel mio caso: /apartment/{id}  
+      var path = window.location.pathname; // la divido in segmenti
+
+      var segments = path.split("/"); // ritorno segmento /{id}
+
+      var apartmentId = segments[2];
+      return apartmentId;
     }
   }
 });
@@ -37774,7 +37785,11 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "col-4", on: { click: _vm.unsetSuccess } },
-                  [_c("span", { staticClass: "btn-close" }, [_vm._v("close")])]
+                  [
+                    _c("span", { staticClass: "btn-close text-center" }, [
+                      _vm._v("close")
+                    ])
+                  ]
                 )
               ])
             ]
@@ -37872,7 +37887,7 @@ var render = function() {
           _vm._v(" "),
           _c("input", {
             staticClass: "btn btn-primary",
-            attrs: { type: "submit", value: "save" }
+            attrs: { type: "submit", value: "invia" }
           })
         ]
       )
