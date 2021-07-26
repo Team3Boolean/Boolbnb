@@ -7,7 +7,6 @@
     @foreach($apartments as $apartment)
         <div>
             <h2>{{ $apartment->id }}</h2>
-            {{-- <img src="{{ asset('storage/' . $apartment->img_cover) }}" alt="img_cover" style="width:300px;height:150px;"> --}}
             <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=785&q=80' }}" alt="img_cover" style="width:300px;height:150px;">
             <h3>{{ $apartment->title }}</h3>
             <p>{{ $apartment->description }}</p>
@@ -28,4 +27,4 @@
         </form>
     @endforeach
     
-    @endsection
+@endsection

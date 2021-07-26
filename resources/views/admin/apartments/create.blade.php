@@ -1,8 +1,11 @@
 @extends('layouts.layoutAdmin')
 @section('pageTitle', 'Aggiungi Appartamento')
 @section('content')
+
 <h1>admin/apartments/create</h1>
+
     <a href="{{ route('admin.apartments.index') }}">Torna alla Homepage</a>
+
     <h2>Aggiungi il tuo appartamento</h2>
 
     <form action="{{ route('admin.apartments.store') }}" method="post" enctype="multipart/form-data">
@@ -53,9 +56,7 @@
 
           <div class="form-check form-check-inline">
             <label class="form-check-label">
-                <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}"
-                {{-- {{ $apartments->services->contains($service) ? 'checked' : '' }} --}}
-              >
+                <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}">
                 {{ $service->name }} 
             </label>
           </div> 
@@ -66,8 +67,6 @@
 
         <input type="submit" value="Send"> 
     
-    
-    
-    
     </form>
+
 @endsection

@@ -1,8 +1,11 @@
 @extends('layouts.layoutAdmin')
 @section('pageTitle', 'Modifica Appartamento')
 @section('content')
+
 <h1>admin/apartments/$id/edit</h1>
+
     <a href="{{ route('admin.apartments.index') }}">Torna alla Homepage</a>
+    
     <h2>Modifica il tuo appartamento</h2>
 
     <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
@@ -29,10 +32,23 @@
         <label for="gps_lat">Latitudine</label>
         <input type="text" name="gps_lat" id="gps_lat" value="{{ old('title', $apartment->gps_lat) }}">
 
+        <div class="form-group">
+          <label>Services</label><br>
+
+          @foreach($services as $service)
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}" {{ $apartment->services->contains($service) ? 'checked' : '' }}>
+                {{ $service->name }}
+            </label>
+          </div>
+
+          @endforeach
+
+        </div>
+
         <input type="submit" value="Send">
-    
-    
-    
     
     </form>
     @endsection
