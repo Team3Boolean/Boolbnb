@@ -8,6 +8,19 @@
     
     <h2>Modifica il tuo appartamento</h2>
 
+    <div>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+    </div>
+
+
     <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -18,19 +31,31 @@
         <input type="text" name="title" id="title" value="{{ old('title', $apartment->title) }}">
 
         <label for="description">Description</label>
-        <input type="text" name="description" id="description" value="{{ old('title', $apartment->description) }}">
+        <input type="text" name="description" id="description" value="{{ old('description', $apartment->description) }}">
 
         <label for="mq">mq</label>
-        <input type="number" name="mq" id="mq" value="{{ old('title', $apartment->mq) }}">
+        <input type="number" name="mq" id="mq" value="{{ old('mq', $apartment->mq) }}">
 
         <label for="address">Address</label>
-        <input type="text" name="address" id="address" value="{{ old('title', $apartment->address) }}">
+        <input type="text" name="address" id="address" value="{{ old('address', $apartment->address) }}">
 
         <label for="gps_lng">Longitudine</label>
-        <input type="text" name="gps_lng" id="gps_lng" value="{{ old('title', $apartment->gps_lng) }}">
+        <input type="text" name="gps_lng" id="gps_lng" value="{{ old('gps_lng', $apartment->gps_lng) }}">
 
         <label for="gps_lat">Latitudine</label>
-        <input type="text" name="gps_lat" id="gps_lat" value="{{ old('title', $apartment->gps_lat) }}">
+        <input type="text" name="gps_lat" id="gps_lat" value="{{ old('gps_lat', $apartment->gps_lat) }}">
+
+        <label for="rooms">Rooms</label>
+        <input type="number" name="rooms" id="rooms" value="{{ old('rooms', $apartment->rooms) }}">
+
+        <label for="beds">Bed</label>
+        <input type="number" name="beds" id="beds" value="{{ old('beds', $apartment->beds) }}">
+
+        <label for="bathrooms">Bathrooms</label>
+        <input type="number" name="bathrooms" id="bathrooms" value="{{ old('bathrooms', $apartment->bathrooms) }}">
+
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" value="{{ old('price', $apartment->price) }}">
 
         <div class="form-group">
           <label>Services</label><br>

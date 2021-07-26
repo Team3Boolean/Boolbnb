@@ -49,9 +49,23 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validazione = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'mq' => 'required',
+            'address' => 'required|max:255',
+            'gps_lng' => 'required',
+            'gps_lat' => 'required',
+            'rooms' => 'required',
+            'bathrooms' => 'required',
+            'beds' => 'required',
+            'price' => 'required',
             'services' => 'exists:services,id'
         ]);
+
+        if(!$validazione){
+            abort(404);
+        };
 
         // prendiamo i dati
         $form_data = $request->all();
@@ -130,6 +144,16 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment)
     {
         $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'mq' => 'required',
+            'address' => 'required|max:255',
+            'gps_lng' => 'required',
+            'gps_lat' => 'required',
+            'rooms' => 'required',
+            'bathrooms' => 'required',
+            'beds' => 'required',
+            'price' => 'required',
             'services' => 'exists:services,id'
         ]);
 

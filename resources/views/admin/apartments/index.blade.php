@@ -21,9 +21,7 @@
         <form action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit">
-                Elimina
-            </button>
+            <button type="submit">Elimina</button>
         </form>
     @endforeach
     

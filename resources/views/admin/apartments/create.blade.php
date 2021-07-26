@@ -8,6 +8,18 @@
 
     <h2>Aggiungi il tuo appartamento</h2>
 
+    <div>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+    </div>
+
     <form action="{{ route('admin.apartments.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
@@ -40,8 +52,8 @@
         <label for="rooms">Rooms</label>
         <input type="number" name="rooms" id="rooms">
 
-        <label for="bed">Bed</label>
-        <input type="number" name="bed" id="bed">
+        <label for="beds">Bed</label>
+        <input type="number" name="beds" id="beds">
 
         <label for="bathrooms">Bathrooms</label>
         <input type="number" name="bathrooms" id="bathrooms">
