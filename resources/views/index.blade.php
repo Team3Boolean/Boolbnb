@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-    <homepage-apartment></homepage-apartment>
+    <home-filter-apartment></home-filter-apartment>
     {{-- <div class="container">
         <h1>Ciao dalla home</h1>
     </div> --}}

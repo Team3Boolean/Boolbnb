@@ -40,6 +40,18 @@ class ApartmentController extends Controller
           "results" => $apartments
         ]);
     }
+
+    //ritorna dati sottoforma di array - converte json
+    /**
+     * @param Apartment $apartment
+     * @return ApartmentResource
+     */
+    public function show(Apartment $apartment):ApartmentResource{
+      return new ApartmentResource($apartment);       
+    }
+
+
+    
     public function filter(Request $request){
       $filters = $request->only(["title", "address", "services", "sponsorships"]);
 
@@ -76,8 +88,4 @@ class ApartmentController extends Controller
           "results" => $result->get()
       ]);
     }
-
 }
-
-
-    

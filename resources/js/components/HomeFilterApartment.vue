@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <section class="jumbotron">
-            <form @submit.prevent="filter()" @reset="onReset()">
+            <form >
+                <!--@submit.prevent="filter()" @reset="onReset()"-->
                 <search-apartment
                     v-model="filters.address"        
                 ></search-apartment>
@@ -17,7 +18,7 @@
                 :title="apartment.title"
                 :description="apartment.description"
                 :link="apartment.link"
-            > </apartment-card>
+            ></apartment-card>
         </section>
     </div>
 </template>
@@ -46,13 +47,15 @@ export default {
                 alert("Impossibile recuperare l'elenco degli appartamenti");
             })
     },
-    methods: {
+    /* methods: {
         filter() {
-            axios.get("/api/apartments/filter", {
+            axios.get("/api/apartments", {
                 params: this.filters
             })
             .then(resp => {
+                console.log(resp);
                 this.filteredApartment = resp.data.results;
+                console.log(this.filteredApartment);
                 //this.$emit("filters", resp.data);
             })
             .catch(er => {
@@ -63,6 +66,6 @@ export default {
         onReset() {
            this.filteredApartment = this.apartmentList;
         }
-    },
+    }, */
 }
 </script>

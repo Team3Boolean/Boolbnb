@@ -18,7 +18,7 @@ window.Vue = require('vue');
 
 //  const files = require.context('./', true, /\.vue$/i)
 //  files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('homepage-apartment', require('./components/HomepageApartment.vue').default);
+Vue.component('home-filter-apartment', require('./components/HomeFilterApartment.vue').default);
 Vue.component('apartment-card', require('./components/ApartmentCard.vue').default);
 Vue.component('search-apartment', require('./components/SearchApartment.vue').default);
 Vue.component('show-apartment', require('./components/ShowApartment.vue').default);

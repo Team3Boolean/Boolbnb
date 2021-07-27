@@ -33,7 +33,7 @@
 
 
 
-    <div id="app">
+    <div id="appModified">
         <nav class="mm-basic-nav">
             <div>
                 <a href="{{ url('/') }}">home</a>
