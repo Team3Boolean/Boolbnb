@@ -12,13 +12,9 @@
 
 // Import
 @import 'variables';
+@import 'partials/commons';
+@import 'partials/header';
 @import 'partials/basicNav';
+@import 'partials/buttons';
 
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-a{
-    text-decoration: none;
-}
+

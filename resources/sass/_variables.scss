@@ -1,12 +1,13 @@
 // Body
-$body-bg: #f8fafc;
+$body-light-bg: #F5F5F6;
+$body-dark-bg: #E1E2E1;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-family: 'Nunito', sans-serif;
+$font-size: 14px;
+$line-height: 1.5;
 
-// Colors
+// Colors Boolstrap
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
@@ -17,3 +18,22 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+//primary_colors
+$primary_green: #d4e4bc;
+$primary_dark_green: #a3b28c;
+$primary_light_green: #ffffef;
+//secondary_colors
+$secondary_blue: #8da1b9;
+$secondary_dark_blue: #5f7389;
+$secondary_light_blue:#bed2eb;
+//text-colors
+$white: #ffffff;
+$blue: #3b4c59;
+
+//spacing
+$spacing: 15px;
+
+//radius
+$radius: 8px;

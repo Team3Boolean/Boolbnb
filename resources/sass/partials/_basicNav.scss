@@ -1,0 +1,73 @@
+.basic-nav-admin{
+    width: 100%;
+    padding-right: $spacing;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    div{
+        margin: 0, $spacing*2;
+        a{
+            color: $blue;
+            font-weight: bold;
+            margin-left: $spacing;
+        }
+    }
+}
+.basic-nav-log{
+    width: 100%;
+    padding-right: $spacing;
+    display: flex;
+    align-items: center;
+    &>div{
+        width: 50%;
+        margin: 0, $spacing*2;
+    }
+    &>div:first-of-type{
+        a{
+            color: $blue;
+            font-weight: bold;
+            margin-left: $spacing*2;
+        }
+    }
+    &>div:last-of-type{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: $spacing*2;
+        a{
+            color: $blue;
+            font-weight: bold;
+            padding-left: 10px;
+            margin-right: $spacing*2;
+        }
+    }
+}
+.basic-nav{
+    width: 100%;
+    //height: 4*$spacing;
+    padding: 0, 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &>div{
+        width: 50%;
+        margin: 0, $spacing*2;
+    }
+    &>div:first-of-type{
+        a{
+            color: $blue;
+            font-weight: bold;
+            margin-left: $spacing*2;
+        }
+    }
+    &>div:last-of-type{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: $spacing*2;
+        a{
+            color: $blue;
+            font-weight: bold;
+            padding-left: 10px;
+            margin-right: $spacing*2;
+        }
+    }
+}

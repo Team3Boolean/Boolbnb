@@ -1,3 +1,5 @@
+{{-- HOME PAGE INIZIALE --}}
+
 @extends('layouts/app')
 
 @section('content')
@@ -59,7 +61,7 @@
         <apartment-card
             id="{{ $apartment->id }}"
             title="{{ $apartment->title }}"
-            description="{{ $apartment->description }}"
+            description="{{ $apartment->description}}"
             link="{{ route('apartments.show', $apartment->id) }}"
         ></apartment-card>
     @endforeach --}}

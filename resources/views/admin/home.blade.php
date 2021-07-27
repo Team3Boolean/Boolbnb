@@ -3,7 +3,7 @@
 @section('content')
 <h1>dashboard admin</h1>
   <div>
-    <a href="{{ route('home.index') }}">Visualizza tutti gli appartamenti</a>
+    <a href="{{ route('home.index') }}">Torna alla home del sito</a>
   </div>
   <div>
     <a href="{{ route('admin.apartments.index') }}">I tuoi appartamenti</a>

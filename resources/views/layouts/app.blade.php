@@ -33,81 +33,55 @@
 
 
 
-    <div id="appModified">
-        <nav class="mm-basic-nav">
-            <div>
-                <a href="{{ url('/') }}">home</a>
-            </div>
-                
-            <div>
+    <div id="app">
+        <header>
+            <nav class="basic-nav">
                 <div>
-                    @guest
-                        <div>
-                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </div>
-                        @if (Route::has('register'))
-                            <div>
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </div>
-                        @endif
-                    @else
-                        <div>
-                            <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
-                            <a href="#">
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </div>
-                    @endguest
+                    <a href="{{ url('/') }}">home</a>
                 </div>
-                
-                {{-- <ul>
                     
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li>
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li>
-                            <a href="#">
-                                {{ Auth::user()->name }}
-                            </a>
-
+                
+                    <div>
+                        @guest
                             <div>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </div>
+                            @if (Route::has('register'))
+                                <div>
+                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </div>
+                            @endif
+                        @else
+                            <div>
+                                <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
+                                <a href="#">
+                                    {{ Auth::user()->name }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul> --}}
+                                <div>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
-            </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        @endguest
+                    </div>
+                    
+                
     
-        </nav>
+            </nav>
+        </header>
+        
         <main class="py-4">
+
+            {{-- VALUTARE SE TENERE ID APP --}}
+
             <div id="app">
                 @yield('content')
             </div>    

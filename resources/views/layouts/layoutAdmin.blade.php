@@ -26,33 +26,31 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  
     <div id="app">
-        <nav class="mm-basic-nav-admin">
+        <header>
+            <nav class="basic-nav-admin">
 
-            <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
-            <div>
-                {{ Auth::user()->name }}
-            </div>
-                 
-            <div>
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                </a>
+                <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
+                <div>
+                    {{ Auth::user()->name }}
+                </div>
+                    
+                <div>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-                </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    </form>
 
-                
-            </div>
-            
-
-
-           
-        </nav>
+                    
+                </div>
+            </nav>
+        </header>
+        
 
         <main>
             @yield('content')

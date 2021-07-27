@@ -1,12 +1,10 @@
 @extends('layouts/layoutAdmin')
 @section('content')
 <div class="container">
-        @dump($received_messages)
-        {{-- TOGLIERE DUMP --}}
+
     @if($received_messages)
+
         @foreach($received_messages as $message)
-        {{-- !!!!! TOGLIERE !!!!! --}}
-        <h1>PROVA PER VEDERE CHE NON STIA STAMPANDO NULLA</h1>
 
         <div class="row">
             <div class="col">
@@ -20,8 +18,6 @@
             {{-- <div class="col">
                 <a href="{{ route('admin.messages.show', $message->id) }}" class="btn-outline-primary">mostra messaggio</a>
             </div> --}}
-
-
 
             {{-- <div class="hidden">
                 {{$message->text}}

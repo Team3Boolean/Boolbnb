@@ -1,0 +1,29 @@
+.btn-primary{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: $secondary_dark_blue;
+    color: $white;
+}
+.btn-back{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: none;
+    padding: $spacing/2;
+    border: 2px solid $blue;
+    i{
+        color: $blue;
+    }
+}
+.btn-round{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 2.2*$spacing;
+    height: 2.2*$spacing;
+    i{
+        color:$blue;
+    }
+}

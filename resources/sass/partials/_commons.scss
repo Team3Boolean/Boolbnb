@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: $font_family;
+    font-size: $font_size;
+}
+a{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+// &:hover{
+//     transform: scale(1.2, 1.2);
+//     cursor: pointer;
+// }
+//shortcuts per flex e no wrap
+.d-flex{
+    display: flex;
+}
+.d-flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.d-no-wrap{
+    flex-wrap: nowrap;
+}
