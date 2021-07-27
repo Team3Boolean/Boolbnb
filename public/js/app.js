@@ -1994,28 +1994,26 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (er) {
       alert("Impossibile recuperare l'elenco degli appartamenti");
     });
-  }
-  /* methods: {
-      filter() {
-          axios.get("/api/apartments", {
-              params: this.filters
-          })
-          .then(resp => {
-              console.log(resp);
-              this.filteredApartment = resp.data.results;
-              console.log(this.filteredApartment);
-              //this.$emit("filters", resp.data);
-          })
-          .catch(er => {
-              console.error(er);
-              alert('Errore nel caricamento dei dati');
-          })
-      },
-      onReset() {
-         this.filteredApartment = this.apartmentList;
-      }
-  }, */
+  },
+  methods: {
+    filter: function filter() {
+      var _this2 = this;
 
+      axios.get("/api/apartments/filter", {
+        params: this.filters
+      }).then(function (resp) {
+        console.log(resp.data.results);
+        _this2.filteredApartment = resp.data.results;
+        console.log("messaggio dal then della funzione filter"); //this.$emit("filters", resp.data);
+      })["catch"](function (er) {
+        console.error(er);
+        alert('Errore nel caricamento dei dati');
+      });
+    },
+    onReset: function onReset() {
+      this.filteredApartment = this.apartmentList;
+    }
+  }
 });
 
 /***/ }),
@@ -37838,6 +37836,17 @@ var render = function() {
     _c("section", { staticClass: "jumbotron" }, [
       _c(
         "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.filter()
+            },
+            reset: function($event) {
+              return _vm.onReset()
+            }
+          }
+        },
         [
           _c("search-apartment", {
             model: {

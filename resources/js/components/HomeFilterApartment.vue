@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <section class="jumbotron">
-            <form >
-                <!--@submit.prevent="filter()" @reset="onReset()"-->
+            <form @submit.prevent="filter()" @reset="onReset()">
+                
                 <search-apartment
                     v-model="filters.address"        
-                ></search-apartment>
+                > </search-apartment>
                 <button type="submit">Filtra</button>
                 <button type="reset">Annulla</button>
             </form>
@@ -47,15 +47,15 @@ export default {
                 alert("Impossibile recuperare l'elenco degli appartamenti");
             })
     },
-    /* methods: {
+    methods: {
         filter() {
-            axios.get("/api/apartments", {
+            axios.get("/api/apartments/filter", {
                 params: this.filters
             })
             .then(resp => {
-                console.log(resp);
+                console.log(resp.data.results);
                 this.filteredApartment = resp.data.results;
-                console.log(this.filteredApartment);
+                console.log("messaggio dal then della funzione filter");
                 //this.$emit("filters", resp.data);
             })
             .catch(er => {
@@ -66,6 +66,6 @@ export default {
         onReset() {
            this.filteredApartment = this.apartmentList;
         }
-    }, */
+    }, 
 }
 </script>

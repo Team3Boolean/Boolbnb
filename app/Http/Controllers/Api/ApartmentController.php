@@ -65,7 +65,7 @@ class ApartmentController extends Controller
               $value = explode(",", $value);
            }
     
-           $result->whereIn("category_id", $value);
+           $result->whereIn("service_id", $value);
            //$result->whereNotNull("category_id");
            
       } else if ($filter === "sponsorships") {
@@ -73,10 +73,10 @@ class ApartmentController extends Controller
         $value = explode(",", $value);
              }
     
-           $result->join("post_tag", "post.id", "=", "post_tag.post_id")
-                  ->whereIn("post_tag.tag_id", $value);
+           $result->join("apartment_sponsorship", "apartment.id", "=", "apartment_sponsorship.apartment_id")
+                  ->whereIn("apartment_sponsorship.sponsorship_id", $value);
         } else {
-        $result->where($filter, "LIKE", "%$value%");
+              $result->where($filter, "LIKE", "%$value%");
               }
       }
     
