@@ -6,15 +6,17 @@
 body {
     font-family: $font_family;
     font-size: $font_size;
+    background-color: $body-dark-bg;
 }
 a{
     text-decoration: none;
     text-transform: uppercase;
-}
-// &:hover{
-//     transform: scale(1.2, 1.2);
-//     cursor: pointer;
-// }
+    &:hover{
+        cursor: pointer;
+        text-decoration: none;
+        transition-duration: 1.2s;
+    }
+} 
 //shortcuts per flex e no wrap
 .d-flex{
     display: flex;
@@ -25,4 +27,7 @@ a{
 }
 .d-no-wrap{
     flex-wrap: nowrap;
+}
+.g-2{
+    flex-grow: 2;
 }

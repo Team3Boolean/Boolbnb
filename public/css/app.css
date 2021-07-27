@@ -10951,11 +10951,18 @@ a.text-dark:focus {
 body {
   font-family: "Nunito", sans-serif;
   font-size: 14px;
+  background-color: #E1E2E1;
 }
 
 a {
   text-decoration: none;
   text-transform: uppercase;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: 1.2s;
 }
 
 .d-flex {
@@ -10971,35 +10978,97 @@ a {
   flex-wrap: nowrap;
 }
 
+.g-2 {
+  flex-grow: 2;
+}
+
 header {
-  height: 60px;
   background-color: #a3b28c;
-  display: flex;
-  padding: 50px;
-  align-items: center;
+  padding-right: 60px;
 }
 
 .basic-nav-admin {
   width: 100%;
-  padding-right: 15px;
+  height: 67.5px;
+  padding: 7.5px, 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 
-.basic-nav-admin div {
+.basic-nav-admin > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0, 30px;
 }
 
-.basic-nav-admin div a {
+.basic-nav-admin > div a {
   color: #3b4c59;
   font-weight: bold;
-  margin-left: 15px;
+  padding: 15px;
+}
+
+.basic-nav-admin > div a:hover {
+  opacity: 0.7;
+}
+
+.basic-nav-admin > div span {
+  font-weight: bold;
+  color: #3b4c59;
+}
+
+.basic-nav-admin > div span.user-name {
+  text-transform: uppercase;
+}
+
+.basic-nav-admin > div:first-of-type a {
+  display: flex;
+  align-items: center;
+}
+
+.basic-nav-admin > div:first-of-type a:hover {
+  opacity: 0.7;
+}
+
+.basic-nav-admin > div:first-of-type a .img-logo {
+  height: 100px;
+  width: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.basic-nav-admin > div:last-of-type {
+  margin-left: 37.5px;
+}
+
+.dashboard-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #8da1b9;
+  height: 45px;
+  padding: 7.5px, 15px;
+  margin-right: -60px;
+}
+
+.dashboard-bar div {
+  margin-right: 60px;
+}
+
+.dashboard-bar div a {
+  color: #ffffff;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.dashboard-bar div a:hover {
+  opacity: 0.7;
 }
 
 .basic-nav-log {
   width: 100%;
-  padding-right: 15px;
+  height: 67.5px;
+  padding: 7.5px, 15px;
   display: flex;
   align-items: center;
 }
@@ -11010,9 +11079,15 @@ header {
 }
 
 .basic-nav-log > div:first-of-type a {
-  color: #3b4c59;
-  font-weight: bold;
-  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.basic-nav-log > div:first-of-type a .img-logo {
+  height: 100px;
+  width: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .basic-nav-log > div:last-of-type {
@@ -11030,34 +11105,44 @@ header {
 
 .basic-nav {
   width: 100%;
+  height: 67.5px;
   padding: 0, 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .basic-nav > div {
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0, 30px;
 }
 
+.basic-nav > div a {
+  color: #3b4c59;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.basic-nav > div span {
+  font-weight: bold;
+  color: #3b4c59;
+}
+
+.basic-nav > div span.user-name {
+  text-transform: uppercase;
+}
+
 .basic-nav > div:first-of-type a {
-  color: #3b4c59;
-  font-weight: bold;
-  margin-left: 30px;
-}
-
-.basic-nav > div:last-of-type {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 30px;
+  align-items: center;
 }
 
-.basic-nav > div:last-of-type a {
-  color: #3b4c59;
-  font-weight: bold;
-  padding-left: 10px;
-  margin-right: 30px;
+.basic-nav > div:first-of-type a .img-logo {
+  height: 100px;
+  width: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .btn-primary {

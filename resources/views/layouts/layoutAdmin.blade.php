@@ -29,10 +29,18 @@
     <div id="app">
         <header>
             <nav class="basic-nav-admin">
-
-                <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
                 <div>
-                    {{ Auth::user()->name }}
+                    <a href="{{ url('/') }}">
+                        <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
+                    </a>
+                </div>
+                {{-- div vuoto per spaziatura --}}
+                <div class="g-2"></div>
+                <div>
+                    <span> 
+                        <span class="user-name">{{ Auth::user()->name }},  </span>
+                        sei pronto per una nuova avventura?
+                    </span>
                 </div>
                     
                 <div>
@@ -45,10 +53,14 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                     </form>
-
                     
                 </div>
             </nav>
+            <div class="dashboard-bar">
+                <div>
+                    <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
+                </div>
+            </div>
         </header>
         
 
