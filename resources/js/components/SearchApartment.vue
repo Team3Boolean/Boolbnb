@@ -1,15 +1,19 @@
 <template>
-
     <div>
+      
+        <div class="form-group d-flex-col">
         <!-- <input type="search" id="" name="indirizzo" class="form-control"  placeholder="Dove vuoi andare?">
         <input type="hidden" id="lat" :value="latitude" name="lat" class="form-control" >
         <input type="hidden" id="lng" :value="longitude" name="lng" class="form-control"> -->
-        <input
-            :type="inputType"
-            :value="value"
-            @input="$emit('input', $event.currentTarget.value)"
-        >   
+            <input
+                :type="inputType"
+                :value="value"
+                @input="$emit('input', $event.currentTarget.value)"
+                class="input-basic"
+            >   
+        </div>
     </div>
+    
 </template>
 
 <script>

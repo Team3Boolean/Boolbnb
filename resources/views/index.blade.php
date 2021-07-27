@@ -3,7 +3,10 @@
 @extends('layouts/app')
 
 @section('content')
-    <home-filter-apartment></home-filter-apartment>
+    <div class="jumbotron">
+        <home-filter-apartment></home-filter-apartment>
+    </div>
+    
     {{-- <div class="container">
         <h1>Ciao dalla home</h1>
     </div> --}}

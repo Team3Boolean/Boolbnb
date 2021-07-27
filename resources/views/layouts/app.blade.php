@@ -85,9 +85,9 @@
             @endauth
         </header>
         <main>
-            <div class="continainer">
-                @yield('content')
-            </div>    
+        
+            @yield('content')
+
         </main>
     </div>
 </body>

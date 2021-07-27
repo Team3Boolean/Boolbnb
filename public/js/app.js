@@ -1972,6 +1972,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomepageApartment",
   data: function data() {
@@ -2029,6 +2036,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -37835,46 +37846,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("section", { staticClass: "jumbotron" }, [
-      _c(
-        "form",
-        [
-          _c("search-apartment", {
-            model: {
-              value: _vm.filters.address,
-              callback: function($$v) {
-                _vm.$set(_vm.filters, "address", $$v)
-              },
-              expression: "filters.address"
-            }
-          }),
-          _vm._v(" "),
-          _c("button", { attrs: { type: "submit" } }, [_vm._v("Filtra")]),
-          _vm._v(" "),
-          _c("button", { attrs: { type: "reset" } }, [_vm._v("Annulla")])
-        ],
-        1
-      )
-    ]),
+    _c("div", { staticClass: "title-label blue-label" }),
     _vm._v(" "),
     _c(
-      "section",
-      _vm._l(_vm.filteredApartment, function(apartment) {
-        return _c("apartment-card", {
-          key: apartment.id,
-          attrs: {
-            id: apartment.id,
-            title: apartment.title,
-            description: apartment.description,
-            link: apartment.link
+      "form",
+      [
+        _c("search-apartment", {
+          model: {
+            value: _vm.filters.address,
+            callback: function($$v) {
+              _vm.$set(_vm.filters, "address", $$v)
+            },
+            expression: "filters.address"
           }
-        })
-      }),
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ],
       1
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex f-end" }, [
+      _c("button", { staticClass: "btn-primary", attrs: { type: "submit" } }, [
+        _vm._v("Filtra")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-primary", attrs: { type: "reset" } }, [
+        _vm._v("Annulla")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37897,15 +37905,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("input", {
-      attrs: { type: _vm.inputType },
-      domProps: { value: _vm.value },
-      on: {
-        input: function($event) {
-          return _vm.$emit("input", $event.currentTarget.value)
+    _c("div", { staticClass: "form-group d-flex-col" }, [
+      _c("input", {
+        staticClass: "input-basic",
+        attrs: { type: _vm.inputType },
+        domProps: { value: _vm.value },
+        on: {
+          input: function($event) {
+            return _vm.$emit("input", $event.currentTarget.value)
+          }
         }
-      }
-    })
+      })
+    ])
   ])
 }
 var staticRenderFns = []

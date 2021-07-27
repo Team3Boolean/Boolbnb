@@ -1,8 +1,8 @@
 form{
     padding: $spacing 2*$spacing;
     border: 2px solid $secondary_dark_blue;
-    border-bottom-left-radius: $radius/2;
-    border-bottom-right-radius: $radius/2;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
     background-color: $white;
     label{
         font-size: $font-size;
@@ -15,6 +15,7 @@ form{
             border: 1px solid $body-dark-bg;
             border-radius: $radius/2;
             padding: $spacing/2 1.2*$spacing;
+            line-height: $line-height;
         }
     }
     textarea{

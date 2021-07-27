@@ -1,25 +1,32 @@
 <template>
     <div class="container">
-        <section class="jumbotron">
-            <form >
-                <!--@submit.prevent="filter()" @reset="onReset()"-->
+        
+            <div class="title-label blue-label">
+
+            </div>
+            <form>
+                
                 <search-apartment
-                    v-model="filters.address"        
+                v-model="filters.address"        
                 ></search-apartment>
-                <button type="submit">Filtra</button>
-                <button type="reset">Annulla</button>
+           
+                <!--@submit.prevent="filter()" @reset="onReset()"-->
+                <div class="d-flex f-end">
+                    <button class="btn-primary" type="submit">Filtra</button>
+                    <button class="btn-primary" type="reset">Annulla</button>
+                </div> 
             </form>
             <!-- componente per ricerca appartamento--> 
-        </section>
 
-        <section>
+
+        <!-- <section>
             <apartment-card v-for="apartment in filteredApartment" :key="apartment.id"
                 :id="apartment.id"
                 :title="apartment.title"
                 :description="apartment.description"
                 :link="apartment.link"
             ></apartment-card>
-        </section>
+        </section> -->
     </div>
 </template>
 
