@@ -10951,7 +10951,7 @@ a.text-dark:focus {
 body {
   font-family: "Nunito", sans-serif;
   font-size: 14px;
-  background-color: #E1E2E1;
+  background-color: #F5F5F6;
 }
 
 a {
@@ -10982,6 +10982,30 @@ a:hover {
   flex-grow: 2;
 }
 
+.f-end {
+  justify-content: flex-end;
+}
+
+.m-right-0 {
+  margin-right: 0;
+}
+
+.title-label {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 30px;
+}
+
+.title-label.blue-label {
+  background-color: #5f7389;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: 2px solid #5f7389;
+  border-bottom: none;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
 header {
   background-color: #a3b28c;
   padding-right: 60px;
@@ -10990,7 +11014,7 @@ header {
 .basic-nav-admin {
   width: 100%;
   height: 67.5px;
-  padding: 7.5px, 15px;
+  padding: 7.5px 15px;
   display: flex;
   align-items: center;
 }
@@ -11045,9 +11069,9 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: #8da1b9;
+  background-color: #d4e4bc;
   height: 45px;
-  padding: 7.5px, 15px;
+  padding: 7.5px 15px;
   margin-right: -60px;
 }
 
@@ -11056,7 +11080,7 @@ header {
 }
 
 .dashboard-bar div a {
-  color: #ffffff;
+  color: #8e6178;
   font-weight: bold;
   padding: 15px;
 }
@@ -11068,7 +11092,7 @@ header {
 .basic-nav-log {
   width: 100%;
   height: 67.5px;
-  padding: 7.5px, 15px;
+  padding: 7.5px 15px;
   display: flex;
   align-items: center;
 }
@@ -11146,11 +11170,23 @@ header {
 }
 
 .btn-primary {
-  display: flex;
   text-align: center;
-  align-items: center;
   background-color: #5f7389;
+  border: 1px solid #5f7389;
   color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: 150px;
+}
+
+.btn-primary:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: 1.2s;
+  transform: scale(1.1, 1.1);
 }
 
 .btn-back {
@@ -11177,5 +11213,47 @@ header {
 
 .btn-round i {
   color: #3b4c59;
+}
+
+form {
+  padding: 15px 30px;
+  border: 2px solid #5f7389;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #ffffff;
+}
+
+form label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #5f7389;
+  font-weight: bold;
+}
+
+form input.input-basic {
+  border: 1px solid #E1E2E1;
+  border-radius: 4px;
+  padding: 7.5px 18px;
+}
+
+form textarea {
+  line-height: 1.5;
+}
+
+form textarea.input-basic {
+  font-size: 14px;
+  padding: 15px 18px;
+  border: 1px solid #F5F5F6;
+  border-radius: 4px;
+}
+
+form input:focus,
+form input:active {
+  outline: none;
+}
+
+form textarea:focus,
+form textarea:active {
+  outline: none;
 }
 

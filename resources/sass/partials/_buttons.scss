@@ -1,9 +1,21 @@
 .btn-primary{
-    display: flex;
     text-align: center;
-    align-items: center;
     background-color: $secondary_dark_blue;
+    border: 1px solid $secondary_dark_blue;
     color: $white;
+    padding: $spacing*0.4 $spacing*0.8;
+    border-radius: $radius;
+    text-transform: uppercase;
+    text-decoration: none;
+    width:150px;
+    &:hover{
+        opacity: 0.6;
+        cursor: pointer;
+        text-decoration: none;
+        transition-duration: 1.2s;
+        transform: scale(1.1, 1.1);
+    }
+
 }
 .btn-back{
     display: flex;

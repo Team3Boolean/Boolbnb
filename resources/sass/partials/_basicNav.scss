@@ -1,7 +1,7 @@
 .basic-nav-admin{
     width: 100%;
     height: $spacing*4.5;
-    padding: $spacing/2, $spacing;
+    padding: $spacing/2  $spacing;
     display: flex;
     align-items: center;
     &>div{
@@ -49,14 +49,14 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: $secondary_blue;
+    background-color: $primary_green;
     height: 3*$spacing;
-    padding: $spacing/2, $spacing;
+    padding: $spacing/2 $spacing;
     margin-right: -4*$spacing;
     div{
         margin-right: 4*$spacing;
         a{
-            color: $white;
+            color: $third_purple;
             font-weight: bold;
             padding: $spacing;
             &:hover{
@@ -71,7 +71,7 @@
 .basic-nav-log{
     width: 100%;
     height: $spacing*4.5;
-    padding: $spacing/2, $spacing;
+    padding: $spacing/2 $spacing;
     display: flex;
     align-items: center;
     &>div{

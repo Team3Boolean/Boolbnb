@@ -69,7 +69,9 @@
         
 
         <main>
-            @yield('content')
+            <div class="continainer">
+                @yield('content')
+            </div>    
         </main>
     </div>
 </body>

@@ -84,12 +84,8 @@
                 </div>
             @endauth
         </header>
-        
-        <main class="py-4">
-
-            {{-- VALUTARE SE TENERE ID APP --}}
-
-            <div id="app">
+        <main>
+            <div class="continainer">
                 @yield('content')
             </div>    
         </main>

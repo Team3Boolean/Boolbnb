@@ -6,7 +6,7 @@
 body {
     font-family: $font_family;
     font-size: $font_size;
-    background-color: $body-dark-bg;
+    background-color: $body-light-bg;
 }
 a{
     text-decoration: none;
@@ -30,4 +30,24 @@ a{
 }
 .g-2{
     flex-grow: 2;
+}
+.f-end{
+   justify-content: flex-end;
+}
+.m-right-0{
+    margin-right: 0;
+}
+.title-label{
+    display: flex;
+    justify-content: flex-end;
+    padding: $spacing 2*$spacing;
+    &.blue-label{
+        background-color: $secondary_dark_blue;
+        border-top-left-radius: $radius/2;
+        border-top-right-radius: $radius/2;
+        border: 2px solid $secondary_dark_blue;
+        border-bottom: none;
+        color: $white;
+        text-transform: uppercase;
+    }
 }
