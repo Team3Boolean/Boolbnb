@@ -30,8 +30,19 @@
                 <span class="badge badge-primary">{{ $service->name }}</span>
             @endforeach
         @else
-            <em>Nessun tag disponibile...</em>
+            <em>Non e' stato selezionato nessun servizio aggiuntivo...</em>
         @endif
     </div>
+
+    <div id="map"  style="width: 350px; height: 250px;"></div>
+
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
+    <script type="application/javascript">
+        tt.map({
+            key: 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ',
+            container: 'map'
+        })
+    </script>
+
 
  @endsection

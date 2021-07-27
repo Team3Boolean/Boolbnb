@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts/map')
 {{-- @section('pageTitle', 'Home Page') --}}
 @section('content')
    <h1>{{ $apartment->title }}</h1>
@@ -40,4 +40,30 @@
         </form>
     </div>
 
+
+    <div id="map" style="width: 350px; height: 250px;"></div>
+    {{-- <script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script> --}}
+    <script type="application/javascript">
+        var endpoint = 'https://a.api.tomtom.com/map/1/tile/basic/' +
+                       'main/4/8/5.png?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ'; 
+
+        var tiles = ['a', 'b', 'c', 'd'].map(function(a){
+            return endpoint.replace('a.api.tomtom.com', 'api.tomtom.com');
+        });
+        var APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
+        var map = tt.map({
+            key: APIKEY,
+            container: 'map',
+            center: [-3.703790, 40.416775],
+            basePath: 'sdk/',
+            theme: {
+                style: 'main',
+                layer: 'basic',
+                source: 'vector'
+            }
+
+        });
+        map.addControl(new tt.FullscreenControl());
+        map.addControl(new tt.NavigationControl());
+    </script>
 @endsection
