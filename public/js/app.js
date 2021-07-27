@@ -1928,11 +1928,11 @@ __webpack_require__.r(__webpack_exports__);
     coverUrl: String
   },
   computed: {
-    /* imgSrc() {
-        const defaultImg = "";
-        src="mettere qui tutto src"
-        return this.coverUrl ? ("storage/" + this.coverUrl) : defaultImg
-    }  */
+    imgSrc: function imgSrc() {
+      var defaultImg = "";
+      src = "mettere qui tutto src";
+      return this.coverUrl ? "storage/" + this.coverUrl : defaultImg;
+    }
   }
 });
 

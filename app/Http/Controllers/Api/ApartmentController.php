@@ -11,16 +11,6 @@ use App\User;
 
 class ApartmentController extends Controller
 {
-    // public function index()
-    // {
-    //     $apartments = Apartment::all();
-    //     $apartments = Apartment::with("user")->orderBy("created_at", "DESC")->get();
-    //     return response()->json([
-    //         "success" => true,
-    //         "results" => $apartments,
-    //     ]);
-    // }
-
     public function index()
     {
         $apartments = Apartment::with("sponsorships")->orderBy('created_at','DESC')->get();
@@ -79,13 +69,25 @@ class ApartmentController extends Controller
               $result->where($filter, "LIKE", "%$value%");
               }
       }
+
+      $apartments = $result->get();
+
+      foreach ($apartments as $apartment) {
+        $apartment->img_cover = $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/250';
+        $apartment->link = route("apartments.show", $apartment->id);
+
+        if (strlen($apartment->description) > 100) {
+          $apartment->description = substr($apartment->description, 0, 100) . "...";
+        }
+
+      }
     
     
       return response()->json([
           "success"=> true,
           "filters" => $filters,
           "query" => $result->getQuery()->toSql(),
-          "results" => $result->get()
+          "results" => $apartments
       ]);
     }
 }
