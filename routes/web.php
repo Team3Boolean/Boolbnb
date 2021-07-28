@@ -46,5 +46,4 @@ Route::prefix('admin')
 
     //rotta per messaggi da integrare a dashboard
     Route::resource('/messages', 'MessageController');    
-
 });

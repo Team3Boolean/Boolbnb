@@ -11261,3 +11261,18 @@ form textarea:active {
   outline: none;
 }
 
+.dashboard-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-box .dashboard-card {
+  width: calc(100% / 3);
+  height: 350px;
+  padding: 15px 30px;
+  margin: 7.5px 15px;
+  border-radius: 8px;
+  border: 2px solid #8da1b9;
+}
+

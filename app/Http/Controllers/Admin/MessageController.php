@@ -48,4 +48,13 @@ class MessageController extends Controller
     {
         // return view('admin.messages.show', ['message' => $message]);
     }
+    public function destroy(Message $message)
+    {
+        // // elimino id appartamento dall' oggetto
+        $message->apartment()->detach();
+        $message->delete();
+
+        return redirect()->route('admin.apartments.index');
+    }
+
 }

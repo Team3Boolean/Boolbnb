@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Apartment;
 use App\Service;
+use App\Message;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -178,6 +179,8 @@ class ApartmentController extends Controller
 
         // se esistono togliamo tutte le associazioni di service all appartamento
         $apartment->services()->detach();
+        //elimino i messaggi dall' oggetto
+        $apartment->messages()->detach();
 
         // prima di aggiungere service controlliamo che la chiave esiste
         if (key_exists('services', $form_data)) {
@@ -199,8 +202,11 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        //elimino i messaggi dall' oggetto
+        $apartment->messages()->detach();
         // elimino i service dall' oggetto
         $apartment->services()->detach();
+        
 
         // cancello oggetto
         $apartment->delete();

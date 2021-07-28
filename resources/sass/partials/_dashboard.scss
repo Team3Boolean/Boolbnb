@@ -1,0 +1,13 @@
+.dashboard-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .dashboard-card{
+        width: calc(100% / 3);
+        height: 350px;
+        padding: $spacing $spacing*2;
+        margin:$spacing/2 $spacing;
+        border-radius: $radius;
+        border: 2px solid $secondary_blue;
+    }
+}
