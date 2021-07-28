@@ -34,4 +34,22 @@
         @endif
     </div>
 
+    <form action="{{ route('admin.payments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+
+        @foreach($sponsorships as $sponsorship)
+
+            
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input name="sponsorship" class="form-check-input" type="radio" value="{{ $sponsorship->id }}">
+                {{ $sponsorship->name }}
+            </label>
+          </div>
+
+          @endforeach
+
+        <input type="submit" value="Send">
+
  @endsection

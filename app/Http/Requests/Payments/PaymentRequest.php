@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests\Payments;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Braintree;
+use App\Rules\ValidApartment;
+use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentRequest extends FormRequest
 {
@@ -26,7 +27,10 @@ class PaymentRequest extends FormRequest
     {
         return [
             "token" => "required",
-            "amount" => "required"
+            "apartment" => [
+                "required",
+                new ValidApartment()
+            ]
         ];
     }
 }

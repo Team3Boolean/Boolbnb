@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Apartment;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,13 +30,17 @@ class PaymentController extends Controller
     // creo metodo per invio pagamento
     public function makePayment(PaymentRequest $request, Gateway $gateway){
     
-
+        // prendo l appartamento richiesto
+        $apartment = Apartment::find($request->apartment);
+       
         $result = $gateway->transaction()->sale([
-            'amount' => $request->amount,
+            'amount' => $apartment->price,
+            // 'amount' => 9.99,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => True
             ]
+            
         ]);
 
         if($result->success){

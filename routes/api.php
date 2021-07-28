@@ -27,3 +27,5 @@ Route::apiResource('messages','Api\\MessageController');
 // creo rotta per generazione(get) token e per invio pagamento(post)
 Route::get('payment/generate', 'Api\PaymentController@generateToken');
 Route::post('payment/make', 'Api\PaymentController@makePayment');
+
+Route::get('sponsorships', 'Api\SponsorshipController@index');

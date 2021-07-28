@@ -3,6 +3,7 @@
         <h2>{{ id }}</h2>
         <h3>{{ title }}</h3>
         <p>{{ description }}</p>
+        <p>{{ price }}</p>
         <a :href="link">Vai ai dettagli...</a>
         <!-- {{ route('apartments.show', $apartment->id) }} -->
     </div>    

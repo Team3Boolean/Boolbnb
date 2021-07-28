@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Service;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -111,8 +112,17 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $sponsorships = Sponsorship::all();
+
+        $data = [
+            'apartment' => $apartment,
+            'sponsorships' => $sponsorships,
+        ];
+        // dump($data);
+        // return;
         // ritorno la pagina di show e invio l appartamento
-        return view('admin.apartments.show', ['apartment' => $apartment]);
+        // return view('admin.apartments.show', ['apartment' => $apartment]);
+        return view('admin.apartments.show', $data);
     }
 
     /**
@@ -178,6 +188,7 @@ class ApartmentController extends Controller
 
         // se esistono togliamo tutte le associazioni di service all appartamento
         $apartment->services()->detach();
+        $apartment->sponsorships()->detach();
 
         // prima di aggiungere service controlliamo che la chiave esiste
         if (key_exists('services', $form_data)) {
