@@ -34,20 +34,21 @@
         <label for="mq">mq</label>
         <input type="number" name="mq" id="mq">
 
-        <label for="address">Address</label>
+        {{-- <label for="address">Address</label>
         <input type="text" name="address" id="address">
-
-        {{-- <div id="app">
-            <get-lon-lan>
-    
-            </get-lon-lan>
-        </div> --}}
 
         <label for="gps_lng">Longitudine</label>
         <input type="string" name="gps_lng" id="gps_lng">
 
         <label for="gps_lat">Latitudine</label>
-        <input type="string" name="gps_lat" id="gps_lat">
+        <input type="string" name="gps_lat" id="gps_lat"> --}}
+
+        <label for="address">Indirizzo</label>
+        <input type="text" id="address" name="address" placeholder="Inserisci indirizzo"/>
+        <button onclick="event.preventDefault(); search()">Premi per calcolare lat e lon</button>
+        <input id="gps_lat" type="hidden" name="gps_lat" value="">
+        <input id="gps_lng" type="hidden" name="gps_lng" value="">
+
 
         <label for="rooms">Rooms</label>
         <input type="number" name="rooms" id="rooms">
@@ -81,4 +82,33 @@
     
     </form>
 
+    <!--messo div della mappa per poter usare le funzioni di tomtom-->
+    <div id="map" style="width: 0;"></div>
+
+    <script type="application/javascript">
+        //provo a creare una funzione che fa una chiamata axios a tomtom
+        var APIKEY = "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ";
+
+        var map = tt.map({
+            key: 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ',
+            container: 'map',
+            center: [8.90061, 45.73791],
+            zoom: 3,
+        });
+
+        var handleResults = function(result) {
+            console.log(result);
+            if(result.results) {
+                console.log(result.results[0].position['lng']);
+                document.getElementById('gps_lat').value = result.results[0].position['lat'];
+                document.getElementById('gps_lng').value = result.results[0].position['lng'];
+            }
+        }
+        var search = function() {
+            tt.services.fuzzySearch({
+            key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+            query: document.getElementById("address").value,
+            }).then(handleResults);
+        }
+    </script>
 @endsection
