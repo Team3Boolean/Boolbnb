@@ -51,10 +51,10 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         // // elimino id appartamento dall' oggetto
-        $message->apartment()->detach();
-        $message->delete();
+        // $message->apartment()->detach();
+        // $message->delete();
 
-        return redirect()->route('admin.apartments.index');
+        // return redirect()->route('admin.apartments.index');
     }
 
 }
