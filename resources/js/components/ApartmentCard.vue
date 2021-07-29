@@ -17,14 +17,13 @@ export default {
         description: String,
         link: String,
         coverUrl: String,
-
     },
     computed: {
-        /* imgSrc() {
+        imgSrc() {
             const defaultImg = "";
             src="mettere qui tutto src"
             return this.coverUrl ? ("storage/" + this.coverUrl) : defaultImg
-        }  */
+        }
     }
 }
 </script>

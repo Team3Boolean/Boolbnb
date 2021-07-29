@@ -11,16 +11,6 @@ use App\User;
 
 class ApartmentController extends Controller
 {
-    // public function index()
-    // {
-    //     $apartments = Apartment::all();
-    //     $apartments = Apartment::with("user")->orderBy("created_at", "DESC")->get();
-    //     return response()->json([
-    //         "success" => true,
-    //         "results" => $apartments,
-    //     ]);
-    // }
-
     public function index()
     {
         $apartments = Apartment::with("sponsorships")->orderBy('created_at','DESC')->get();
@@ -65,7 +55,7 @@ class ApartmentController extends Controller
               $value = explode(",", $value);
            }
     
-           $result->whereIn("category_id", $value);
+           $result->whereIn("service_id", $value);
            //$result->whereNotNull("category_id");
            
       } else if ($filter === "sponsorships") {
@@ -73,11 +63,23 @@ class ApartmentController extends Controller
         $value = explode(",", $value);
              }
     
-           $result->join("post_tag", "post.id", "=", "post_tag.post_id")
-                  ->whereIn("post_tag.tag_id", $value);
+           $result->join("apartment_sponsorship", "apartment.id", "=", "apartment_sponsorship.apartment_id")
+                  ->whereIn("apartment_sponsorship.sponsorship_id", $value);
         } else {
-        $result->where($filter, "LIKE", "%$value%");
+              $result->where($filter, "LIKE", "%$value%");
               }
+      }
+
+      $apartments = $result->get();
+
+      foreach ($apartments as $apartment) {
+        $apartment->img_cover = $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/250';
+        $apartment->link = route("apartments.show", $apartment->id);
+
+        if (strlen($apartment->description) > 100) {
+          $apartment->description = substr($apartment->description, 0, 100) . "...";
+        }
+
       }
     
     
@@ -85,7 +87,7 @@ class ApartmentController extends Controller
           "success"=> true,
           "filters" => $filters,
           "query" => $result->getQuery()->toSql(),
-          "results" => $result->get()
+          "results" => $apartments
       ]);
     }
 }

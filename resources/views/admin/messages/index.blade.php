@@ -1,7 +1,6 @@
 @extends('layouts/layoutAdmin')
 @section('content')
 <div class="container">
-
     @if($received_messages)
 
         @foreach($received_messages as $message)

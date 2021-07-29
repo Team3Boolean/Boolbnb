@@ -30,8 +30,9 @@
                 <span class="badge badge-primary">{{ $service->name }}</span>
             @endforeach
         @else
-            <em>Nessun tag disponibile...</em>
+            <em>Non e' stato selezionato nessun servizio aggiuntivo...</em>
         @endif
     </div>
+
 
  @endsection

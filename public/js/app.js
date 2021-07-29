@@ -1928,11 +1928,11 @@ __webpack_require__.r(__webpack_exports__);
     coverUrl: String
   },
   computed: {
-    /* imgSrc() {
-        const defaultImg = "";
-        src="mettere qui tutto src"
-        return this.coverUrl ? ("storage/" + this.coverUrl) : defaultImg
-    }  */
+    imgSrc: function imgSrc() {
+      var defaultImg = "";
+      src = "mettere qui tutto src";
+      return this.coverUrl ? "storage/" + this.coverUrl : defaultImg;
+    }
   }
 });
 
@@ -2001,28 +2001,26 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (er) {
       alert("Impossibile recuperare l'elenco degli appartamenti");
     });
-  }
-  /* methods: {
-      filter() {
-          axios.get("/api/apartments", {
-              params: this.filters
-          })
-          .then(resp => {
-              console.log(resp);
-              this.filteredApartment = resp.data.results;
-              console.log(this.filteredApartment);
-              //this.$emit("filters", resp.data);
-          })
-          .catch(er => {
-              console.error(er);
-              alert('Errore nel caricamento dei dati');
-          })
-      },
-      onReset() {
-         this.filteredApartment = this.apartmentList;
-      }
-  }, */
+  },
+  methods: {
+    filter: function filter() {
+      var _this2 = this;
 
+      axios.get("/api/apartments/filter", {
+        params: this.filters
+      }).then(function (resp) {
+        console.log(resp.data.results);
+        _this2.filteredApartment = resp.data.results;
+        console.log("messaggio dal then della funzione filter"); //this.$emit("filters", resp.data);
+      })["catch"](function (er) {
+        console.error(er);
+        alert('Errore nel caricamento dei dati');
+      });
+    },
+    onReset: function onReset() {
+      this.filteredApartment = this.apartmentList;
+    }
+  }
 });
 
 /***/ }),
@@ -37846,10 +37844,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "title-label blue-label" }),
-    _vm._v(" "),
     _c(
       "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.filter()
+          },
+          reset: function($event) {
+            return _vm.onReset()
+          }
+        }
+      },
       [
         _c("search-apartment", {
           model: {
@@ -37863,6 +37870,22 @@ var render = function() {
         _vm._v(" "),
         _vm._m(0)
       ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      _vm._l(_vm.filteredApartment, function(apartment) {
+        return _c("apartment-card", {
+          key: apartment.id,
+          attrs: {
+            id: apartment.id,
+            title: apartment.title,
+            description: apartment.description,
+            link: apartment.link
+          }
+        })
+      }),
       1
     )
   ])
@@ -50604,8 +50627,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
