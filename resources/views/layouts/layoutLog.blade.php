@@ -23,7 +23,7 @@
 </head>
 <body>
   
-    <div id="app">
+
         <header>
             <nav class="basic-nav-log">
 
@@ -73,6 +73,6 @@
             @yield('content')
 
         </main>
-    </div>
+
 </body>
 </html>

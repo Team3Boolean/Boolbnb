@@ -26,50 +26,50 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <header>
-            <nav class="basic-nav-admin">
-                <div>
-                    <a href="{{ url('/') }}">
-                        <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
-                    </a>
-                </div>
-                {{-- div vuoto per spaziatura --}}
-                <div class="g-2"></div>
-                <div>
-                    <span> 
-                        <span class="user-name">{{ Auth::user()->name }},  </span>
-                        sei pronto per una nuova avventura?
-                    </span>
-                </div>
-                    
-                <div>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                    </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                    </form>
-                    
-                </div>
-            </nav>
-            <div class="dashboard-bar">
-                <div>
-                    <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
-                </div>
+    <header>
+        <nav class="basic-nav-admin">
+            <div>
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
+                </a>
             </div>
-        </header>
-        
+            {{-- div vuoto per spaziatura --}}
+            <div class="g-2"></div>
+            <div>
+                <span> 
+                    <span class="user-name">{{ Auth::user()->name }},  </span>
+                    sei pronto per una nuova avventura?
+                </span>
+            </div>
+                
+            <div>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                </a>
 
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                </form>
+                
+            </div>
+        </nav>
+        <div class="dashboard-bar">
+            <div>
+                <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
+            </div>
+        </div>
+    </header>
     
-        <main>
 
-            @yield('content')
 
-        </main>
-    </div>
+    <main>
+
+        @yield('content')
+
+    </main>
+
 </body>
 </html>

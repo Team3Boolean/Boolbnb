@@ -31,64 +31,61 @@
 </head>
 <body>
 
-
-
-    <div id="app">
-        <header>
-            <nav class="basic-nav">
+    <header>
+        <nav class="basic-nav">
+            <div>
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
+                </a>
+            </div>
+            {{-- div vuoto per spaziatura --}}
+            <div class="g-2"></div>                    
+            @guest
                 <div>
-                    <a href="{{ url('/') }}">
-                        <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
-                    </a>
+                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
                 </div>
-                {{-- div vuoto per spaziatura --}}
-                <div class="g-2"></div>                    
-                @guest
+                @if (Route::has('register'))
                     <div>
-                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
                     </div>
-                    @if (Route::has('register'))
-                        <div>
-                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </div>
-                    @endif
-                @else
+                @endif
+            @else
+                <div>
+                    <div class="g-2"></div>
                     <div>
-                        <div class="g-2"></div>
-                        <div>
-                            <span> 
-                                <span class="user-name">{{ Auth::user()->name }},  </span>
-                                sei pronto per una nuova avventura?
-                            </span>
-                        </div>
+                        <span> 
+                            <span class="user-name">{{ Auth::user()->name }},  </span>
+                            sei pronto per una nuova avventura?
+                        </span>
+                    </div>
 
-                        <div>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                @endguest    
-            </nav>
-            {{-- mostrare barra per la dashboard se loggato --}}
-            @auth
-                <div class="dashboard-bar">
                     <div>
-                        <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
-            @endauth
-        </header>
-        <main>
-        
-            @yield('content')
+            @endguest    
+        </nav>
+        {{-- mostrare barra per la dashboard se loggato --}}
+        @auth
+            <div class="dashboard-bar">
+                <div>
+                    <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
+                </div>
+            </div>
+        @endauth
+    </header>
+    <main>
+    
+        @yield('content')
 
-        </main>
-    </div>
+    </main>
+
 </body>
 </html>
