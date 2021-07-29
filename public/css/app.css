@@ -11216,7 +11216,7 @@ header {
   border-radius: 8px;
   text-transform: uppercase;
   text-decoration: none;
-  width: 150px;
+  width: 125px;
   margin-left: 15px;
 }
 
@@ -11253,6 +11253,33 @@ header {
 
 .btn-round i {
   color: #3b4c59;
+}
+
+form.delete-form {
+  background-color: none;
+  border: none;
+  border-radius: none;
+}
+
+form .btn-delete {
+  text-align: center;
+  background-color: #ffffff;
+  border: 2px solid #5f7389;
+  color: #5f7389;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: 125px;
+  font-weight: bold;
+}
+
+form .btn-delete:hover {
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: 1.2s;
+  background-color: #E1E2E1;
+  border: 2px solid #E1E2E1;
 }
 
 form {
@@ -11349,5 +11376,51 @@ form textarea:active {
 .dashboard-box .dashboard-card .dash-i-box i {
   font-size: 60px;
   color: #8da1b9;
+}
+
+.admin-apartment-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.admin-apartment-box .admin-apartment-cards {
+  border-radius: 8px;
+  border: 2px solid #8da1b9;
+  width: calc(100% / 3);
+  height: 500px;
+  background-color: #ffffff;
+  padding: 15px 30px;
+  margin: 7.5px 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-apartment-box .admin-apartment-cards .cover-box {
+  height: 250px;
+  width: 100%;
+}
+
+.admin-apartment-box .admin-apartment-cards .cover-box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.admin-apartment-box .admin-apartment-cards .apartment-link {
+  background-color: #8e6178;
+  border-radius: 8px;
+}
+
+.admin-apartment-box .admin-apartment-cards .apartment-link a {
+  color: #ffffff;
+  margin: 7.5px 0 7.5px 0;
+}
+
+.admin-apartment-box .admin-apartment-cards .apartment-link a:hover {
+  transition-duration: 1.2s;
+  color: #5f7389;
 }
 

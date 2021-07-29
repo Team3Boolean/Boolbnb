@@ -81,7 +81,7 @@
 
 
         <div class="form-group">
-          <label>Services</label><br>
+          <label></label><br>
 
           @foreach($services as $service) 
 
@@ -95,15 +95,6 @@
           @endforeach
 
         </div>
-
-      <div class="form-check">
-        <label>
-            <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}">
-            {{ $service->name }} 
-        </label>
-      </div> 
-
-      @endforeach
     </div>
     <div class="d-flex f-end">
       <input class="btn-primary" type="submit" value="Send"> 

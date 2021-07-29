@@ -7,7 +7,7 @@
     border-radius: $radius;
     text-transform: uppercase;
     text-decoration: none;
-    width:150px;
+    width:125px;
     margin-left:$spacing;
     &:hover{
         cursor: pointer;
@@ -41,3 +41,32 @@
         color:$blue;
     }
 }
+form{
+    &.delete-form{
+        background-color: none;
+        border: none;
+        border-radius: none;
+    }
+    .btn-delete{
+        text-align: center;
+        background-color: $white;
+        border: 2px solid $secondary_dark_blue;
+        color:  $secondary_dark_blue;
+        padding: $spacing*0.4 $spacing*0.8;
+        border-radius: $radius;
+        text-transform: uppercase;
+        text-decoration: none;
+        width:125px;
+        font-weight: bold;
+        &:hover{
+            cursor: pointer;
+            text-decoration: none;
+            transition-duration: 1.2s;
+            background-color: $body-dark-bg;
+            border: 2px solid $body-dark-bg;
+        }
+    }
+}
+
+
+ 
