@@ -35,4 +35,17 @@
     </div>
 
 
+    <section class="buy-sponsorship">
+        <div>
+            <a href="{{ route('admin.apartments.sponsorships.payment', ['apartment' => $apartment->id, 'sponsorship' => $sponsorship->id] )}}"> ecco le sponsorizzazioni</a>
+        </div>
+
+        @foreach($sponsorships as $sponsorship)
+                         
+        @endforeach
+    </section>
+
+  
+
+
  @endsection

@@ -46,4 +46,7 @@ Route::prefix('admin')
 
     //rotta per messaggi da integrare a dashboard
     Route::resource('/messages', 'MessageController');    
+
+    //rotta per sponnsorizzazioni
+    Route::get('/apartments/{id}/sponsorships/payment', 'SponsorshipControlle@payment');
 });
