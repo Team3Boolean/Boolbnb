@@ -4,17 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Apartment;
 use App\Sponsorship;
-use Braintree;
+use App\Apartment;
 
 class SponsorshipController extends Controller
 {
-    public function payment(Apartment $apartment){
-
-        $data = $request->all();
-        $sponsorship = $data['sponsorship_id'];
-
-        return view('admin.apartments.sponsorships.payment', ['apartment' => $apartment, 'sponsorship' =>$sponsorship]);
+    public function index(Apartment $apartment){
+        $sponsorships = Sponsorship::all();
+        return view("admin.sponsorships.index", ['apartment' => $apartment]);
     }
 }

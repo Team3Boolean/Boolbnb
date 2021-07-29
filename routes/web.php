@@ -43,10 +43,9 @@ Route::prefix('admin')
     // inseriamo la rotta per gli apartments degli admin con il resource che prenderà tutte le rotte della crud
     Route::resource('/apartments', 'ApartmentController');
 
-
     //rotta per messaggi da integrare a dashboard
     Route::resource('/messages', 'MessageController');    
 
-    //rotta per sponnsorizzazioni
-    Route::get('/apartments/{id}/sponsorships/payment', 'SponsorshipControlle@payment');
+    //rotta per mostrare tutte le sponsorizzazioni
+    Route::get('/apartments/{id}/sponsorships', 'SponsorshipController@index')->name('sponsorships.index');
 });
