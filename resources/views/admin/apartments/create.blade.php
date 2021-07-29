@@ -53,8 +53,7 @@
     </div>--}}
     <div class="form-group d-flex-col">
         <label for="address">Indirizzo</label>
-        <input type="text" id="address" name="address" placeholder="Inserisci indirizzo" class="input-basic"/>
-        <button onclick="event.preventDefault(); search()" class="btn-primary">Confermi indirizzo?</button>
+        <input type="text" onblur="search()" id="address" name="address" placeholder="Inserisci indirizzo" class="input-basic"/>
         <input id="gps_lat" type="hidden" name="gps_lat" value="">
         <input id="gps_lng" type="hidden" name="gps_lng" value="">
     </div>
@@ -96,15 +95,6 @@
 
         </div>
 
-      <div class="form-check">
-        <label>
-            <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}">
-            {{ $service->name }} 
-        </label>
-      </div> 
-
-      @endforeach
-    </div>
     <div class="d-flex f-end">
       <input class="btn-primary" type="submit" value="Send"> 
     </div>        
