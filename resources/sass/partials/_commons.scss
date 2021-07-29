@@ -14,7 +14,7 @@ a{
     &:hover{
         cursor: pointer;
         text-decoration: none;
-        transition-duration: 1.2s;
+        transition-duration: $t-duration;
     }
 } 
 //background verde

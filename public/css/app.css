@@ -11328,6 +11328,17 @@ form textarea:active {
   color: #ffffff;
 }
 
+.dashboard-box .dashboard-card .card-link a:hover {
+  color: #8e6178;
+  transition-duration: 1.2s;
+}
+
+.dashboard-box .dashboard-card .card-link:hover {
+  cursor: pointer;
+  background-color: rgba(141, 161, 185, 0.4);
+  transition-duration: 1.2s;
+}
+
 .dashboard-box .dashboard-card .dash-i-box {
   flex-grow: 1;
   display: flex;

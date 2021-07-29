@@ -6,6 +6,11 @@
     <div class="jumbotron">
         <home-filter-apartment></home-filter-apartment>
     </div>
+    <section class="adv-section">
+        <div class="container">
+            <h6>sezione dedicata agli appartamenti in evidenza con sponsorizzazione</h6>
+        </div>
+    </section>
     
     {{-- <div class="container">
         <h1>Ciao dalla home</h1>

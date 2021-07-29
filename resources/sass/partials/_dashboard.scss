@@ -21,6 +21,15 @@
             text-align: center;
             a{
                 color: $white;
+                &:hover{
+                    color:$third_purple;
+                    transition-duration: $t-duration;
+                }
+            }
+            &:hover{
+                cursor: pointer;
+                background-color:$hover_s_blue;
+                transition-duration: $t-duration;
             }
         }
         .dash-i-box{
