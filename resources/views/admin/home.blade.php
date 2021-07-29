@@ -3,33 +3,73 @@
 @section('content')
 
 {{--dashboard admin --}}
-  <div class="container">
-      
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="text-uppercase"> 
-                <span class="user-name">{{ Auth::user()->name }}</span>
-                benenuto nella tua pagina personale
-            </h2>
-            <p>gestisci con facilità i tuoi appartamenti</p>
+  <div class="green-bg">
+    <div class="container">
+        
+      <div class="row">
+          <div class="col text-center">
+              <h2 class="text-uppercase"> 
+                  <span class="user-name">{{ Auth::user()->name }}</span>
+                  benvenuto nella tua pagina personale
+              </h2>
+              <p>gestisci con facilità i tuoi appartamenti</p>
+          </div>
+      </div>
+    
+      <div class="dashboard-box">
+        
+        <div class="dashboard-card">
+          <div class="xs-title-label blue-label">
+            <h4>i miei appartamenti</h4>
+          </div>
+          <div class="card-link">
+            <a href="{{ route('admin.apartments.index') }}">visualizza e  gestisci i tuoi appartamenti già presenti</a>
+          </div>
+          <div class="dash-i-box">
+            <i class="fas fa-house-user"></i>
+          </div>
         </div>
-    </div>
-  
-    <div class="dashboard-box">
-      <div class="dashboard-card">
-      <a href="{{ route('home.index') }}">Torna alla home del sito</a>
+        <div class="dashboard-card">
+          <div class="xs-title-label blue-label">
+              <h4>nuovo appartamento</h4>
+          </div>
+          <div class="card-link">
+            <a href="{{ route('admin.apartments.create') }}">aggiungi un appartamento</a>
+          </div>
+          <div class="dash-i-box">
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="xs-title-label blue-label">
+            <h4>messaggi</h4>
+          </div>
+          <div class="card-link">
+            <a href="{{ route('admin.messages.index') }}">visualizza le richieste per i tuoi appartamenti</a>
+          </div>
+          <div class="dash-i-box">
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="xs-title-label blue-label">
+            <h4>statistiche</h4>
+          </div>
+          <div class="card-link">
+            <a href="{{ route('admin.messages.index') }}">come sta andando il tuo profilo</a>
+          </div>
+          <div class="dash-i-box">
+            <i class="fas fa-chart-line"></i>
+          </div>
+        </div>
       </div>
-      <div class="dashboard-card">
-        <a href="{{ route('admin.apartments.index') }}">I tuoi appartamenti</a>
+      <div class="row">
+        <div class="col text-center">
+            <a href="{{ route('home.index') }}">Torna alla home del sito</a>
+        </div>
       </div>
-      <div class="dashboard-card">
-        <a href="{{ route('admin.apartments.create') }}">Aggiungi appartamento</a>
-      </div>
-      <div class="dashboard-card">
-        <a href="{{ route('admin.messages.index') }}">I tuoi messaggi</a>
-      </div>
-    </div>
 
+    </div>
   </div>
     
 @endsection

@@ -17,6 +17,10 @@ a{
         transition-duration: 1.2s;
     }
 } 
+//background verde
+.green-bg{
+    background-color: $primary_green;
+}
 //shortcuts per flex e no wrap
 .d-flex{
     display: flex;
@@ -39,9 +43,35 @@ a{
 }
 .title-label{
     display: flex;
-    justify-content: flex-end;
     padding: $spacing 2*$spacing;
-    min-height: 2*$spacing;
+    height: 3*$spacing;
+    justify-content: flex-end;
+    &.blue-label{   
+        background-color: $secondary_dark_blue;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        border: 2px solid $secondary_dark_blue;
+        border-bottom: none;
+        color: $white;
+        text-transform: uppercase;
+    }
+}
+.xs-title-label{
+    height: 3*$spacing;
+    padding: $spacing/2 $spacing;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $secondary_dark_blue;
+    &.green-label{
+        background-color: $primary_dark_green;
+        color:$secondary_dark_blue;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        border: 2px solid $primary_dark_green;
+        border-bottom: none;
+        text-transform: uppercase;
+    }
     &.blue-label{
         background-color: $secondary_dark_blue;
         border-top-left-radius: $radius;
@@ -50,5 +80,6 @@ a{
         border-bottom: none;
         color: $white;
         text-transform: uppercase;
+
     }
 }

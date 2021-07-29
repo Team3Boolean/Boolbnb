@@ -5,9 +5,33 @@
     .dashboard-card{
         width: calc(100% / 3);
         height: 350px;
-        padding: $spacing $spacing*2;
+        background-color: $white;
+        //padding: $spacing $spacing*2;
         margin:$spacing/2 $spacing;
         border-radius: $radius;
-        border: 2px solid $secondary_blue;
+        display: flex;
+        flex-direction: column;
+        .card-link{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 4*$spacing;
+            background-color: $secondary_blue;
+            padding: $spacing 2*$spacing;
+            text-align: center;
+            a{
+                color: $white;
+            }
+        }
+        .dash-i-box{
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i{
+                font-size: 4*$spacing;
+                color:$secondary_blue;
+            }
+        }
     }
 }
