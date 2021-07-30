@@ -9,6 +9,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
+
 
 class ApartmentController extends Controller
 {
@@ -55,8 +57,6 @@ class ApartmentController extends Controller
             'description' => 'required',
             'mq' => 'required',
             'address' => 'required|max:255',
-            'gps_lng' => 'required',
-            'gps_lat' => 'required',
             'rooms' => 'required',
             'bathrooms' => 'required',
             'beds' => 'required',
@@ -72,7 +72,7 @@ class ApartmentController extends Controller
         $form_data = $request->all();
 
         // verifico che la chiave img_cover esiste
-        if (key_exists("img_cover", $form_data)) {
+        if (isset($form_data["img_cover"])) {
 
             // salvo il file immagine creando la cartella apartmentsCover
             $imgCover = Storage::put("apartmentsCover", $form_data["img_cover"]);
@@ -81,11 +81,24 @@ class ApartmentController extends Controller
             $form_data["img_cover"] = $imgCover;
         };
 
+        $response = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/'. $form_data['address'] . '.json?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ&limit=1')->json();
+        $lat = $response['results'][0]['position']['lat'];
+        $lng = $response['results'][0]['position']['lon'];
+
         // istanziamo un nuovo oggetto Apartment
         $new_apartment = new Apartment();
 
-        // inseriamo tutti i dati con fill nel nuovo oggetto
-        $new_apartment->fill($form_data);
+        $new_apartment->title = $form_data['title'];
+        $new_apartment->description = $form_data['description'];
+        $new_apartment->mq = $form_data['mq'];
+        $new_apartment->address = $form_data['address'];
+        $new_apartment->rooms = $form_data['rooms'];
+        $new_apartment->beds = $form_data['beds'];
+        $new_apartment->bathrooms = $form_data['bathrooms'];
+        $new_apartment->price = $form_data['price'];
+        $new_apartment->gps_lat = $lat;
+        $new_apartment->gps_lng = $lng;
+        $new_apartment->img_cover = $imgCover;
 
         // inseriamo i dati utente che crea l appartamento,non lo lasciamo al fillable per ragioni di sicurezza
         $new_apartment->user_id = $request->user()->id;
@@ -149,8 +162,6 @@ class ApartmentController extends Controller
             'description' => 'required',
             'mq' => 'required',
             'address' => 'required|max:255',
-            'gps_lng' => 'required',
-            'gps_lat' => 'required',
             'rooms' => 'required',
             'bathrooms' => 'required',
             'beds' => 'required',
@@ -159,6 +170,12 @@ class ApartmentController extends Controller
         ]);
 
         $form_data = $request->all();
+        //per aggiornamento adderess
+        $response = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/'. $form_data['address'] . '.json?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ&limit=1')->json();
+        $lat = $response['results'][0]['position']['lat'];
+        $lng = $response['results'][0]['position']['lon'];
+        $apartment->gps_lat = $lat;
+        $apartment->gps_lng = $lng;
 
         // verifico che la chiave immagini esiste
         if(key_exists("img_cover", $form_data)){

@@ -39,12 +39,6 @@
         <label for="address">Address</label>
         <input type="text" name="address" id="address" value="{{ old('address', $apartment->address) }}">
 
-        <label for="gps_lng">Longitudine</label>
-        <input type="text" name="gps_lng" id="gps_lng" value="{{ old('gps_lng', $apartment->gps_lng) }}">
-
-        <label for="gps_lat">Latitudine</label>
-        <input type="text" name="gps_lat" id="gps_lat" value="{{ old('gps_lat', $apartment->gps_lat) }}">
-
         <label for="rooms">Rooms</label>
         <input type="number" name="rooms" id="rooms" value="{{ old('rooms', $apartment->rooms) }}">
 
