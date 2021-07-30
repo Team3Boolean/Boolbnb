@@ -1,63 +1,62 @@
 <template>
     <div>
-      
-        <div class="form-group d-flex-col">
-        <!-- <input type="search" id="" name="indirizzo" class="form-control"  placeholder="Dove vuoi andare?">
-        <input type="hidden" id="lat" :value="latitude" name="lat" class="form-control" >
-        <input type="hidden" id="lng" :value="longitude" name="lng" class="form-control"> -->
-            <input
-                :type="inputType"
-                :value="value"
-                @input="$emit('input', $event.currentTarget.value)"
-                class="input-basic"
-            >   
+        <div class="container">
+            <h1>ciao dal filtro di ricerca</h1>
+            <input type="text" :click="getFilteredApartments(this.allApartmentsArray)">
         </div>
-    </div>
-    
+    </div>  
 </template>
 
 <script>
     export default {
         name : "search-apartment",
         props : {
-            label: String,
-            value: String,
-            inputType: {
-                type: String,
-                default: "text",
-            },
+            
         },
        data() {
             return {
-                allApartments: [],
-                searchedApartment:[],
-                latitude: "",
-                longitude: "",
-                userInput: ""
+                allApartmentsArray: [],
+                filteredApartmentsArray: [],
+                distance: 20,
+                gps_lat: "41.001520",
+                gps_lng: "16.796250",
+                beds: 1,
+                bathrooms: 1,
+                mq: 50,
+                rooms: 1,
+                services: null, 
             };
         },
-        /* mounted(){
+        mounted(){
             axios.get("/api/apartments")
             .then(resp => {
-                this.allApartments = resp.data.results;
-                console.log(this.allApartments);
+                this.allApartmentsArray = resp.data.results;
+                console.log(this.allApartmentsArray);
             })            
-        }, */
-        /* methods: {
-            onSubmit(){
-                axios.get("/api/apartments/filter", {
-                    params: {
-                        address: this.userInput
-                    }
-                }).then(resp => {
-                    console.log(resp.data.results);
-                    //this.$emit("filters", resp.data);
-
-                }).catch((er) => {
-                    console.error(er);
-                    alert('errore nel filtrare i dati');
-                })
-            }
-        }, */
+        }, 
+        methods: {
+           getFilteredApartments() {
+               axios.get("/api/apartments/searchFilteredApartments", {
+                   params: {
+                       distance: this.distance,
+                       gps_lat: this.gps_lat,
+                       gps_lng: this.gps_lng,
+                       beds: this.beds,
+                       bathrooms: this.bathrooms,
+                       mq: this.mq,
+                       rooms: this.rooms
+                   }
+               })
+               .then(resp => {
+                   console.log(resp.data.results);
+               })
+           },
+           nearApartments(lat, lon) {
+               axios.get("/api/apartments/findNearestHouse")
+               .then(resp => {
+                   console.log(resp.data.results);
+               })
+           }
+        }, 
     }
 </script>

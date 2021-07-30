@@ -18,7 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/apartments/filter" , "Api\ApartmentController@filter");
+//Route::get("/apartments/filter" , "Api\ApartmentController@filter");
+Route::get("/apartments/searchFilteredApartments" , "Api\ApartmentController@searchFilteredApartments");
+Route::get("/apartments/findNearestHouse", "Api\ApartmentController@findNearestHouse");
+
 
 Route::apiResource('apartments','Api\\ApartmentController');
 Route::apiResource('messages','Api\\MessageController');

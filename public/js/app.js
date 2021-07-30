@@ -2043,58 +2043,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "search-apartment",
-  props: {
-    label: String,
-    value: String,
-    inputType: {
-      type: String,
-      "default": "text"
-    }
-  },
+  props: {},
   data: function data() {
     return {
-      allApartments: [],
-      searchedApartment: [],
-      latitude: "",
-      longitude: "",
-      userInput: ""
+      allApartmentsArray: [],
+      filteredApartmentsArray: [],
+      distance: 20,
+      gps_lat: "41.001520",
+      gps_lng: "16.796250",
+      beds: 1,
+      bathrooms: 1,
+      mq: 50,
+      rooms: 1,
+      services: null
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/apartments").then(function (resp) {
+      _this.allApartmentsArray = resp.data.results;
+      console.log(_this.allApartmentsArray);
+    });
+  },
+  methods: {
+    getFilteredApartments: function getFilteredApartments() {
+      axios.get("/api/apartments/searchFilteredApartments", {
+        params: {
+          distance: this.distance,
+          gps_lat: this.gps_lat,
+          gps_lng: this.gps_lng,
+          beds: this.beds,
+          bathrooms: this.bathrooms,
+          mq: this.mq,
+          rooms: this.rooms
+        }
+      }).then(function (resp) {
+        console.log(resp.data.results);
+      });
+    }
   }
-  /* mounted(){
-      axios.get("/api/apartments")
-      .then(resp => {
-          this.allApartments = resp.data.results;
-          console.log(this.allApartments);
-      })            
-  }, */
-
-  /* methods: {
-      onSubmit(){
-          axios.get("/api/apartments/filter", {
-              params: {
-                  address: this.userInput
-              }
-          }).then(resp => {
-              console.log(resp.data.results);
-              //this.$emit("filters", resp.data);
-           }).catch((er) => {
-              console.error(er);
-              alert('errore nel filtrare i dati');
-          })
-      }
-  }, */
-
 });
 
 /***/ }),
@@ -37928,15 +37918,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "form-group d-flex-col" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("ciao dal filtro di ricerca")]),
+      _vm._v(" "),
       _c("input", {
-        staticClass: "input-basic",
-        attrs: { type: _vm.inputType },
-        domProps: { value: _vm.value },
-        on: {
-          input: function($event) {
-            return _vm.$emit("input", $event.currentTarget.value)
-          }
+        attrs: {
+          type: "text",
+          click: _vm.getFilteredApartments(this.allApartmentsArray)
         }
       })
     ])
