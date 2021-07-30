@@ -25,6 +25,11 @@
                 mq: 50,
                 rooms: 1,
                 services: null, 
+                // dati chiamate axios
+                // Dati Api
+                apiKey: "",
+                apiSearch: 'api/search',
+                apiTomTom: 'https://api.tomtom.com/search/2/search/'
             };
         },
         mounted(){
