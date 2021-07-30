@@ -34,9 +34,9 @@
         @endif
     </div>
 
-    <form action="{{ route('admin.payments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{ route('admin.payments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @method('PUT') --}}
 
         @foreach($sponsorships as $sponsorship)
 
@@ -50,6 +50,9 @@
 
           @endforeach
 
-        <input type="submit" value="Send">
+        {{-- <input type="submit" value="Send"> --}}
+
+          {{-- <a href="{{ route('admin.payment, [$apartment->id, $sponsorship->id]') }}">ggg</a> --}}
+          <a href="{{ route('admin.payment') }}">ggg</a>
 
  @endsection

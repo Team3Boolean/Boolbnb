@@ -44,8 +44,13 @@ Route::prefix('admin')
     Route::resource('/apartments', 'ApartmentController');
 
     // creo rotte per i pagamenti
-    Route::resource('/payments', 'PaymentController');
+    // Route::resource('/payments', 'PaymentController');
 
+    Route::get('/payments', 'PaymentController@payment')->name('payment');
+
+    // Route::get('apartments/{apartment_id}/sponsorhips/{sponsorship_id}', 'PaymentController@payment')->name('payment'); 
+
+   
     //rotta per messaggi da integrare a dashboard
     Route::resource('/messages', 'MessageController');    
 
