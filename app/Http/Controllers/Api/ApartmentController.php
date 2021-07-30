@@ -44,9 +44,9 @@ class ApartmentController extends Controller
 
     
     public function filter(Request $request){
-      $filters = $request->only(["title", "address", "services", "sponsorships"]);
+      $filters = $request->only(["title", "address", "services"]);
 
-      $result = Apartment::with(["services","sponsorships"]);
+      $result = Apartment::with(["services"]);
     
       foreach ($filters as $filter => $value) {
          
@@ -93,8 +93,11 @@ class ApartmentController extends Controller
     }
 
     public function searchFilteredApartments(Request $request){
+      $filters = $request->only(["beds", "rooms", "address", "services"]);
 
-     
+     dump($filters);
+
+     return;
 
      /*  $data = $request->all();
       $request->validate([

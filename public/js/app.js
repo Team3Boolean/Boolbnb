@@ -2050,14 +2050,20 @@ __webpack_require__.r(__webpack_exports__);
     return {
       allApartmentsArray: [],
       filteredApartmentsArray: [],
-      distance: 20,
-      gps_lat: "41.001520",
-      gps_lng: "16.796250",
-      beds: 1,
-      bathrooms: 1,
-      mq: 50,
-      rooms: 1,
-      services: null
+      address: "",
+      //distance: 20,
+      //gps_lat: "41.001520",
+      //gps_lng: "16.796250",
+      //beds: 1,
+      //bathrooms: 1,
+      //mq: 50,
+      //rooms: 1,
+      services: null // dati chiamate axios
+      // Dati Api
+      //apiKey: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+      //apiSearch: '/api/apartments/searchFilteredApartments',
+      //apiTomTom: 'https://api.tomtom.com/search/2/search/'
+
     };
   },
   mounted: function mounted() {
@@ -2066,21 +2072,27 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("/api/apartments").then(function (resp) {
       _this.allApartmentsArray = resp.data.results;
       console.log(_this.allApartmentsArray);
-    });
+    }); //this.getFilteredApartments()           
   },
   methods: {
     getFilteredApartments: function getFilteredApartments() {
       axios.get("/api/apartments/searchFilteredApartments", {
         params: {
-          distance: this.distance,
-          gps_lat: this.gps_lat,
-          gps_lng: this.gps_lng,
-          beds: this.beds,
-          bathrooms: this.bathrooms,
-          mq: this.mq,
-          rooms: this.rooms
+          //distance: this.distance,
+          //gps_lat: this.gps_lat,
+          //gps_lng: this.gps_lng,
+          //beds: this.beds,
+          //bathrooms: this.bathrooms,
+          //mq: this.mq,
+          //rooms: this.rooms
+          address: this.address
         }
       }).then(function (resp) {
+        console.log(resp.data.results + " " + "risposta dalla funzione getfilteredapartment");
+      });
+    },
+    nearApartments: function nearApartments(lat, lon) {
+      axios.get("/api/apartments/findNearestHouse").then(function (resp) {
         console.log(resp.data.results);
       });
     }
@@ -37922,9 +37934,26 @@ var render = function() {
       _c("h1", [_vm._v("ciao dal filtro di ricerca")]),
       _vm._v(" "),
       _c("input", {
-        attrs: {
-          type: "text",
-          click: _vm.getFilteredApartments(this.allApartmentsArray)
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: this.address,
+            expression: "this.address"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: this.address },
+        on: {
+          click: function($event) {
+            return _vm.searchFilteredApartments()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(this, "address", $event.target.value)
+          }
         }
       })
     ])

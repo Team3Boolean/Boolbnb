@@ -10,9 +10,9 @@
     <title>{{ config('app.name', 'BoolBnb') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     {{-- CDN VUE --}}
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> --}}
 
     {{-- tom tom script --}}
     {{-- <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/> --}}
@@ -115,5 +115,6 @@
                 
         </main>
     </div>
+    <script src='{{ asset('js/app.js') }}'></script>
 </body>
 </html>
