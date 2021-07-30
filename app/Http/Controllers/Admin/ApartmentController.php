@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Apartment;
-use App\Service;
-use App\Message;
 use App\User;
-use App\Http\Controllers\Controller;
+use App\Message;
+use App\Service;
+use App\Apartment;
+use App\Sponsorship;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
@@ -35,11 +36,16 @@ class ApartmentController extends Controller
      */
     public function create()
     {
+        $sponsorships = Sponsorship::all();
         // importo i service
         $services = Service::all();
-      
+        
+        $data = [
+            'services' => $services,
+            'sponsorships' => $sponsorships
+        ];
         // ritorno la pagina di create
-        return view('admin.apartments.create', ["services" => $services]);
+        return view('admin.apartments.create', $data);
     }
 
     /**
@@ -61,7 +67,8 @@ class ApartmentController extends Controller
             'bathrooms' => 'required',
             'beds' => 'required',
             'price' => 'required',
-            'services' => 'exists:services,id'
+            'services' => 'exists:services,id',
+            'sponsorships' => 'exists:sponsorships,id'
         ]);
 
         if(!$validazione){
@@ -99,6 +106,13 @@ class ApartmentController extends Controller
             // con sync eliminiamo le chiavi e facciamo attach
             $new_apartment->services()->sync($form_data['services']);
         }
+
+        // prima di aggiungere tag controlliamo che la chiave esiste
+        if (key_exists('sponsorships', $form_data)) {
+
+            // con sync eliminiamo le chiavi e facciamo attach
+            $new_apartment->sponsorships()->sync($form_data['sponsorships']);
+        }
         
         // salvo e reindirizzo l' utente
         return redirect()->route('admin.apartments.index');
@@ -127,9 +141,12 @@ class ApartmentController extends Controller
         // importo i service
         $services = Service::all();
 
+        $sponsorships = Sponsorship::all();
+
         $data = [
             'services' => $services,
             'apartment' => $apartment,
+            'sponsorships' => $sponsorships
         ];
         // return view('admin.apartments.edit', ["apartment" => $apartment]);
         return view('admin.apartments.edit', $data);
@@ -155,7 +172,8 @@ class ApartmentController extends Controller
             'bathrooms' => 'required',
             'beds' => 'required',
             'price' => 'required',
-            'services' => 'exists:services,id'
+            'services' => 'exists:services,id',
+            'sponsorships' => 'exists:sponsorships,id'
         ]);
 
         $form_data = $request->all();
@@ -188,6 +206,14 @@ class ApartmentController extends Controller
             // poi con attach specifichiamo i nuovi service da aggiungere
             $apartment->services()->attach($form_data['services']);
         }
+
+        $apartment->sponsorships()->detach();
+
+        if (key_exists('sponsorships', $form_data)) {
+
+            // poi con attach specifichiamo i nuovi service da aggiungere
+            $apartment->sponsorships()->attach($form_data['sponsorships']);
+        }
         
         $apartment->update($form_data);
 
@@ -204,6 +230,8 @@ class ApartmentController extends Controller
     {
         //elimino i messaggi dall' oggetto
         $apartment->messages()->delete();
+        //elimino i messaggi dall' oggetto
+        $apartment->sponsorships()->detach();
         // elimino i service dall' oggetto
         $apartment->services()->detach();
         

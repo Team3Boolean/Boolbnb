@@ -96,14 +96,30 @@
 
         </div>
 
-      <div class="form-check">
+        <div class="form-group">
+          <label>Sponsorships</label><br>
+
+          @foreach($sponsorships as $sponsorship) 
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input name="sponsorships[]" class="form-check-input" type="radio" value="{{ $sponsorship->id }}">
+                {{ $sponsorship->name }} 
+            </label>
+          </div> 
+
+          @endforeach
+
+        </div>
+
+      {{-- <div class="form-check">
         <label>
             <input name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}">
             {{ $service->name }} 
         </label>
       </div> 
 
-      @endforeach
+      @endforeach --}}
     </div>
     <div class="d-flex f-end">
       <input class="btn-primary" type="submit" value="Send"> 

@@ -34,5 +34,15 @@
         @endif
     </div>
 
+    <div>
+        @if(count($apartment->sponsorships) > 0)
+            @foreach($apartment->sponsorships as $sponsorship)
+                <span class="badge badge-primary">{{ $sponsorship->name }}</span>
+            @endforeach
+        @else
+            <em>Non e' stato selezionato nessun servizio aggiuntivo...</em>
+        @endif
+    </div>
+
 
  @endsection

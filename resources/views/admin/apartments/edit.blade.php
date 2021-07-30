@@ -70,8 +70,24 @@
           </div>
 
           @endforeach
-
         </div>
+
+         <div class="form-group">
+          <label>Sponsorships</label><br>
+
+          @foreach($sponsorships as $sponsorship) 
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input name="sponsorships[]" class="form-check-input" type="radio" value="{{ $sponsorship->id }}" {{ $apartment->sponsorships->contains($sponsorship) ? 'checked' : '' }}>
+                {{ $sponsorship->name }} 
+            </label>
+          </div> 
+        </div>
+
+          @endforeach
+
+       
 
         <input type="submit" value="Send">
     
