@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        @if($apartments)
+        @if(count($apartments) > 0 )
             <div class="admin-apartment-box">
                 @foreach($apartments as $apartment)
 
