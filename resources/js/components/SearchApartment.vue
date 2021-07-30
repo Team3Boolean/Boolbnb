@@ -27,8 +27,8 @@
                 services: null, 
                 // dati chiamate axios
                 // Dati Api
-                apiKey: "",
-                apiSearch: 'api/search',
+                apiKey: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+                apiSearch: '/api/apartments/searchFilteredApartments',
                 apiTomTom: 'https://api.tomtom.com/search/2/search/'
             };
         },
