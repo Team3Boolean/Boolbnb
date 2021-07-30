@@ -37,6 +37,7 @@ export default {
         return {
             apartmentList: [],
             filteredApartment: [],
+            address: '',
             filters: {
                 address: "",
                 services: null
@@ -72,7 +73,16 @@ export default {
         },
         onReset() {
            this.filteredApartment = this.apartmentList;
-        }
+        },
+        /* getPosition() {
+            axios.get("http://api.tomtom.com/search/2/geocode/" + this.address + ".json", {
+                key: "",
+                limit: 1
+            })
+            .then(resp => {
+                console.log(resp.data.results.position);
+            })
+        } */
     }, 
 }
 </script>

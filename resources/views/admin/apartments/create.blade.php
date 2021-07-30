@@ -53,9 +53,7 @@
     </div>--}}
     <div class="form-group d-flex-col">
         <label for="address">Indirizzo</label>
-        <input type="text" onblur="search()" id="address" name="address" placeholder="Inserisci indirizzo" class="input-basic"/>
-        <input id="gps_lat" type="hidden" name="gps_lat" value="">
-        <input id="gps_lng" type="hidden" name="gps_lng" value="">
+        <input type="text" id="address" name="address" placeholder="Inserisci indirizzo" class="input-basic"/>
     </div>
 
 
@@ -128,5 +126,8 @@
             query: document.getElementById("address").value,
             }).then(handleResults);
         }
+
+
+
     </script>
 @endsection

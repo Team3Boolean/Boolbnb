@@ -36,28 +36,68 @@
                 userInput: ""
             };
         },
-        /* mounted(){
-            axios.get("/api/apartments")
-            .then(resp => {
-                this.allApartments = resp.data.results;
-                console.log(this.allApartments);
-            })            
-        }, */
-        /* methods: {
-            onSubmit(){
-                axios.get("/api/apartments/filter", {
-                    params: {
-                        address: this.userInput
-                    }
-                }).then(resp => {
-                    console.log(resp.data.results);
-                    //this.$emit("filters", resp.data);
+        mounted() {
+            axios.get("/api/apartments").then((resp) => {
+            this.allApartments = resp.data.results;
+            console.log(this.allApartments);
+            });
+        },
+    methods: {
+        searchApartments() {
+            var options = {
+                searchOptions: {
+                    key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+                    language: "it-IT",
+                    limit: 10,
+                    //radius: 2000
+                },
+                autocompleteOptions: {
+                    key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+                    lamguage: "it-IT",
+                    countrySet: "IT",
+                    limit: 5,
+                    entiyTypeSet: "Municipality"
+                }
+            },
 
-                }).catch((er) => {
-                    console.error(er);
-                    alert('errore nel filtrare i dati');
-                })
-            }
-        }, */
+            ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+            searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+                document.body.appendChild(searchBoxHTML);
+                ttSearchBox.on('tomtom.searchbox.resultselected', handleResultSelection);
+                ttSearchBox.on('tomtom.searchbox.resultselected', function (data) {
+                    var position = data['data']['result']['position'];
+                    console.log(position);
+                    var latitudine = position['lat'];
+                    var longitudine = position['lng'];
+                    console.log(latitudine, longitudine);
+                });            
+        },
+
+        handleResults (result) {
+            console.log(result);
+            var position = result.results[0].position;
+            console.log(position);
+            var latitudine = position['lat'];
+            var longitudine = position['lng'];
+            console.log(latitudine);
+            console.log(longitudine);
+        },
+
+       search() {
+            
+            tt.services.fuzzySearch({
+            key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+            language: "it-IT",
+                //20km - richiesto in metri
+            radius:2000,
+            query: document.getElementById("query").value,
+            }).then(this.handleResults);
+        },
+      
+
+    },
+        
+       
+         
     }
 </script>
