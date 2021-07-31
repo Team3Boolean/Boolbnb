@@ -46,8 +46,7 @@ var value;
 //qua entriamo in documentazione BrainTree
 braintree.dropin.create({
   //crea token di autorizzazione in automatico
-  authorization: gateway.clientToken.generate(),
-  //authorization: "{{ Braintree\ClientToken::generate() }}",
+  authorization: 'tprv3vsb38cpwphw',
   selector: '#dropin-container',
   translations: {
                 payWithCard: 'Pagamento con Carta di Credito/Debito'

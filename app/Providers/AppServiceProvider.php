@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-use Braintree;
+use Braintree\Gateway;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,12 +24,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $gateway = new Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'f3gwc3mtcqrm5b9n',
-            'publicKey' => '97by27pprjngn4gh',
-            'privateKey' => '6db2a6baf8fe2476765475ba321039ea'
-        ]);
-        Schema::defaultStringLength(191);
+            $this->app->singleton(Gateway::class, function($app){
+            // all' interno del Gateway passiamo le chiavi di braintree
+            return new Gateway([
+                'environment' => 'sandbox',
+                'merchantId' => 'tprv3vsb38cpwphw',
+                'publicKey' => 'sr2ky75mt5dvzff4',
+                'privateKey' => '1a09ef8ee5d0f5ca9796a8cbf3d29bfb'
+            ]);
+        //Schema::defaultStringLength(191);
+        });
     }
 }
