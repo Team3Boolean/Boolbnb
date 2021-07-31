@@ -23,6 +23,8 @@ Route::get("/apartments/filter" , "Api\ApartmentController@filter");
 Route::apiResource('apartments','Api\\ApartmentController');
 Route::apiResource('messages','Api\\MessageController');
 
+//controller php ritorna dato in Json
+//Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 
 //Route::get("/apartments", "Api\ApartmentController@index");
 //Route::get("/apartments/filter" , "Api\ApartmentController@filter");

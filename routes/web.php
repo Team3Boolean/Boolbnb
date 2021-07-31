@@ -48,4 +48,8 @@ Route::prefix('admin')
 
     //rotta per mostrare tutte le sponsorizzazioni
     Route::get('/apartments/{id}/sponsorships', 'SponsorshipController@index')->name('sponsorships.index');
+    //rotta per creare collegamento fra sponsorizzazione e appartamento
+    Route::post('/apartments/{id}/sponsorships', "SponsorshipController@store")->name('sponsorship.store');
+    //rotta pagamenti baintree
+    Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 });
