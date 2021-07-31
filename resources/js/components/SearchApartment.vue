@@ -6,6 +6,7 @@
         <input type="hidden" id="lat" :value="latitude" name="lat" class="form-control" >
         <input type="hidden" id="lng" :value="longitude" name="lng" class="form-control"> -->
             <input
+                :placeholder="placeholder"
                 :type="inputType"
                 :value="value"
                 @input="$emit('input', $event.currentTarget.value)"
@@ -26,6 +27,7 @@
                 type: String,
                 default: "text",
             },
+            placeholder: String,
         },
        data() {
             return {
@@ -43,7 +45,7 @@
             });
         },
     methods: {
-        searchApartments() {
+       /*  searchApartments() {
             var options = {
                 searchOptions: {
                     key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
@@ -93,7 +95,7 @@
             query: document.getElementById("query").value,
             }).then(this.handleResults);
         },
-      
+       */
 
     },
         

@@ -43,9 +43,10 @@ class ApartmentController extends Controller
 
     
     public function filter(Request $request){
-      $filters = $request->only(["title", "address", "services", "sponsorships"]);
+      $filters = $request->only(["address", "rooms", "beds", "services"]);
 
-      $result = Apartment::with(["services","sponsorships"]);
+      $result = Apartment::with(['services']);
+
     
       foreach ($filters as $filter => $value) {
          
@@ -55,15 +56,16 @@ class ApartmentController extends Controller
               $value = explode(",", $value);
            }
     
-           $result->whereIn("service_id", $value);
-           //$result->whereNotNull("category_id");
+           $result->join("apartment_service", "apartments.id", "=", "apartment_service.apartment_id")
+                  ->whereIn("apartment_service.service_id", $value);
+           
            
       } else if ($filter === "sponsorships") {
              if (!is_array($value)) {
         $value = explode(",", $value);
              }
     
-           $result->join("apartment_sponsorship", "apartment.id", "=", "apartment_sponsorship.apartment_id")
+           $result->join("apartment_sponsorship", "apartments.id", "=", "apartment_sponsorship.apartment_id")
                   ->whereIn("apartment_sponsorship.sponsorship_id", $value);
         } else {
               $result->where($filter, "LIKE", "%$value%");
