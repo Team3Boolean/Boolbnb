@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Apartment;
-use App\Service;
-use App\Message;
 use App\User;
-use App\Http\Controllers\Controller;
+use App\Message;
+use App\Service;
+use App\Apartment;
+use App\Sponsorship;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 
 class ApartmentController extends Controller
@@ -125,8 +126,16 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+
+        $sponsorships = Sponsorship::all();
+        $data = [
+            "sponsorships" => $sponsorships,
+            "apartment" => $apartment
+        ];
+        // dump($sponsorships);
+        // return;
         // ritorno la pagina di show e invio l appartamento
-        return view('admin.apartments.show', ['apartment' => $apartment]);
+        return view('admin.apartments.show', $data);
     }
 
     /**

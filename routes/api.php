@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get("/apartments/filter" , "Api\ApartmentController@filter");
 
+
+Route::get("/apartments/take" , "Api\ApartmentController@takeApartment");
+
 Route::apiResource('apartments','Api\\ApartmentController');
 Route::apiResource('messages','Api\\MessageController');
 

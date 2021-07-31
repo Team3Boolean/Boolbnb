@@ -90,4 +90,16 @@ class ApartmentController extends Controller
           "results" => $apartments
       ]);
     }
+
+  public function takeApartment(Request $request)
+  {
+    $data = [
+      // 'apartments' => Apartment::orderBy("created_at", "DESC")
+      //   ->where("user_id", $request->user()->id)
+      //   ->get()
+      'apartmets' => Apartment::all()
+    ];
+
+    return response()->json($data);
+  }
 }
