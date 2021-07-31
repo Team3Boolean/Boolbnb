@@ -22,16 +22,25 @@
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input " type="radio"  name="promotion" id="3" value="gold">
+            <input class="form-check-input" type="radio"  name="promotion" id="3" value="gold">
             <label class="form-check-label" for="promotion">
                 Pacchetto Gold - 144 ore - 9.99 Euro
             </label>
         </div>
+        <div class="form-check">
+            <label for="apartment-id"></label>
+            <input id="promotion-value" type="hidden" value="{{$apartment->id}}" name="apartment-id">
+        </div>
   </div>
   {{-- qua pagamento effettivo funzione make() di paymentController 
-  sto utilizzando documentazione TomTom https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html --}}
+  sto utilizzando documentazione https://braintree.github.io/braintree-web-drop-in/docs/current/module-braintree-web-drop-in.html --}}
   <button id="submit-button" class="button button--small button--green">Purchase</button>
   <div id="dropin-container"></div>
+    {{-- <form id="payment-form" action="/" method="post" autocomplete="off">
+      <div id="dropin-container"></div>
+      <input type="submit" value="Purchase">
+      <input type="hidden" id="nonce" name="payment_method_nonce">
+    </form> --}}
 </div>
 
 
@@ -39,11 +48,14 @@
 
 <script>
 var button = document.querySelector('#submit-button');
-var flat = "{{ Auth::user()->id }}";
+var flat =  document.getElementById('#apartmet-id');
+//var flat = 24;
 //prendo dati da check-box sopra
 var radioButtons = document.getElementsByClassName('promotion');
 var value;
-//qua entriamo in documentazione BrainTree
+//var payload;
+//qua entriamo in documentazione BrainTree (braintree
+//braintree-web-drop-in)
 braintree.dropin.create({
   //crea token di autorizzazione in automatico
   authorization: 'tprv3vsb38cpwphw',
@@ -87,5 +99,35 @@ braintree.dropin.create({
   });
 });
 </script>
+{{-- <script>
+      var form = document.querySelector('#payment-form');
+      var nonceInput = document.querySelector('#nonce');
+      braintree.dropin.create({
+      authorization: clientToken,
+      container: '#dropin-container'
+      }, function (err, dropinInstance) {
+        if (err) {
+          // Handle any errors that might've occurred when creating Drop-in
+          console.error(err);
+          return;
+        }
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          dropinInstance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+              // Handle errors in requesting payment method
+              return;
+            }
+
+            // Send payload.nonce to your server
+            nonceInput.value = payload.nonce;
+            form.submit();
+          });
+        });
+      });
+    </script> --}}
+<script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
+<script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
 <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.js"></script>
 @endsection

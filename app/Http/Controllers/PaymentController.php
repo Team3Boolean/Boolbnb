@@ -14,6 +14,7 @@ class PaymentController extends Controller
 {
     public function make(Request $request)
     {
+        //echo($clientToken = $gateway->clientToken()->generate());
         $sponsorshipName = $request->input('value');
 
         if($sponsorshipName === 'bronze') {
@@ -44,7 +45,7 @@ class PaymentController extends Controller
             'amount' => $promotion['price'],
             'paymentMethodNonce' => $nonce,
             'options' => [
-                'submitForSettlement' => True
+            'submitForSettlement' => True
             ]
         ]);
 

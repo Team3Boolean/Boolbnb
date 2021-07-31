@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Sponsorship;
 use App\Apartment;
 use DateTime;
-use Braintree;
+use Braintree\Gateway;
 use App\User;
 class SponsorshipController extends Controller
 {
