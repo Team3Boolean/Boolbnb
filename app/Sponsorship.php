@@ -14,9 +14,9 @@ class Sponsorship extends Model
     const UPDATED_AT = null;
     public function apartments()
     {
-        return $this->belongsToMany('App\Apartment');
+        return $this->belongsToMany('App\Apartment')
             // ->withPivot('starting_at', 'expiring_at')
-            // ->withPivot()
+        ->withPivot('price');
             // // ->using('App\ApartmentSponsorship')
             // ->withTimestamps();
 

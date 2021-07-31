@@ -37,14 +37,16 @@ class Apartment extends Model
     {
         return $this->hasMany("App\Message");
     }
+    
     public function sponsorships()
     {
         return $this->belongsToMany('App\Sponsorship')
-        // ->using('App\ApartmentSponsorship')
+        ->using('App\ApartmentSponsorship')
         // ->withPivot('starting_at', 'expiring_at')
-        // ->withPivot()
+        ->with('price')
         ->withTimestamps();
     }
+    
 
 
     public function services()
