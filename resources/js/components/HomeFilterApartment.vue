@@ -105,12 +105,15 @@ export default {
            this.filteredApartment = this.apartmentList;
         },
         /* getPosition() {
-            axios.get("http://api.tomtom.com/search/2/geocode/" + this.address + ".json", {
-                key: "",
-                limit: 1
+            axios.get("/api/apartments/radialSearch", {
+                params: this.filters
             })
             .then(resp => {
-                console.log(resp.data.results.position);
+                console.log(resp.data.results)
+            })
+            .catch(er => {
+                console.error(er);
+                alert('Errore nel caricamento dei dati')
             })
         } */
     }, 
