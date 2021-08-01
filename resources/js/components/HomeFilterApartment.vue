@@ -28,6 +28,11 @@
                 v-model="filters.services"
                 ></check-input>
 
+                <!-- <range-input
+                label= "seleziona la distanza"
+                v-model="filters.range"
+                ></range-input> -->
+
                 
                 <div class="d-flex f-end">
                     <button class="btn-primary" type="submit">Filtra</button>
@@ -61,6 +66,7 @@ export default {
                 address: null,
                 rooms: null,
                 beds: null,
+                //range: 20,
                 services: null
             },
             serviceList: []

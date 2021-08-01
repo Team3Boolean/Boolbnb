@@ -24,6 +24,7 @@ Vue.component('search-apartment', require('./components/SearchApartment.vue').de
 Vue.component('show-apartment', require('./components/ShowApartment.vue').default);
 Vue.component('FilterInput', require('./components/formInputs/FilterInput.vue').default);
 Vue.component('CheckInput', require('./components/formInputs/CheckInput.vue').default);
+Vue.component('RangeInput', require('./components/formInputs/RangeInput.vue').default);
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 

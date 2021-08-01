@@ -15,14 +15,14 @@
 <script>
 export default {
     name : "filter-input",
-        props : {
-            label: String,
-            value: String,
-            inputType: {
-                type: String,
-                default: "number",
-            },
-            placeholder: String,
+    props : {
+        label: String,
+        value: String,
+        inputType: {
+            type: String,
+            default: "number",
         },
+        placeholder: String,
+    },
 }
 </script>
