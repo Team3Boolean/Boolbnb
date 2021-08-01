@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            ciao da Agnese.vue
+            {{console.log(this.$route.query.apartment) }}
         </div>
     </div>
      

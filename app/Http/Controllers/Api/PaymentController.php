@@ -32,8 +32,8 @@ class PaymentController extends Controller
 
         // prendo l appartamento richiesto
         $apartment = Apartment::find($request->apartment);
-
         $sponsorship = Sponsorship::find($request->sponsorship);
+        
 
         $result = $gateway->transaction()->sale([
             'amount' => $sponsorship->price,
