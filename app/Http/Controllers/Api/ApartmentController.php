@@ -123,7 +123,7 @@ class ApartmentController extends Controller
           }
   
           // setto il range di distanza dal punto di ricerca
-          $selectedRange = isset($filters['range'])? $filters['range'] : 20;
+          $selectedRange = isset($filters['range'])? $filters['range'] : 10;
   
           // creo una variabile che mi conterra' gli appartamenti che usciranno dopo il filtro per distanza
           // che lascio inizialmente come array vuoto
@@ -132,9 +132,10 @@ class ApartmentController extends Controller
           //tramite un ciclo andro' a popolare l'array con solo gli appartamenti all'interno dell'area scelta
           foreach($filteredApartments as $singleApartment) {
             // per ogni appartmento che soddisfa i filtri si calcola la distanza dal punto cercato e si arrotonda ad 1 cifra dopo la virgola
-            $distance = distance($response['results'][0]['position']['lat'], $response['results'][0]['position']['lon'], $singleApartment->gps_lat, $singleApartment->gps_lng, 'K');
+            $distance = round(distance($response['results'][0]['position']['lat'], $response['results'][0]['position']['lon'], $singleApartment->gps_lat, $singleApartment->gps_lng, 'K'), 1);
 
-            dump($distance, $selectedRange, $singleApartment->title);
+            dump($distance, $singleApartment->title, $selectedRange);
+
             // se la distanza e' minore o uguale al range che e' stato scelto,
             // l'appartamento verra' tenuto in considerazione altrimenti verra' scartato
             if ($distance <= $selectedRange) {

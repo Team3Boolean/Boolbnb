@@ -198,6 +198,12 @@ class ApartmentController extends Controller
             $form_data["img_cover"] = $imgCover;
         };
 
+        $response = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/'. $form_data['address'] . '.json?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ&limit=1')->json();
+
+        $form_data['gps_lat'] = $response['results'][0]['position']['lat'];
+        $form_data["gps_lng"] = $response['results'][0]['position']['lon'];
+
+
         // se esistono togliamo tutte le associazioni di service all appartamento
         $apartment->services()->detach();
         // //elimino i messaggi dall' oggetto
@@ -209,6 +215,7 @@ class ApartmentController extends Controller
             // poi con attach specifichiamo i nuovi service da aggiungere
             $apartment->services()->attach($form_data['services']);
         }
+        
         
         $apartment->update($form_data);
 
