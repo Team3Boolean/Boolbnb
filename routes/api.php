@@ -28,6 +28,7 @@ Route::apiResource('messages','Api\\MessageController');
 
 
 Route::get('/payment/generate', 'Api\PaymentController@generateToken');
+Route::post('/payment/make', 'Api\PaymentController@makePayment');
 
 //Route::get("/apartments", "Api\ApartmentController@index");
 //Route::get("/apartments/filter" , "Api\ApartmentController@filter");
