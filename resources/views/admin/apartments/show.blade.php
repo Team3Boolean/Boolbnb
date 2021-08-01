@@ -36,16 +36,20 @@
 
     @foreach($sponsorships as $sponsorship) 
 
-          <div class="form-check form-check-inline">
+          {{-- <div class="form-check form-check-inline">
             <label class="form-check-label">
                 <input name="sponsorships[]" class="form-check-input" type="radio" value="{{ $sponsorship->id }}">
                 {{ $sponsorship->name }} 
             </label>
-          </div> 
+          </div>  --}}
+
+        <div>
+              <a href="{{ route('admin.payments.index', ['apartment' => $apartment->id, 'sponsorship'=> $sponsorship->id ]) }}">{{$sponsorship->name}}</a>
+        </div>
 
     @endforeach
 
-    <a href="{{ route('admin.payments.index', $apartment->id) }}">Pagao</a>
+    {{-- <a href="{{ route('admin.payments.index', [$apartment->id, $sponsorship->id]) }}">Pagao</a> --}}
          
 
  @endsection

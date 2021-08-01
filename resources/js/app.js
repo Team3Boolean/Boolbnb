@@ -22,6 +22,7 @@ Vue.component('home-filter-apartment', require('./components/HomeFilterApartment
 Vue.component('apartment-card', require('./components/ApartmentCard.vue').default);
 Vue.component('search-apartment', require('./components/SearchApartment.vue').default);
 Vue.component('show-apartment', require('./components/ShowApartment.vue').default);
+Vue.component('sponsorship-payment', require('./components/SponsorshipPayment.vue').default);
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
