@@ -11,30 +11,62 @@
 
 </head>
 @section('content')
-<div>
+<div class="container">
 		<h3>Ciao <span>{{ Auth::user()->name }}</span>, rendi il tuo annuncio più accattivante e fai in modo che lo vedano più persone!</h3>
 		<h4>Scegli il tuo piano di sponsorizzazione per il tuo appartamento <span>{{ $apartment->title }}</span> situato in <span>{{ $apartment->address }}</span></h4>
+        <h5>Il tuo appartamento sarà pubblicato in homepage e più visibile</h5>
 </div>
-@dump($apartment)
-{{--
-    Step 1  
-    Your front-end requests a client token from your server and initializes the client SDK. 
---}}
+{{-- // seleziona una sponsorizzazione con relativo prezzo :
+id=sponsorship+SponsorchipName // --}}
+<div class="payment-action container">
+    <div class="container">
+        <div class="payment-card">
+            <section class="payment-card-header ">
+                <h5>bronze</h5>
+            </section>
+            <section class="payment-card-main">
+                <span class="bold">
+                    24 ore di sponsorizzazione
+                </span>
+                <span>2,99 €</span>
+                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipBronze" value="2.99">
+            </section>	
+        </div>
+        
+        <div class="payment-card">
+            <section class="payment-card-header m">
+                <h5>silver</h5>
+            </section>
+            <section class="payment-card-main">
+                <span class="bold">
+                    72 ore di sponsorizzazione
+                </span>
+                <span>5.99 €</span>
+                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipSilver" value="5.99" checked>
+            </section>		
+        </div>
+        
+        <div class="payment-card">
+            <section class="payment-card-header">
+                <h5>gold</h5>
+            </section>
+            <section class="payment-card-main">
+                <span class="bold">
+                    144 ore di sponsorizzazione
+                </span>
+                <span>9.99 €</span>
+                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipGold" value="9.99">
+            </section>
+        </div>
+    </div>
+</div>
 
-{{--
-    Step 3
-    The customer submits payment information, the client SDK communicates that information to Braintree and returns a payment method nonce. 
---}}
-
-{{--
-    Step 4
-    Your front-end sends the payment method nonce to your server.
- --}}
+{{-- INSERIAMO FORM METONO POST --}}
 
 
 {{-- Drop-in nella pagina (dalla documentazione) --}}
-<div class="container">
-     <!-- Step one: add an empty container to your page -->
+<div class="container checkout">
+
 
     <div id="dropin-container"></div> 
     <button id="submit-button" class="button button--small button--green">Purchase</button>
