@@ -27,20 +27,54 @@ class PaymentController extends Controller
         return view('admin.payments.index', compact('apartment', 'gateway', 'client_token'));
     }
     //avrà metodo post per creazione tabella ponte
-    public function checkout(Request $request, Apartment $apartment){
+    public function checkout(Request $request, Apartment $apartment, Gateway $gateway){
+
         $data = $request->all();
 
-        // $amount = $data["amount"];
-        // $nonce  = $data["payment_method_nonce"];
-        // $sponsorship_id = $data['sponsorship_id'];
+        $amount = $data["amount"];
+        $nonce  = $data["payment_method_nonce"];
+        $sponsorship_id = $data['sponsorship_id'];
 
-        // $result = $gateway->transaction()->sale([
-        //     'amount' => $amount,
-        //     'paymentMethodNonce' => $nonce,
-        //     'options' => [
-        //         'submitForSettlement' => true
-        //     ]
-        // ]);
-    }
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+        if ($result->success || !is_null($result->transaction)) {
+
+            $transaction = $result->transaction;
+            
+            $starting_at = Carbon::now();
+
+            //nuova sponsorship
+            $sponsorship = Sponsorship::find($sponsorship_id);
+            
+            $expiring_at = $starting_at->copy()->addHours($sponsorship->hours);
+
+            $fields = [
+                //'transaction_id' => $transaction->id,
+                'amount' => $transaction->amount,
+                'starting_at' => $starting_at,
+                'expiring_at' => $expiring_at
+            ];
+
+            $apartment->sponsorship()->attach($sponsorship_id, $fields);
+
+            // return redirect()->route('admin.apartments.sponsorship.transaction', ['transaction_id' => $transaction->id, 'apartment' => $apartment]);
+            return redirect()->route('admin.apartments.show', $apartment);
+
+            } else {
+                $errorString = "";
+        
+                foreach($result->errors->deepAll() as $error) {
+                    $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+                }
+            
+                $_SESSION["errors"] = $errorString;
+                redirect()->back()->with("success", "non è stato possibile eseguire il pagamento");
+            }
+        }
 
 }
