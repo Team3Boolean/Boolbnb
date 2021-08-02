@@ -7,10 +7,33 @@
             <form @submit.prevent="filter()" @reset="onReset()">
                 
                 <search-apartment
+                placeholder="Dove vuoi andare?"
                 v-model="filters.address"        
                 ></search-apartment>
-           
-                <!--@submit.prevent="filter()" @reset="onReset()"-->
+
+                <filter-input
+                placeholder="camere"
+                type="number"
+                v-model="filters.rooms"
+                ></filter-input>
+
+                <filter-input
+                placeholder="letti"
+                type="number"
+                v-model="filters.beds"
+                ></filter-input>
+
+                <check-input
+                :items="serviceList"
+                v-model="filters.services"
+                ></check-input>
+
+                <!-- <range-input
+                label= "seleziona la distanza"
+                v-model="filters.range"
+                ></range-input> -->
+
+                
                 <div class="d-flex f-end">
                     <button class="btn-primary" type="submit">Filtra</button>
                     <button class="btn-primary" type="reset">Annulla</button>
@@ -38,9 +61,15 @@ export default {
             apartmentList: [],
             filteredApartment: [],
             filters: {
-                address: "",
+                //metto valore di default null 
+                //cosi' axios non inserisce il campo nella query se non e' compilato
+                address: null,
+                rooms: null,
+                beds: null,
+                //range: 20,
                 services: null
-            }
+            },
+            serviceList: []
         }
     },
     mounted() {
@@ -52,18 +81,26 @@ export default {
             })
             .catch(er => {
                 alert("Impossibile recuperare l'elenco degli appartamenti");
-            })
+            });
+        
+        axios.get("/api/services")
+              .then(resp => {
+                  this.serviceList = resp.data.results;
+              })
+              .catch(er => {
+                  cosole.error(er);
+              })
     },
     methods: {
         filter() {
             axios.get("/api/apartments/filter", {
+                //passo come query string i miei filtri
                 params: this.filters
             })
             .then(resp => {
                 console.log(resp.data.results);
                 this.filteredApartment = resp.data.results;
                 console.log("messaggio dal then della funzione filter");
-                //this.$emit("filters", resp.data);
             })
             .catch(er => {
                 console.error(er);
@@ -72,7 +109,19 @@ export default {
         },
         onReset() {
            this.filteredApartment = this.apartmentList;
-        }
+        },
+        /* getPosition() {
+            axios.get("/api/apartments/radialSearch", {
+                params: this.filters
+            })
+            .then(resp => {
+                console.log(resp.data.results)
+            })
+            .catch(er => {
+                console.error(er);
+                alert('Errore nel caricamento dei dati')
+            })
+        } */
     }, 
 }
 </script>

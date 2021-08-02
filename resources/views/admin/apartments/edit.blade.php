@@ -37,7 +37,7 @@
         <input type="number" name="mq" id="mq" value="{{ old('mq', $apartment->mq) }}">
 
         <label for="address">Address</label>
-        <input type="text" name="address" id="address" value="{{ old('address', $apartment->address) }}">
+        <input type="text" onblur="search()" name="address" id="address" value="{{ old('address', $apartment->address) }}">
 
         <label for="rooms">Rooms</label>
         <input type="number" name="rooms" id="rooms" value="{{ old('rooms', $apartment->rooms) }}">
@@ -70,4 +70,31 @@
         <input type="submit" value="Send">
     
     </form>
+
+    <!-- div con id map messo per poter usare le funzioni -->
+    <div id="map" style="width: 0;"></div>
+    <script type="application/javascript">
+        var map = tt.map({
+            key: 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ',
+            container: 'map',
+            center: [8.90061, 45.73791],
+            zoom: 3,
+        });
+
+        var handleResults = function(result) {
+            console.log(result);
+            if(result.results) {
+                console.log(result.results[0].position['lng']);
+                document.getElementById('gps_lat').value = result.results[0].position['lat'];
+                document.getElementById('gps_lng').value = result.results[0].position['lng'];
+            }
+        }
+        var search = function() {
+            tt.services.fuzzySearch({
+            key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
+            query: document.getElementById("address").value,
+            }).then(handleResults);
+        }
+    </script>
+
     @endsection

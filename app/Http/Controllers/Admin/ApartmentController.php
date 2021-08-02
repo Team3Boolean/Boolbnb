@@ -8,8 +8,8 @@ use App\Message;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 
 class ApartmentController extends Controller
@@ -70,6 +70,9 @@ class ApartmentController extends Controller
 
         // prendiamo i dati
         $form_data = $request->all();
+        //dump($form_data);
+
+       
 
         // verifico che la chiave img_cover esiste
         if (isset($form_data["img_cover"])) {
@@ -82,12 +85,17 @@ class ApartmentController extends Controller
         };
 
         $response = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/'. $form_data['address'] . '.json?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ&limit=1')->json();
+
         $lat = $response['results'][0]['position']['lat'];
         $lng = $response['results'][0]['position']['lon'];
 
+
+        
         // istanziamo un nuovo oggetto Apartment
         $new_apartment = new Apartment();
 
+        // inseriamo tutti i dati con fill nel nuovo oggetto
+        //$new_apartment->fill($form_data);
         $new_apartment->title = $form_data['title'];
         $new_apartment->description = $form_data['description'];
         $new_apartment->mq = $form_data['mq'];
@@ -98,7 +106,7 @@ class ApartmentController extends Controller
         $new_apartment->price = $form_data['price'];
         $new_apartment->gps_lat = $lat;
         $new_apartment->gps_lng = $lng;
-        $new_apartment->img_cover = $imgCover;
+        //$new_apartment->img_cover = $imgCover;
 
         // inseriamo i dati utente che crea l appartamento,non lo lasciamo al fillable per ragioni di sicurezza
         $new_apartment->user_id = $request->user()->id;
@@ -194,6 +202,12 @@ class ApartmentController extends Controller
             $form_data["img_cover"] = $imgCover;
         };
 
+        $response = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/geocode/'. $form_data['address'] . '.json?key=rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ&limit=1')->json();
+
+        $form_data['gps_lat'] = $response['results'][0]['position']['lat'];
+        $form_data["gps_lng"] = $response['results'][0]['position']['lon'];
+
+
         // se esistono togliamo tutte le associazioni di service all appartamento
         $apartment->services()->detach();
         // //elimino i messaggi dall' oggetto
@@ -205,6 +219,7 @@ class ApartmentController extends Controller
             // poi con attach specifichiamo i nuovi service da aggiungere
             $apartment->services()->attach($form_data['services']);
         }
+        
         
         $apartment->update($form_data);
 
