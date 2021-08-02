@@ -34,7 +34,7 @@
         @endif
     </div>
 
-    @foreach($sponsorships as $sponsorship) 
+    {{-- @foreach($sponsorships as $sponsorship)  --}}
 
           {{-- <div class="form-check form-check-inline">
             <label class="form-check-label">
@@ -43,11 +43,17 @@
             </label>
           </div>  --}}
 
-        <div>
+        {{-- <div>
               <a href="{{ route('admin.payments.index', ['apartment' => $apartment->id, 'sponsorship'=> $sponsorship->id ]) }}">{{$sponsorship->name}}</a>
+              
+        </div> --}}
+    <section class="buy-sponsorship">
+        <div>
+            <a href="{{ route('admin.payments.index', $apartment)}}"> ecco le sponsorizzazioni</a>
         </div>
+    </section>
 
-    @endforeach
+    {{-- @endforeach --}}
 
     {{-- <a href="{{ route('admin.payments.index', [$apartment->id, $sponsorship->id]) }}">Pagao</a> --}}
          
