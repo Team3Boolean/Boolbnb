@@ -21,6 +21,14 @@ a{
 .green-bg{
     background-color: $primary_green;
 }
+.white-bg{
+    background-color: $white;
+}
+//border verde
+.brd-green{
+    border: 2px solid $primary_dark_green;
+    border-radius: $radius;
+}
 //shortcuts per flex e no wrap
 .d-flex{
     display: flex;
@@ -82,4 +90,15 @@ a{
         text-transform: uppercase;
 
     }
+}
+//margini
+//doppio sotto e sopra
+.t-b-pd{
+    padding: 2*$spacing 0 2*$spacing;
+}
+.r-l-pd{
+    padding:  0 2*$spacing 0 2*$spacing;
+}
+.all-pd{
+    padding:  2*$spacing 2*$spacing;
 }
