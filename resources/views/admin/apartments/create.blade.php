@@ -79,36 +79,11 @@
           @endforeach
 
         </div>
-<<<<<<< HEAD
     </div>
-=======
-
->>>>>>> addFilterMap
     <div class="d-flex f-end">
       <input class="btn-primary" type="submit" value="Send"> 
     </div>        
   </form>
 </div>
 
-<<<<<<< HEAD
-=======
-        var handleResults = function(result) {
-            console.log(result);
-            if(result.results) {
-                console.log(result.results[0].position['lng']);
-                document.getElementById('gps_lat').value = result.results[0].position['lat'];
-                document.getElementById('gps_lng').value = result.results[0].position['lng'];
-            }
-        }
-        var search = function() {
-            tt.services.fuzzySearch({
-            key: "rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ",
-            query: document.getElementById("address").value,
-            }).then(handleResults);
-        }
-
-
-
-    </script>
->>>>>>> addFilterMap
 @endsection
