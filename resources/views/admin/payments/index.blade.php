@@ -16,6 +16,8 @@
 		<h4>Scegli il tuo piano di sponsorizzazione per il tuo appartamento <span>{{ $apartment->title }}</span> situato in <span>{{ $apartment->address }}</span></h4>
         <h5>Il tuo appartamento sarà pubblicato in homepage e più visibile</h5>
 </div>
+@dump($client_token)
+@dump($gateway)
 {{-- // seleziona una sponsorizzazione con relativo prezzo :
 id=sponsorship+SponsorchipName // --}}
 <div class="payment-action container">
@@ -64,10 +66,10 @@ id=sponsorship+SponsorchipName // --}}
 {{-- INSERIAMO FORM METONO POST --}}
 
 
-{{-- Drop-in nella pagina (dalla documentazione) --}}
+
 <div class="container checkout">
 
-
+    {{-- Drop-in nella pagina (dalla documentazione) --}}
     <div id="dropin-container"></div> 
     <button id="submit-button" class="button button--small button--green">Purchase</button>
 

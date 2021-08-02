@@ -7,6 +7,7 @@ use App\Sponsorship;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Braintree\Gateway;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -25,9 +26,21 @@ class PaymentController extends Controller
 
         return view('admin.payments.index', compact('apartment', 'gateway', 'client_token'));
     }
+    //avrà metodo post per creazione tabella ponte
+    public function checkout(Request $request, Apartment $apartment){
+        $data = $request->all();
 
-    public function make(){
+        // $amount = $data["amount"];
+        // $nonce  = $data["payment_method_nonce"];
+        // $sponsorship_id = $data['sponsorship_id'];
 
+        // $result = $gateway->transaction()->sale([
+        //     'amount' => $amount,
+        //     'paymentMethodNonce' => $nonce,
+        //     'options' => [
+        //         'submitForSettlement' => true
+        //     ]
+        // ]);
     }
 
 }
