@@ -46,8 +46,11 @@ class ApartmentController extends Controller
     public function filter(Request $request){
       $filters = $request->only(["address", "rooms", "beds", "services"]);
 
+      // recupero a parte la distanza scelta dall'utente
       $radius = $request->only(['distance']);
-
+      // siccome il request la ritorna come array
+      // estrapolo il dato e lo trasformo in un numero
+      // cosi' da poterlo utilizzare in seguito per il calcolo della distanza
       $radiusAsNum = (int)$radius['distance'];
 
       $result = Apartment::with(['services']);

@@ -1,9 +1,6 @@
 <template>
     <div class="container">
         
-            <!-- <div class="title-label blue-label"> -->
-
-            <!-- </div> -->
             <form @submit.prevent="filter()" @reset="onReset()">
                 
                 <search-apartment
@@ -37,11 +34,6 @@
                     </label>
                 </div>
 
-
-                <!-- <range-input
-                label= "seleziona la distanza"
-                v-model="filters.range"
-                ></range-input> -->
                 <div>
                     <label for="distance">Distanza massima</label>
                     <input 
@@ -76,8 +68,6 @@
                     <button class="btn-primary" type="reset">Annulla</button>
                 </div> 
             </form>
-            <!-- componente per ricerca appartamento--> 
-
 
         <section>
             <apartment-card v-for="apartment in filteredApartment" :key="apartment.id"
@@ -153,18 +143,6 @@ export default {
             this.filters.distance = "20",
             this.filteredApartment = this.apartmentList;
         },
-        /* getPosition() {
-            axios.get("/api/apartments/radialSearch", {
-                params: this.filters
-            })
-            .then(resp => {
-                console.log(resp.data.results)
-            })
-            .catch(er => {
-                console.error(er);
-                alert('Errore nel caricamento dei dati')
-            })
-        } */
     }, 
 }
 </script>
