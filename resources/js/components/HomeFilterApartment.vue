@@ -67,7 +67,7 @@ export default {
                 rooms: null,
                 beds: null,
                 //range: 20,
-                services: null
+                services: []
             },
             serviceList: []
         }
@@ -108,7 +108,12 @@ export default {
             })
         },
         onReset() {
-           this.filteredApartment = this.apartmentList;
+            //reset dei filtri
+            this.filters.address = null,
+            this.filters.rooms = null,
+            this.filters.beds = null,
+            this.filters.services = null,
+            this.filteredApartment = this.apartmentList;
         },
         /* getPosition() {
             axios.get("/api/apartments/radialSearch", {

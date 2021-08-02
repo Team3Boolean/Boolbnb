@@ -30,16 +30,18 @@ export default {
         }
     },
     methods: {
-        onChange(event) {
-            const selected =  event.target.value;
-            console.log(event);
-
-            if(selected) {
-                this.selectedItems.push(event.target.value);
+        onChange(ev) {
+            // al change ascolto l'evento checked del target
+            let checked = ev.target.checked;
+            // faccio una condizione dove se il campo e' checked lo considero se no lo elimino dall array dei servizi da filtrare
+            if (checked) {
+                this.selectedItems.push(ev.target.value);
             } else {
-                const indexToDelete = this.selectedItems.indexOf(event.target.value);
+                // in caso di cancellazione della spunta
+                // vado a prendere l indice del servizio tolto e lo rimuovo dall'array
+                const index = this.selectedItems.indexOf(ev.target.value);
 
-                this.selectedItems.splice(indexToDelete, 1);
+                this.selectedItems.splice(index, 1);
             }
 
             this.$emit("input", this.selectedItems);

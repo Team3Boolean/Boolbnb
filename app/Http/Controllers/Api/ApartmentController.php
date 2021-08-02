@@ -58,7 +58,7 @@ class ApartmentController extends Controller
            }
     
            $result->join("apartment_service", "apartments.id", "=", "apartment_service.apartment_id")
-                  ->whereIn("apartment_service.service_id", $value);
+                  ->where("apartment_service.service_id", $value);
            
         } else {
               $result->where($filter, "LIKE", "%$value%");
@@ -133,8 +133,6 @@ class ApartmentController extends Controller
           foreach($filteredApartments as $singleApartment) {
             // per ogni appartmento che soddisfa i filtri si calcola la distanza dal punto cercato e si arrotonda ad 1 cifra dopo la virgola
             $distance = round(distance($response['results'][0]['position']['lat'], $response['results'][0]['position']['lon'], $singleApartment->gps_lat, $singleApartment->gps_lng, 'K'), 1);
-
-            dump($distance, $singleApartment->title, $selectedRange);
 
             // se la distanza e' minore o uguale al range che e' stato scelto,
             // l'appartamento verra' tenuto in considerazione altrimenti verra' scartato

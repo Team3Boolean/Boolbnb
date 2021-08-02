@@ -2015,7 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
         rooms: null,
         beds: null,
         //range: 20,
-        services: null
+        services: []
       },
       serviceList: []
     };
@@ -2053,7 +2053,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onReset: function onReset() {
-      this.filteredApartment = this.apartmentList;
+      //reset dei filtri
+      this.filters.address = null, this.filters.rooms = null, this.filters.beds = null, this.filters.services = null, this.filteredApartment = this.apartmentList;
     }
     /* getPosition() {
         axios.get("/api/apartments/radialSearch", {
@@ -2274,15 +2275,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    onChange: function onChange(event) {
-      var selected = event.target.value;
-      console.log(event);
+    onChange: function onChange(ev) {
+      // al change ascolto l'evento checked del target
+      var checked = ev.target.checked; // faccio una condizione dove se il campo e' checked lo considero se no lo elimino dall array dei servizi da filtrare
 
-      if (selected) {
-        this.selectedItems.push(event.target.value);
+      if (checked) {
+        this.selectedItems.push(ev.target.value);
       } else {
-        var indexToDelete = this.selectedItems.indexOf(event.target.value);
-        this.selectedItems.splice(indexToDelete, 1);
+        // in caso di cancellazione della spunta
+        // vado a prendere l indice del servizio tolto e lo rimuovo dall'array
+        var index = this.selectedItems.indexOf(ev.target.value);
+        this.selectedItems.splice(index, 1);
       }
 
       this.$emit("input", this.selectedItems);
