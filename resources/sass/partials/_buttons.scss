@@ -7,7 +7,7 @@
     border-radius: $radius;
     text-transform: uppercase;
     text-decoration: none;
-    width:150px;
+    width:125px;
     margin-left:$spacing;
     &:hover{
         cursor: pointer;
@@ -19,25 +19,69 @@
     }
 
 }
-.btn-back{
+// .btn-back{
+//     display: flex;
+//     text-align: center;
+//     align-items: center;
+//     background-color: none;
+//     padding: $spacing/2;
+//     border: 2px solid $blue;
+//     i{
+//         color: $blue;
+//     }
+// }
+.btn-cirle{
     display: flex;
-    text-align: center;
-    align-items: center;
-    background-color: none;
-    padding: $spacing/2;
-    border: 2px solid $blue;
-    i{
-        color: $blue;
-    }
-}
-.btn-round{
-    display: flex;
-    text-align: center;
+    justify-content: center;
     align-items: center;
     border-radius: 50%;
+    border: 2px solid $secondary_dark_blue;
     width: 2.2*$spacing;
     height: 2.2*$spacing;
-    i{
-        color:$blue;
+    a{
+        color:$secondary_dark_blue;
+        i{
+            &.blue{
+                
+                font-size: 1.3*$font-size;
+            }
+        }
+        &:hover{
+            color:$secondary_blue;
+        }
+    }
+    &:hover{
+        border-color:$secondary_blue;
+        cursor: pointer;
+        text-decoration: none;
+        transition-duration: 1.2s;
+        background-color: $body-dark-bg;
+    }
+    
+}
+form{
+    &.delete-form{
+        background-color: none;
+        border: none;
+        border-radius: none;
+    }
+    .btn-delete{
+        text-align: center;
+        background-color: $white;
+        border: 2px solid $secondary_dark_blue;
+        color:  $secondary_dark_blue;
+        padding: $spacing*0.4 $spacing*0.8;
+        border-radius: $radius;
+        text-transform: uppercase;
+        text-decoration: none;
+        width:125px;
+        font-weight: bold;
+        &:hover{
+            cursor: pointer;
+            text-decoration: none;
+            transition-duration: 1.2s;
+            background-color: $body-dark-bg;
+            border: 2px solid $body-dark-bg;
+        }
     }
 }

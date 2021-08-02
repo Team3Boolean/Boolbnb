@@ -2,7 +2,8 @@
 {{-- @section('pageTitle', 'Home Page') --}}
 @section('content')
    <h1>{{ $apartment->title }}</h1>
-    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=785&q=80' }}" alt="casa">
+    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/150
+C/O https://placeholder.com/' }}" alt="casa">
     <br>
     <a href="{{ route('home.index') }}">Torna alla Homepage</a>
 

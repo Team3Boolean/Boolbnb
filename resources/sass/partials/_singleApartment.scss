@@ -1,0 +1,60 @@
+section{
+    &.single-aprtm{
+        background-color: $primary_green;
+        padding: 2*$spacing 0 2*$spacing;
+        color: $blue;
+        .container{
+            background-color: $body-light-bg;
+            border-radius: $radius;
+            border: 2px solid $third_purple;
+        }
+        .cover-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+                border-radius: $radius;
+            }
+        }   
+        .service-tag{
+            color: $third_purple;
+            margin-right: 2*$spacing;
+            &:before {
+                content: "\2022";
+                color: $blue;
+                margin-right: $spacing;
+            }
+        }
+        .border-title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: $radius;
+            background-color: $third_purple;
+            color: $white;
+            position: relative;
+            transform: translateY(-2*$spacing);
+            border: 2px solid $body-light-bg;
+            border-bottom: none;
+        }
+        .bottom-link{
+            align-self: flex-end;
+            position:relative;
+        }
+        .add-info{
+            position: absolute;
+            transform: translate(-75%, 100%);
+        }
+        .end-info{
+            align-items: center;
+            .btn-delete{
+                background-color: $body-light-bg;
+            }
+        }
+
+    }
+    
+}

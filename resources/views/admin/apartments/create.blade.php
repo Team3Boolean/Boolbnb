@@ -20,7 +20,7 @@
     </div>
     @endif
   </div>
-  <form action="{{ route('admin.apartments.store') }}" method="post" enctype="multipart/form-data">
+  <form  class="white-bg" action="{{ route('admin.apartments.store') }}" method="post" enctype="multipart/form-data">
       @csrf
     <div class="form-group d-flex-col">
       <label for="img_cover">carica una foto</label>
@@ -65,7 +65,7 @@
 
 
         <div class="form-group">
-          <label>Services</label><br>
+
 
           @foreach($services as $service) 
 
