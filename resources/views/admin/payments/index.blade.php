@@ -33,9 +33,13 @@
 </head>
 <body>
     <!-- Step one: add an empty container to your page -->
-
+    {{-- <form id="payment-form" action="/route/on/your/server" method="post"> --}}
     <div id="dropin-container"></div>
     <button id="submit-button" class="button button--small button--green">Purchase</button>
+    <input type="submit"/>
+    <input type="hidden" id="nonce" name="payment_method_nonce"/>
+    {{-- </form> --}}
+
 
     <script type="text/javascript">
         var button = document.querySelector('#submit-button');
