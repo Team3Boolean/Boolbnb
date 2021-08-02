@@ -3,28 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Apartment;
+use App\Sponsorship;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Sponsorship;
+use Braintree\Gateway;
+
 class PaymentController extends Controller
 {
-    public function index(Request $request, Apartment $apartment){
+    public function index(Request $request)
+    {  
+        //configurazione del gateway di Braintree
+        $gateway = new Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => '2tb4wq3yx2wm33nj',
+            'publicKey' => 'r9m8vxj384g343d2',
+            'privateKey' => 'c5198ba4bad0934aff1f1423fc8fb5e5'
+        ]);
 
-
-    //    $sponsorships = Sponsorship::all();
-
-        $dataRequest = $request->all();
-
-        // $data = [
-        //     "apartment_id" => $dataRequest["apartment_id"],
-        //     "sponsorship" => $dataRequest["sponsorship_id"]
-        // ];
-
-        dump($dataRequest);
-
-
-
-
-        return view('admin.payments.index', ["data" => $dataRequest]);
+        return view('admin.payments.index');
     }
+
+    public function make(){}
+
 }
