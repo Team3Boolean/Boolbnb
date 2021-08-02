@@ -23,15 +23,52 @@
                 v-model="filters.beds"
                 ></filter-input>
 
-                <check-input
-                :items="serviceList"
-                v-model="filters.services"
-                ></check-input>
+
+                <div v-for="service in serviceList" :key="service.id">
+                    <label for="service.name">
+                        {{service.name}}
+                        <input 
+                            type="checkbox"
+                            v-model="filters.services"
+                            :value="service.id"
+                            :name="service.name"
+                            :id="service.name"
+                            />
+                    </label>
+                </div>
+
 
                 <!-- <range-input
                 label= "seleziona la distanza"
                 v-model="filters.range"
                 ></range-input> -->
+                <div>
+                    <label for="distance">Distanza massima</label>
+                    <input 
+                        type="range"
+                        id="ditance"
+                        name="distance"
+                        min="5"
+                        max="50"
+                        step="1"
+                        list="tickmarks"
+                        v-model="filters.distance"
+                    />
+
+                    <datalist id="tickmarks">
+                        <option value="0"></option>
+                        <option value="5"></option>
+                        <option value="10"></option>
+                        <option value="15"></option>
+                        <option value="20"></option>
+                        <option value="25"></option>
+                        <option value="30"></option>
+                        <option value="35"></option>
+                        <option value="40"></option>
+                        <option value="45"></option>
+                        <option value="50"></option>
+                    </datalist>    
+                </div>
 
                 
                 <div class="d-flex f-end">
@@ -44,7 +81,7 @@
 
         <section>
             <apartment-card v-for="apartment in filteredApartment" :key="apartment.id"
-                :id="apartment.id"
+                :id="apartment.title"
                 :title="apartment.title"
                 :description="apartment.description"
                 :link="apartment.link"
@@ -55,7 +92,7 @@
 
 <script>
 export default {
-    name: "HomepageApartment",
+    name: "HomeFilterApartment",
     data() {
         return {
             apartmentList: [],
@@ -66,7 +103,7 @@ export default {
                 address: null,
                 rooms: null,
                 beds: null,
-                //range: 20,
+                distance: "20",
                 services: []
             },
             serviceList: []
@@ -112,7 +149,8 @@ export default {
             this.filters.address = null,
             this.filters.rooms = null,
             this.filters.beds = null,
-            this.filters.services = null,
+            this.filters.services = [],
+            this.filters.distance = "20",
             this.filteredApartment = this.apartmentList;
         },
         /* getPosition() {

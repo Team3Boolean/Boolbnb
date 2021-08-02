@@ -44,7 +44,7 @@ export default {
                 this.selectedItems.splice(index, 1);
             }
 
-            this.$emit("input", this.selectedItems);
+            return this.$emit("input", this.selectedItems);
         }
     }
 }

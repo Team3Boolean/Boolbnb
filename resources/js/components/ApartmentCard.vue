@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>{{ id }}</h2>
         <h3>{{ title }}</h3>
         <p>{{ description }}</p>
         <a :href="link">Vai ai dettagli...</a>
@@ -12,7 +11,7 @@
 export default {
     name: "ApartmentCard",
     props: {
-        id: Number,
+        id: String,
         title: String,
         description: String,
         link: String,

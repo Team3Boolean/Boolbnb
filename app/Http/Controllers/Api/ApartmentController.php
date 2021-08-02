@@ -44,7 +44,11 @@ class ApartmentController extends Controller
 
     
     public function filter(Request $request){
-      $filters = $request->only(["address", "rooms", "beds", "services", "range"]);
+      $filters = $request->only(["address", "rooms", "beds", "services"]);
+
+      $radius = $request->only(['distance']);
+
+      $radiusAsNum = (int)$radius['distance'];
 
       $result = Apartment::with(['services']);
 
@@ -123,8 +127,8 @@ class ApartmentController extends Controller
           }
   
           // setto il range di distanza dal punto di ricerca
-          $selectedRange = isset($filters['range'])? $filters['range'] : 10;
-  
+          $selectedRange = $radiusAsNum ? $radiusAsNum : 10;
+          
           // creo una variabile che mi conterra' gli appartamenti che usciranno dopo il filtro per distanza
           // che lascio inizialmente come array vuoto
           $apartments = [];
