@@ -59,7 +59,7 @@ class PaymentController extends Controller
             //nuova sponsorship
             $sponsorship = Sponsorship::find($sponsorship_id);
             
-            $expiring_at = $starting_at->copy()->addHours($sponsorship->hours);
+            $expiring_at = $starting_at->copy()->addHours($sponsorship->duration);
 
             $fields = [
                 //'transaction_id' => $transaction->id,
