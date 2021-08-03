@@ -1,84 +1,88 @@
 <template>
     <div class="container">
         
-            <form @submit.prevent="filter()" @reset="onReset()">
+        <form @submit.prevent="filter()" @reset="onReset()">
                 
-                <search-apartment
-                placeholder="Dove vuoi andare?"
-                v-model="filters.address"        
-                ></search-apartment>
+            <search-apartment
+            placeholder="Dove vuoi andare?"
+            v-model="filters.address"        
+            ></search-apartment>
 
-                <filter-input
-                placeholder="camere"
-                type="number"
-                min="1"
-                v-model="filters.rooms"
-                ></filter-input>
+            <filter-input
+            placeholder="camere"
+            type="number"
+            min="1"
+            v-model="filters.rooms"
+            ></filter-input>
 
-                <filter-input
-                placeholder="letti"
-                type="number"
-                min="1"
-                v-model="filters.beds"
-                ></filter-input>
+            <filter-input
+            placeholder="letti"
+            type="number"
+            min="1"
+            v-model="filters.beds"
+            ></filter-input>
 
 
-                <div v-for="service in serviceList" :key="service.id">
-                    <label for="service.name">
-                        {{service.name}}
-                        <input 
-                            type="checkbox"
-                            v-model="filters.services"
-                            :value="service.id"
-                            :name="service.name"
-                            :id="service.name"
-                            />
-                    </label>
-                </div>
-
-                <div>
-                    <label for="distance">Distanza massima</label>
+            <div v-for="service in serviceList" :key="service.id">
+                <label for="service.name">
+                    {{service.name}}
                     <input 
-                        type="range"
-                        id="ditance"
-                        name="distance"
-                        min="5"
-                        max="50"
-                        step="1"
-                        list="tickmarks"
-                        v-model="filters.distance"
-                    />
+                        type="checkbox"
+                        v-model="filters.services"
+                        :value="service.id"
+                        :name="service.name"
+                        :id="service.name"
+                        />
+                </label>
+            </div>
 
-                    <datalist id="tickmarks">
-                        <option value="0"></option>
-                        <option value="5"></option>
-                        <option value="10"></option>
-                        <option value="15"></option>
-                        <option value="20"></option>
-                        <option value="25"></option>
-                        <option value="30"></option>
-                        <option value="35"></option>
-                        <option value="40"></option>
-                        <option value="45"></option>
-                        <option value="50"></option>
-                    </datalist>    
-                </div>
+            <div>
+                <label for="distance">Distanza massima</label>
+                <input 
+                    type="range"
+                    id="ditance"
+                    name="distance"
+                    min="5"
+                    max="50"
+                    step="1"
+                    list="tickmarks"
+                    v-model="filters.distance"
+                />
+
+                <datalist id="tickmarks">
+                    <option value="0"></option>
+                    <option value="5"></option>
+                    <option value="10"></option>
+                    <option value="15"></option>
+                    <option value="20"></option>
+                    <option value="25"></option>
+                    <option value="30"></option>
+                    <option value="35"></option>
+                    <option value="40"></option>
+                    <option value="45"></option>
+                    <option value="50"></option>
+                </datalist>    
+            </div>
 
                 
-                <div class="d-flex f-end">
-                    <button class="btn-primary" type="submit">Filtra</button>
-                    <button class="btn-primary" type="reset">Annulla</button>
-                </div> 
-            </form>
+            <div class="d-flex f-end">
+                <button class="btn-primary" type="submit">Filtra</button>
+                <button class="btn-primary" type="reset">Annulla</button>
+            </div> 
+        </form>
 
         <section>
+            <div id="map" style="width: 500px; height: 400px; margin-bottom: 50px"></div>
+        </section>
+
+        <!-- <section>
             <apartment-card v-for="apartment in filteredApartment" :key="apartment.id"
                 :id="apartment.title"
                 :title="apartment.title"
                 :description="apartment.description"
                 :link="apartment.link"
             ></apartment-card>
-        </section>
+        </section> -->
     </div>
 </template>
 
@@ -118,7 +122,8 @@ export default {
               })
               .catch(er => {
                   cosole.error(er);
-              })
+              });
+        this.createMap()      
     },
     methods: {
         filter() {
@@ -145,6 +150,32 @@ export default {
             this.filters.distance = "20",
             this.filteredApartment = this.apartmentList;
         },
+        createMap() {
+            //recupero la posizione del centro della mappa
+            var position = [12.4818 , 41.9109];
+            const APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
+            
+            var map = tt.map({
+                key: APIKEY,
+                container: 'map',
+                center: position,
+                zoom: 5,
+                //basePath: 'sdk/',
+                theme: {
+                    style: 'main',
+                    layer: 'basic',
+                    source: 'vector'
+                }
+            
+            });
+
+            map.addControl(new tt.FullscreenControl());
+            map.addControl(new tt.NavigationControl());
+
+            var marker = new tt.Marker({
+                draggable: false
+            }).setLngLat(position).addTo(map); 
+        }
     }, 
 }
 </script>

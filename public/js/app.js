@@ -2030,6 +2030,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeFilterApartment",
   data: function data() {
@@ -2063,6 +2067,7 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (er) {
       cosole.error(er);
     });
+    this.createMap();
   },
   methods: {
     filter: function filter() {
@@ -2083,6 +2088,28 @@ __webpack_require__.r(__webpack_exports__);
     onReset: function onReset() {
       //reset dei filtri
       this.filters.address = null, this.filters.rooms = null, this.filters.beds = null, this.filters.services = [], this.filters.distance = "20", this.filteredApartment = this.apartmentList;
+    },
+    createMap: function createMap() {
+      //recupero la posizione del centro della mappa
+      var position = [12.4818, 41.9109];
+      var APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
+      var map = tt.map({
+        key: APIKEY,
+        container: 'map',
+        center: position,
+        zoom: 5,
+        //basePath: 'sdk/',
+        theme: {
+          style: 'main',
+          layer: 'basic',
+          source: 'vector'
+        }
+      });
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      var marker = new tt.Marker({
+        draggable: false
+      }).setLngLat(position).addTo(map);
     }
   }
 });
@@ -38033,9 +38060,9 @@ var render = function() {
           return _c("div", { key: service.id }, [
             _c("label", { attrs: { for: "service.name" } }, [
               _vm._v(
-                "\n                    " +
+                "\n                " +
                   _vm._s(service.name) +
-                  "\n                    "
+                  "\n                "
               ),
               _c("input", {
                 directives: [
@@ -38125,21 +38152,7 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c(
-      "section",
-      _vm._l(_vm.filteredApartment, function(apartment) {
-        return _c("apartment-card", {
-          key: apartment.id,
-          attrs: {
-            id: apartment.title,
-            title: apartment.title,
-            description: apartment.description,
-            link: apartment.link
-          }
-        })
-      }),
-      1
-    )
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -38183,6 +38196,21 @@ var staticRenderFns = [
       _c("button", { staticClass: "btn-primary", attrs: { type: "reset" } }, [
         _vm._v("Annulla")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", [
+      _c("div", {
+        staticStyle: {
+          width: "500px",
+          height: "400px",
+          "margin-bottom": "50px"
+        },
+        attrs: { id: "map" }
+      })
     ])
   }
 ]
@@ -51018,8 +51046,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
