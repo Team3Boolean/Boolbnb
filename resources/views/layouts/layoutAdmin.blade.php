@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     {{-- tom tom script --}}
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps.css'/>
+    {{-- <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps.css'/>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/services/services-web.min.js'></script>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11//SearchBox-web.js'></script>
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11//SearchBox-web.js'></script> --}}
 
     {{-- <script src="https://js.braintreegateway.com/web/dropin/1.31.0/js/dropin.min.js"></script> --}}
 
