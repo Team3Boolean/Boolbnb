@@ -44,7 +44,14 @@ class ApartmentController extends Controller
 
     
     public function filter(Request $request){
-      $filters = $request->only(["address", "rooms", "beds", "services", "range"]);
+      $filters = $request->only(["address", "rooms", "beds", "services"]);
+
+      // recupero a parte la distanza scelta dall'utente
+      $radius = $request->only(['distance']);
+      // siccome il request la ritorna come array
+      // estrapolo il dato e lo trasformo in un numero
+      // cosi' da poterlo utilizzare in seguito per il calcolo della distanza
+      $radiusAsNum = (int)$radius['distance'];
 
       $result = Apartment::with(['services']);
 
@@ -58,7 +65,7 @@ class ApartmentController extends Controller
            }
     
            $result->join("apartment_service", "apartments.id", "=", "apartment_service.apartment_id")
-                  ->whereIn("apartment_service.service_id", $value);
+                  ->where("apartment_service.service_id", $value);
            
         } else {
               $result->where($filter, "LIKE", "%$value%");
@@ -123,8 +130,8 @@ class ApartmentController extends Controller
           }
   
           // setto il range di distanza dal punto di ricerca
-          $selectedRange = isset($filters['range'])? $filters['range'] : 10;
-  
+          $selectedRange = $radiusAsNum ? $radiusAsNum : 10;
+          
           // creo una variabile che mi conterra' gli appartamenti che usciranno dopo il filtro per distanza
           // che lascio inizialmente come array vuoto
           $apartments = [];
@@ -133,8 +140,6 @@ class ApartmentController extends Controller
           foreach($filteredApartments as $singleApartment) {
             // per ogni appartmento che soddisfa i filtri si calcola la distanza dal punto cercato e si arrotonda ad 1 cifra dopo la virgola
             $distance = round(distance($response['results'][0]['position']['lat'], $response['results'][0]['position']['lon'], $singleApartment->gps_lat, $singleApartment->gps_lng, 'K'), 1);
-
-            dump($distance, $singleApartment->title, $selectedRange);
 
             // se la distanza e' minore o uguale al range che e' stato scelto,
             // l'appartamento verra' tenuto in considerazione altrimenti verra' scartato

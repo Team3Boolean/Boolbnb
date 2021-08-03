@@ -5,6 +5,7 @@
                 :placeholder="placeholder"
                 :type="inputType"
                 :value="value"
+                :min="min"
                 @input="$emit('input', $event.currentTarget.value)"
                 class="input-basic"
             >   
@@ -23,6 +24,7 @@ export default {
             default: "number",
         },
         placeholder: String,
+        min: String
     },
 }
 </script>
