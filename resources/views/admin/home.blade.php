@@ -65,7 +65,7 @@
       </div>
       <div class="row">
         <div class="col text-center">
-            <a href="{{ route('home.index') }}">Torna alla home del sito</a>
+            <a href="{{ route('home.index')}}">Torna alla home del sito</a>
         </div>
       </div>
 
