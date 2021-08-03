@@ -11,12 +11,14 @@
                 <filter-input
                 placeholder="camere"
                 type="number"
+                min="1"
                 v-model="filters.rooms"
                 ></filter-input>
 
                 <filter-input
                 placeholder="letti"
                 type="number"
+                min="1"
                 v-model="filters.beds"
                 ></filter-input>
 

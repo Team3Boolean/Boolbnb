@@ -2028,6 +2028,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeFilterApartment",
   data: function data() {
@@ -2271,6 +2273,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "filter-input",
   props: {
@@ -2280,7 +2283,8 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       "default": "number"
     },
-    placeholder: String
+    placeholder: String,
+    min: String
   }
 });
 
@@ -38004,7 +38008,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("filter-input", {
-          attrs: { placeholder: "camere", type: "number" },
+          attrs: { placeholder: "camere", type: "number", min: "1" },
           model: {
             value: _vm.filters.rooms,
             callback: function($$v) {
@@ -38015,7 +38019,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("filter-input", {
-          attrs: { placeholder: "letti", type: "number" },
+          attrs: { placeholder: "letti", type: "number", min: "1" },
           model: {
             value: _vm.filters.beds,
             callback: function($$v) {
@@ -38329,7 +38333,11 @@ var render = function() {
     _c("div", { staticClass: "form-group d-flex-col" }, [
       _c("input", {
         staticClass: "input-basic",
-        attrs: { placeholder: _vm.placeholder, type: _vm.inputType },
+        attrs: {
+          placeholder: _vm.placeholder,
+          type: _vm.inputType,
+          min: _vm.min
+        },
         domProps: { value: _vm.value },
         on: {
           input: function($event) {
