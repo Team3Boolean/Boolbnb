@@ -53,7 +53,7 @@ id=sponsorship+SponsorchipName // --}}
     </div>
 </div>
 
-{{-- INSERIAMO FORM METONO POST --}}
+{{-- INSERIAMO FORM METOdO POST --}}
 <div class="container checkout">
     <form method="post" id="payment-form" action="{{ route('admin.payments.checkout', $apartment) }}">
     @csrf
@@ -131,8 +131,8 @@ id=sponsorship+SponsorchipName // --}}
             // var button = document.querySelector('#submit-button');
 
             braintree.dropin.create({
-                authorization: 'client_token',
-                selector: '#bt-dropin',
+                authorization: client_token,
+                container: '#bt-dropin',
                 translations: {
                     payWithCard: 'Pagamento con Carta di Credito/Debito'
                     , cardNumberLabel: 'Numero Carta'

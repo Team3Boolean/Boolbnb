@@ -37,10 +37,11 @@ class PaymentController extends Controller
         // ]);
 
         $data = $request->all();
+        //dd($data);
 
         $amount = $data["amount"];
         $nonce  = $data["payment_method_nonce"];
-        $sponsorship_id = $data['sponsorship_id'];
+        $sponsorship_id = $data['sponsorship'];
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
