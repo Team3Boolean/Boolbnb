@@ -21,6 +21,12 @@
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/services/services-web.min.js'></script>
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11//SearchBox-web.js'></script> --}}
+
+    <!-- includes jQuery -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <!-- includes the Braintree JS client SDK -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.31.0/js/dropin.min.js"></script>
+
     
 
     <!-- Styles -->
