@@ -17,7 +17,7 @@
 
                     <div class="admin-apartment-cards">
                         <div class="cover-box">
-                            <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : ('public/images/no_cover.png') }}" alt="img_cover">
+                            <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : asset('public/images/no_cover.png') }}" alt="img_cover">
                         </div>
                         <div class="text-center">
                             <h3>{{ $apartment->title }}</h3>

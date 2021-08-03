@@ -88,7 +88,7 @@ id=sponsorship+SponsorchipName // --}}
     
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-        //document.addEventListener("DOMContentLoaded", function()
+        
 
             //selezioniamo id form
             var form = document.querySelector('#payment-form');

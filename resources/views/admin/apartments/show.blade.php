@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-7 all-pd">
                 <div class="cover-box">
-                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : ('public/images/no_cover.png') }}" alt="img_cover" style="width:300px;height:300px;">
+                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : asset('public/images/no_cover.png') }}" alt="img_cover" style="width:300px;height:300px;">
                 </div>
             </div>
             <div class="col-5 all-pd">
