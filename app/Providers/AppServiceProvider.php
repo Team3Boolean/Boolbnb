@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(Gateway::class, function($app){
             // all' interno del Gateway passiamo le chiavi di braintree
             return new Gateway([
-                'environment' => 'sandbox',
-                'merchantId' => '2tb4wq3yx2wm33nj',
-                'publicKey' => 'r9m8vxj384g343d2',
-                'privateKey' => 'c5198ba4bad0934aff1f1423fc8fb5e5'
+                "environment" => "sandbox",
+                "merchantId" => "2tb4wq3yx2wm33nj",
+                "publicKey" => "r9m8vxj384g343d2",
+                "privateKey" => "c5198ba4bad0934aff1f1423fc8fb5e5"
             ]);
         });
 

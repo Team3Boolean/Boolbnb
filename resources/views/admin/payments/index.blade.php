@@ -62,12 +62,17 @@ id=sponsorship+SponsorchipName // --}}
             <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="" style="display:none">
             <p id="amount_preview">€ 5.99 </p>
         </label>
-        {{-- Drop-in nella pagina (dalla documentazione) --}}
-        <div id="dropin-container"></div> 
+        
 
         <input id="client_token" name="client_token" type="hidden" value="{{ $client_token }}"/>
         <input id="nonce" name="payment_method_nonce" type="hidden" />
         <input id="sponsorship" name="sponsorship" type="hidden" value="" />
+
+        {{-- Drop-in nella pagina (dalla documentazione) --}}
+        <div class="bt-drop-in-wrapper">
+            <div id="bt-dropin"></div>
+        </div>
+
 
         {{-- <button id="submit-button" class="button button--small button--green">Purchase</button> --}}
         <button class="btn btn-success btn-pay" type="submit">
@@ -142,8 +147,9 @@ id=sponsorship+SponsorchipName // --}}
             }, function(err, instance) {
                 //gestire errori?
 
-                form.addEventListener('click', function() {
+                form.addEventListener('submit', function(event) {
                     event.preventDefault();
+                    localStorage.clear();
 
                     instance.requestPaymentMethod(function(err, payload) {
                     if(err){

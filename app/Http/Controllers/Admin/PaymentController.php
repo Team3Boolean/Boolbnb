@@ -15,10 +15,10 @@ class PaymentController extends Controller
     {  
         //configurazione del gateway di Braintree
         $gateway = new Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => '2tb4wq3yx2wm33nj',
-            'publicKey' => 'r9m8vxj384g343d2',
-            'privateKey' => 'c5198ba4bad0934aff1f1423fc8fb5e5'
+            "environment" => "sandbox",
+            "merchantId" => "2tb4wq3yx2wm33nj",
+            "publicKey" => "r9m8vxj384g343d2",
+            "privateKey" => "c5198ba4bad0934aff1f1423fc8fb5e5"
         ]);
 
         $client_token = $gateway->ClientToken()->generate();
@@ -28,6 +28,13 @@ class PaymentController extends Controller
     }
     //avrà metodo post per creazione tabella ponte
     public function checkout(Request $request, Apartment $apartment, Gateway $gateway){
+
+        // $gateway = new Gateway([
+        //     "environment" => "sandbox",
+        //     "merchantId" => "2tb4wq3yx2wm33nj",
+        //     "publicKey" => "r9m8vxj384g343d2",
+        //     "privateKey" => "c5198ba4bad0934aff1f1423fc8fb5e5"
+        // ]);
 
         $data = $request->all();
 
