@@ -43,7 +43,10 @@ Route::prefix('admin')
     // inseriamo la rotta per gli apartments degli admin con il resource che prenderà tutte le rotte della crud
     Route::resource('/apartments', 'ApartmentController');
 
-
+    //rotta sponsorizzazioni    
+    Route::get('/apartment/{apartment}/payment', 'PaymentController@index')->name('payments.index');
+    //come metodo @store
+    Route::post('/apartment/{apartment}/checkout', 'PaymentController@checkout')->name('payments.checkout');
     //rotta per messaggi da integrare a dashboard
     Route::resource('/messages', 'MessageController');    
 });
