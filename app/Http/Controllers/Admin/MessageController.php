@@ -15,19 +15,29 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Apartment $apartments)
+    public function index(Apartment $apartments)
     {   
+       
         //recuper utente
         $user = Auth::user();
         //voglio anche appartamenti dello user
         $apartments = $user->apartments;
+     
+        
         //cerco messaggi utente - array
         $received_messages = [];
         // ciclo su appartamenti
         foreach ($apartments as $apartment){
             // ciclo su messaggi
+      
             foreach ($apartment->messages as $message){
-                $received_messages[] = $message;
+       
+                
+                if($message->apartment_id === $apartment->id){
+                    $message['apartment_title'] = $apartment->title;
+                    $received_messages[] = $message;
+                }
+                
             }
         }
         return view('admin.messages.index', ['received_messages' => $received_messages]);

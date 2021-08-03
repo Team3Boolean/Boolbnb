@@ -36,6 +36,8 @@ class MessageController extends Controller
             'text' => 'required|max:1000|min:10',
             'email' => 'required',
         ]);
+        dump($request);
+        return;
 
         $message = Message::create($request->all());
         

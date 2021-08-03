@@ -4,8 +4,11 @@
     @if($received_messages)
 
         @foreach($received_messages as $message)
-
+        {{-- @dump($message); --}}
         <div class="row">
+            <div class="col">
+                    {{$message->apartment_title}}
+            </div>
             <div class="col">
                     {{$message->email}}
             </div>
