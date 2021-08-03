@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         
-        <form @submit.prevent="filter()" @reset="onReset()">
+        <form @submit.prevent="filter(), showMap()" @reset="onReset()">
                 
             <search-apartment
             placeholder="Dove vuoi andare?"
@@ -102,7 +102,9 @@ export default {
                 distance: "20",
                 services: []
             },
-            serviceList: []
+            serviceList: [],
+            searchPlaceLat: null,
+            searchPlaceLng: null,
         }
     },
     mounted() {
@@ -123,7 +125,7 @@ export default {
               .catch(er => {
                   cosole.error(er);
               });
-        this.createMap()      
+        //this.createMap()      
     },
     methods: {
         filter() {
@@ -134,7 +136,14 @@ export default {
             .then(resp => {
                 console.log(resp.data.results);
                 this.filteredApartment = resp.data.results;
-                console.log("messaggio dal then della funzione filter");
+                this.searchedPosition = resp.data.position;
+                this.searchPlaceLat = this.searchedPosition['lat'];
+                this.searchPlaceLng = this.searchedPosition['lng'];
+                var apartmentLat = this.filteredApartment[0]["gps_lat"];
+
+                console.log(apartmentLat + "latitudine primo appartamento lista appartamenti filtrati");
+
+                console.log(this.searchPlaceLat, this.searchPlaceLng);
             })
             .catch(er => {
                 console.error(er);
@@ -152,7 +161,7 @@ export default {
         },
         createMap() {
             //recupero la posizione del centro della mappa
-            var position = [12.4818 , 41.9109];
+            var position = [this.searchPlaceLng, this.searchPlaceLat];
             const APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
             
             var map = tt.map({
@@ -174,7 +183,41 @@ export default {
 
             var marker = new tt.Marker({
                 draggable: false
-            }).setLngLat(position).addTo(map); 
+            }).setLngLat(position).addTo(map);
+
+            this.getApartmentsPos().forEach(position => {
+                //console.log(position);
+                new tt.Marker().setLngLat(position).addTo(map);
+            });
+        },
+
+        /* createNewMarker(position) {
+            var house = new tt.Marker()
+            .setLngLat(position);
+
+            console.log(house);
+            return house; 
+        }, */
+
+        getApartmentsPos() {
+            var houses = this.filteredApartment;
+
+            var apartmentsPosition = [];
+
+            for (var i = 0; i < houses.length; i++) {
+                var singleApartmentLat = houses[i]['gps_lat'];
+                var singleApartmentLng = houses[i]['gps_lng'];
+
+                console.log([singleApartmentLng, singleApartmentLat]);
+                apartmentsPosition.push([singleApartmentLng, singleApartmentLat]);    
+            }
+
+            return apartmentsPosition;
+
+        },
+
+        showMap() {
+            setTimeout(()=>this.createMap(), 10000);
         }
     }, 
 }

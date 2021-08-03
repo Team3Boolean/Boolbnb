@@ -2049,7 +2049,9 @@ __webpack_require__.r(__webpack_exports__);
         distance: "20",
         services: []
       },
-      serviceList: []
+      serviceList: [],
+      searchPlaceLat: null,
+      searchPlaceLng: null
     };
   },
   mounted: function mounted() {
@@ -2066,8 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.serviceList = resp.data.results;
     })["catch"](function (er) {
       cosole.error(er);
-    });
-    this.createMap();
+    }); //this.createMap()      
   },
   methods: {
     filter: function filter() {
@@ -2079,7 +2080,12 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (resp) {
         console.log(resp.data.results);
         _this2.filteredApartment = resp.data.results;
-        console.log("messaggio dal then della funzione filter");
+        _this2.searchedPosition = resp.data.position;
+        _this2.searchPlaceLat = _this2.searchedPosition['lat'];
+        _this2.searchPlaceLng = _this2.searchedPosition['lng'];
+        var apartmentLat = _this2.filteredApartment[0]["gps_lat"];
+        console.log(apartmentLat + "latitudine primo appartamento lista appartamenti filtrati");
+        console.log(_this2.searchPlaceLat, _this2.searchPlaceLng);
       })["catch"](function (er) {
         console.error(er);
         alert('Errore nel caricamento dei dati');
@@ -2091,7 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     createMap: function createMap() {
       //recupero la posizione del centro della mappa
-      var position = [12.4818, 41.9109];
+      var position = [this.searchPlaceLng, this.searchPlaceLat];
       var APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
       var map = tt.map({
         key: APIKEY,
@@ -2110,6 +2116,37 @@ __webpack_require__.r(__webpack_exports__);
       var marker = new tt.Marker({
         draggable: false
       }).setLngLat(position).addTo(map);
+      this.getApartmentsPos().forEach(function (position) {
+        //console.log(position);
+        new tt.Marker().setLngLat(position).addTo(map);
+      });
+    },
+
+    /* createNewMarker(position) {
+        var house = new tt.Marker()
+        .setLngLat(position);
+          console.log(house);
+        return house; 
+    }, */
+    getApartmentsPos: function getApartmentsPos() {
+      var houses = this.filteredApartment;
+      var apartmentsPosition = [];
+
+      for (var i = 0; i < houses.length; i++) {
+        var singleApartmentLat = houses[i]['gps_lat'];
+        var singleApartmentLng = houses[i]['gps_lng'];
+        console.log([singleApartmentLng, singleApartmentLat]);
+        apartmentsPosition.push([singleApartmentLng, singleApartmentLat]);
+      }
+
+      return apartmentsPosition;
+    },
+    showMap: function showMap() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        return _this3.createMap();
+      }, 10000);
     }
   }
 });
@@ -38015,7 +38052,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.filter()
+            _vm.filter(), _vm.showMap()
           },
           reset: function($event) {
             return _vm.onReset()
