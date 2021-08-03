@@ -29,13 +29,6 @@ class PaymentController extends Controller
     //avrà metodo post per creazione tabella ponte
     public function checkout(Request $request, Apartment $apartment, Gateway $gateway){
 
-        // $gateway = new Gateway([
-        //     "environment" => "sandbox",
-        //     "merchantId" => "2tb4wq3yx2wm33nj",
-        //     "publicKey" => "r9m8vxj384g343d2",
-        //     "privateKey" => "c5198ba4bad0934aff1f1423fc8fb5e5"
-        // ]);
-
         $data = $request->all();
         //dd($data);
 
@@ -68,7 +61,7 @@ class PaymentController extends Controller
                 'expiring_at' => $expiring_at
             ];
 
-            $apartment->sponsorship()->attach($sponsorship_id, $fields);
+            $apartment->sponsorships()->attach($sponsorship_id, $fields);
 
             // return redirect()->route('admin.apartments.sponsorship.transaction', ['transaction_id' => $transaction->id, 'apartment' => $apartment]);
             return redirect()->route('admin.apartments.show', $apartment);

@@ -101,7 +101,9 @@ id=sponsorship+SponsorchipName // --}}
             //selezioniamo id input relativo a prezzo e sponsorship
             var amount  = document.querySelector('#amount');
             var sponsorship = document.querySelector('#sponsorship');
-            var hiddenNonceInput = document.querySelector('#nonce').value;
+            //var hiddenNonceInput = document.querySelector('#nonce').value;
+            var nonceInput = document.querySelector('#nonce');
+
 
             //diamo un valore di default per riempire campi a caricamento pagina
             amount.value = opt2.value;
@@ -157,7 +159,7 @@ id=sponsorship+SponsorchipName // --}}
                         return;
                     }
                     // Add the nonce to the form and submit
-                    hiddenNonceInput.value = payload.nonce;
+                    nonceInput.value = payload.nonce;
                     form.submit();
                     });
                 })
