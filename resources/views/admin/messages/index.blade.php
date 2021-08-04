@@ -28,7 +28,6 @@
                             {{$message->text}}
                     </div>
                     </td>
-                    
                 </tr>
                 @endforeach
             </tbody>
@@ -43,7 +42,7 @@
         <div class="row">
             <div class="col">
                 {{--aggiungiamo link a pacchetto sponsorizzazioni--}}
-                <a href="#" class="text-center"> prova una sponsorizzazione</a>
+                <a href="{{ route('admin.apartments.index') }}" class="text-center blue-t"> prova una sponsorizzazione: seleziona un tuo appartamento e fallo apparire in homepage!</a>
             </div>
         </div> 
     @endif

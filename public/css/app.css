@@ -11033,7 +11033,7 @@ a:hover {
 }
 
 .xs-title-label {
-  height: 45px;
+  height: 57px;
   padding: 7.5px 15px;
   display: flex;
   justify-content: center;
@@ -11289,11 +11289,9 @@ header {
 }
 
 .btn-cirle:hover {
-  border-color: #8da1b9;
   cursor: pointer;
   text-decoration: none;
   transition-duration: 1.2s;
-  background-color: #E1E2E1;
 }
 
 form.delete-form {
@@ -11470,6 +11468,44 @@ form textarea:active {
   color: #8da1b9;
 }
 
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .dashboard-box .dashboard-card {
+    width: 100%;
+    height: 250px;
+  }
+
+  .dashboard-box .dashboard-card h4 {
+    font-size: 20px;
+  }
+
+  .dashboard-box .dashboard-card .card-link {
+    padding: 7.5px 15px;
+  }
+
+  .dashboard-box .dashboard-card .dash-i-box i {
+    font-size: 45px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-box .dashboard-card {
+    width: 100%;
+    height: 200px;
+  }
+
+  .dashboard-box .dashboard-card h4 {
+    font-size: 18px;
+  }
+
+  .dashboard-box .dashboard-card .card-link {
+    padding: 7.5px 15px;
+  }
+
+  .dashboard-box .dashboard-card .dash-i-box i {
+    font-size: 30px;
+  }
+}
+
 .admin-apartment-box {
   display: flex;
   flex-wrap: wrap;
@@ -11568,6 +11604,7 @@ section.single-aprtm .border-title {
   transform: translateY(-30px);
   border: 2px solid #F5F5F6;
   border-bottom: none;
+  position: relative;
 }
 
 section.single-aprtm .bottom-link {
@@ -11588,10 +11625,24 @@ section.single-aprtm .end-info .btn-delete {
   background-color: #F5F5F6;
 }
 
-section.single-aprtm .btn-cirle {
+section.single-aprtm .btn-cirle.back-btn {
   position: absolute;
-  right: 15px;
-  transform: translateY(30px);
+  left: 7.5px;
+  border-color: #ffffff;
+}
+
+section.single-aprtm .btn-cirle.back-btn:hover {
+  background-color: none;
+}
+
+section.single-aprtm .btn-cirle.back-btn a {
+  color: #ffffff;
+}
+
+section.single-aprtm .btn-cirle.back-btn a:hover {
+  background-color: none;
+  transform: translateX(-5px);
+  transition-duration: 1.2s;
 }
 
 section.single-aprtm .map-box {

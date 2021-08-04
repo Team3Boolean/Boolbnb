@@ -41,6 +41,7 @@ section{
             transform: translateY(-2*$spacing);
             border: 2px solid $body-light-bg;
             border-bottom: none;
+            position: relative;
         }
         .bottom-link{
             align-self: flex-end;
@@ -57,9 +58,22 @@ section{
             }
         }
         .btn-cirle{
-            position: absolute;
-            right: $spacing;
-            transform: translateY($spacing*2);
+            &.back-btn{
+                position: absolute;
+                left: $spacing/2;
+                border-color: $white;
+                &:hover{
+                    background-color: none;
+                }
+                a{
+                    color: $white;
+                    &:hover{
+                        background-color: none;
+                        transform: translateX(-$spacing/3);
+                        transition-duration: $t-duration;
+                    }
+                }  
+            }
         }
         .map-box{
             align-items: center;

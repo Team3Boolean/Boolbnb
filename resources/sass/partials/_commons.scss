@@ -30,7 +30,7 @@ a{
     border-radius: $radius;
 }
 .blue-t{
-    color: $blue;
+    color:$blue;
 }
 //shortcuts per flex e no wrap
 .d-flex{
@@ -71,7 +71,7 @@ a{
     }
 }
 .xs-title-label{
-    height: 3*$spacing;
+    height: 3.8*$spacing;
     padding: $spacing/2 $spacing;
     display: flex;
     justify-content: center;

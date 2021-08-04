@@ -44,3 +44,45 @@
         }
     }
 }
+
+
+
+@media screen and (min-width: 769px) and (max-width: 991px){
+    .dashboard-box{
+        .dashboard-card{
+            width: 100%;
+            height: 250px;
+            h4{
+                font-size:20px;
+            }
+            .card-link{
+                padding: $spacing/2 $spacing;
+            }
+            .dash-i-box{
+                i{
+                    font-size: 3*$spacing;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .dashboard-box{
+        .dashboard-card{
+            width: 100%;
+            height: 200px;
+            h4{
+                font-size:18px;
+            }
+            .card-link{
+                padding: $spacing/2 $spacing;
+            }
+            .dash-i-box{
+                i{
+                    font-size: 2*$spacing;
+                }
+            }
+        }
+    }
+}

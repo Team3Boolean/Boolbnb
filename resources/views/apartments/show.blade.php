@@ -4,11 +4,11 @@
 @section('content')
 <section class="single-aprtm">
     <div class="container">
-        <span class="btn-cirle blue">
-            <a href="{{ route('home.index') }}"><i class="fas fa-arrow-left"></i></a>
-        </span>
         <span class="border-title">
             <h1>{{ $apartment->title }}</h1>
+            <div class="btn-cirle back-btn">
+                <a href="{{ route('home.index') }}"><i class="fas fa-arrow-left"></i></a>
+            </div>    
         </span>
          
         <div class="row">   

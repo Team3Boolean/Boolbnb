@@ -5,12 +5,13 @@
     
     
     <div class="container">
-        <span class="btn-cirle blue">
-            <a href="{{ route('admin.apartments.index') }}"><i class="fas fa-arrow-left"></i></a>
-        </span>            
-        <span class="border-title">
+                   
+        <div class="border-title">
                     <h2>{{ $apartment->title }}</h2>
-        </span>
+            <span class="btn-cirle back-btn">
+                <a href="{{ route('admin.apartments.index') }}"><i class="fas fa-arrow-left"></i></a>
+            </span>         
+        </div>
 
         <div class="row">
             <div class="col-7 all-pd">
