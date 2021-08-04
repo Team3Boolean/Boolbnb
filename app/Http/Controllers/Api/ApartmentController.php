@@ -14,7 +14,7 @@ class ApartmentController extends Controller
 {
     public function index()
     {
-        $apartments = Apartment::with("sponsorships")->orderBy('created_at','DESC')->get();
+        $apartments = Apartment::with("services")->with("sponsorships")->orderBy('created_at','DESC')->get();
         //$apartments = apartment::all();
         
         foreach ($apartments as $apartment) {

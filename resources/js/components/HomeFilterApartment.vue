@@ -79,7 +79,7 @@
     -->
         <section v-for="apartment in filteredApartment" :key="apartment.id">
             <!--   -->
-            <div v-if="apartment.sponsorships.length">
+            <div >
                 <p>{{ apartment.id }}</p>
                 <p>{{ apartment.title }}</p>
                 <p>{{ apartment.description }}</p>
@@ -111,27 +111,6 @@ export default {
             serviceList: []
         };
     },
-    mounted() {
-        axios
-            .get("/api/apartments")
-            .then(resp => {
-                console.log(resp.data.results);
-                this.apartmentList = resp.data.results;                
-                this.filteredApartment = resp.data.results;
-            })
-            .catch(er => {
-                alert("Impossibile recuperare l'elenco degli appartamenti");
-            });
-
-        axios
-            .get("/api/services")
-            .then(resp => {
-                this.serviceList = resp.data.results;
-            })
-            .catch(er => {
-                cosole.error(er);
-            });
-    },
     methods: {
         filter() {
             axios
@@ -157,7 +136,37 @@ export default {
                 (this.filters.services = []),
                 (this.filters.distance = "20"),
                 (this.filteredApartment = this.apartmentList);
+        },
+
+        getSponsorized(list) {
+            var sponsorizedApartments = list.filter(list.sponsorships.length = 1);
+            
+            return sponsorizedApartments;
         }
-    }
+    },
+    mounted() {
+        axios
+            .get("/api/apartments")
+            .then(resp => {
+                console.log(resp.data.results);
+                this.apartmentList = resp.data.results;                
+                this.filteredApartment = resp.data.results;
+                console.log(setTimeout(() => this.getSponsorized(this.apartmentList), 3000));
+            })
+            .catch(er => {
+                alert("Impossibile recuperare l'elenco degli appartamenti");
+            });
+
+        axios
+            .get("/api/services")
+            .then(resp => {
+                this.serviceList = resp.data.results;
+            })
+            .catch(er => {
+                cosole.error(er);
+            });
+        
+
+    },
 };
 </script>

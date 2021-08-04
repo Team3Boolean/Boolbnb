@@ -2060,32 +2060,16 @@ __webpack_require__.r(__webpack_exports__);
       serviceList: []
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("/api/apartments").then(function (resp) {
-      console.log(resp.data.results);
-      _this.apartmentList = resp.data.results;
-      _this.filteredApartment = resp.data.results;
-    })["catch"](function (er) {
-      alert("Impossibile recuperare l'elenco degli appartamenti");
-    });
-    axios.get("/api/services").then(function (resp) {
-      _this.serviceList = resp.data.results;
-    })["catch"](function (er) {
-      cosole.error(er);
-    });
-  },
   methods: {
     filter: function filter() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("/api/apartments/filter", {
         //passo come query string i miei filtri
         params: this.filters
       }).then(function (resp) {
         console.log(resp.data.results);
-        _this2.filteredApartment = resp.data.results;
+        _this.filteredApartment = resp.data.results;
         console.log("messaggio dal then della funzione filter");
       })["catch"](function (er) {
         console.error(er);
@@ -2095,7 +2079,30 @@ __webpack_require__.r(__webpack_exports__);
     onReset: function onReset() {
       //reset dei filtri
       this.filters.address = null, this.filters.rooms = null, this.filters.beds = null, this.filters.services = [], this.filters.distance = "20", this.filteredApartment = this.apartmentList;
+    },
+    getSponsorized: function getSponsorized(list) {
+      var sponsorizedApartments = list.filter(list.sponsorships.length = 1);
+      return sponsorizedApartments;
     }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios.get("/api/apartments").then(function (resp) {
+      console.log(resp.data.results);
+      _this2.apartmentList = resp.data.results;
+      _this2.filteredApartment = resp.data.results;
+      console.log(setTimeout(function () {
+        return _this2.getSponsorized(_this2.apartmentList);
+      }, 3000));
+    })["catch"](function (er) {
+      alert("Impossibile recuperare l'elenco degli appartamenti");
+    });
+    axios.get("/api/services").then(function (resp) {
+      _this2.serviceList = resp.data.results;
+    })["catch"](function (er) {
+      cosole.error(er);
+    });
   }
 });
 
@@ -38147,18 +38154,18 @@ var render = function() {
           "section",
           { key: apartment.id },
           [
-            apartment.sponsorships.length
-              ? _c("div", [
-                  _c("p", [_vm._v(_vm._s(apartment.id))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.title))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.description))])
-                ])
-              : _vm._e(),
+            _c("div", [
+              _c("p", [_vm._v(_vm._s(apartment.id))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(apartment.title))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(apartment.description))])
+            ]),
             _vm._v(" "),
             _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
-              return _c("div", [_vm._v(_vm._s(sponsorshipStatus.name))])
+              return _c("div", { key: sponsorshipStatus.id }, [
+                _vm._v(_vm._s(sponsorshipStatus.name))
+              ])
             })
           ],
           2
@@ -51044,8 +51051,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
