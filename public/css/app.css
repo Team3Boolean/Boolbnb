@@ -11653,3 +11653,70 @@ section.single-aprtm .buy-sponsorship a.link-sponsor:hover {
   justify-content: center;
 }
 
+footer .t3-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+footer .t3-conctact {
+  padding-bottom: 5px;
+}
+
+footer i {
+  color: #fff;
+}
+
+footer .bar-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+footer .bar-button div:first-of-type {
+  margin-right: 20px;
+}
+
+footer .bar-button .t3-button {
+  border: 1px solid #d4e4bc;
+  border-radius: 5px;
+  padding: 5px 30px;
+}
+
+footer .bar-button .t3-button a {
+  color: #fff;
+}
+
+footer .bar-button .t3-button:hover {
+  background-color: #d4e4bc;
+}
+
+footer .bar-button .t3-button:hover a {
+  color: #353a40;
+}
+
+footer .dashboard-bar-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #d4e4bc;
+  height: 45px;
+  margin-bottom: 10px;
+}
+
+footer .dashboard-bar-footer a {
+  color: #fff;
+  font-weight: bold;
+  padding: 15px;
+}
+
+footer .dashboard-bar-footer:hover {
+  background-color: #d4e4bc;
+}
+
+footer .dashboard-bar-footer:hover a {
+  color: #353a40;
+}
+
