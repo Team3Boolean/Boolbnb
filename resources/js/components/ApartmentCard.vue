@@ -4,6 +4,7 @@
         <p>{{ description }}</p>
         <a :href="link">Vai ai dettagli...</a>
         <!-- {{ route('apartments.show', $apartment->id) }} -->
+        <p>{{ sponsorships}}</p>
     </div>    
 </template>
 
@@ -16,6 +17,7 @@ export default {
         description: String,
         link: String,
         coverUrl: String,
+        sponsorships: String
     },
     computed: {
         imgSrc() {

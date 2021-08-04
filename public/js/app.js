@@ -1917,6 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ApartmentCard",
   props: {
@@ -1924,7 +1925,8 @@ __webpack_require__.r(__webpack_exports__);
     title: String,
     description: String,
     link: String,
-    coverUrl: String
+    coverUrl: String,
+    sponsorships: String
   },
   computed: {
     imgSrc: function imgSrc() {
@@ -2030,14 +2032,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeFilterApartment",
   data: function data() {
     return {
       apartmentList: [],
       filteredApartment: [],
+      sponsorizedApartment: [],
       filters: {
-        //metto valore di default null 
+        //metto valore di default null
         //cosi' axios non inserisce il campo nella query se non e' compilato
         address: null,
         rooms: null,
@@ -2077,7 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("messaggio dal then della funzione filter");
       })["catch"](function (er) {
         console.error(er);
-        alert('Errore nel caricamento dei dati');
+        alert("Errore nel caricamento dei dati");
       });
     },
     onReset: function onReset() {
@@ -37956,7 +37968,9 @@ var render = function() {
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.description))]),
     _vm._v(" "),
-    _c("a", { attrs: { href: _vm.link } }, [_vm._v("Vai ai dettagli...")])
+    _c("a", { attrs: { href: _vm.link } }, [_vm._v("Vai ai dettagli...")]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.sponsorships))])
   ])
 }
 var staticRenderFns = []
@@ -37981,166 +37995,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.filter()
-          },
-          reset: function($event) {
-            return _vm.onReset()
-          }
-        }
-      },
-      [
-        _c("search-apartment", {
-          attrs: { placeholder: "Dove vuoi andare?" },
-          model: {
-            value: _vm.filters.address,
-            callback: function($$v) {
-              _vm.$set(_vm.filters, "address", $$v)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.filter()
             },
-            expression: "filters.address"
+            reset: function($event) {
+              return _vm.onReset()
+            }
           }
-        }),
-        _vm._v(" "),
-        _c("filter-input", {
-          attrs: { placeholder: "camere", type: "number", min: "1" },
-          model: {
-            value: _vm.filters.rooms,
-            callback: function($$v) {
-              _vm.$set(_vm.filters, "rooms", $$v)
-            },
-            expression: "filters.rooms"
-          }
-        }),
-        _vm._v(" "),
-        _c("filter-input", {
-          attrs: { placeholder: "letti", type: "number", min: "1" },
-          model: {
-            value: _vm.filters.beds,
-            callback: function($$v) {
-              _vm.$set(_vm.filters, "beds", $$v)
-            },
-            expression: "filters.beds"
-          }
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.serviceList, function(service) {
-          return _c("div", { key: service.id }, [
-            _c("label", { attrs: { for: "service.name" } }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(service.name) +
-                  "\n                    "
-              ),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.filters.services,
-                    expression: "filters.services"
-                  }
-                ],
-                attrs: {
-                  type: "checkbox",
-                  name: service.name,
-                  id: service.name
-                },
-                domProps: {
-                  value: service.id,
-                  checked: Array.isArray(_vm.filters.services)
-                    ? _vm._i(_vm.filters.services, service.id) > -1
-                    : _vm.filters.services
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.filters.services,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = service.id,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 &&
-                          _vm.$set(_vm.filters, "services", $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          _vm.$set(
-                            _vm.filters,
-                            "services",
-                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                          )
-                      }
-                    } else {
-                      _vm.$set(_vm.filters, "services", $$c)
-                    }
-                  }
-                }
-              })
-            ])
-          ])
-        }),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "distance" } }, [
-            _vm._v("Distanza massima")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.filters.distance,
-                expression: "filters.distance"
-              }
-            ],
-            attrs: {
-              type: "range",
-              id: "ditance",
-              name: "distance",
-              min: "5",
-              max: "50",
-              step: "1",
-              list: "tickmarks"
-            },
-            domProps: { value: _vm.filters.distance },
-            on: {
-              __r: function($event) {
-                return _vm.$set(_vm.filters, "distance", $event.target.value)
-              }
+        },
+        [
+          _c("search-apartment", {
+            attrs: { placeholder: "Dove vuoi andare?" },
+            model: {
+              value: _vm.filters.address,
+              callback: function($$v) {
+                _vm.$set(_vm.filters, "address", $$v)
+              },
+              expression: "filters.address"
             }
           }),
           _vm._v(" "),
-          _vm._m(0)
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "section",
+          _c("filter-input", {
+            attrs: { placeholder: "camere", type: "number", min: "1" },
+            model: {
+              value: _vm.filters.rooms,
+              callback: function($$v) {
+                _vm.$set(_vm.filters, "rooms", $$v)
+              },
+              expression: "filters.rooms"
+            }
+          }),
+          _vm._v(" "),
+          _c("filter-input", {
+            attrs: { placeholder: "letti", type: "number", min: "1" },
+            model: {
+              value: _vm.filters.beds,
+              callback: function($$v) {
+                _vm.$set(_vm.filters, "beds", $$v)
+              },
+              expression: "filters.beds"
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.serviceList, function(service) {
+            return _c("div", { key: service.id }, [
+              _c("label", { attrs: { for: "service.name" } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(service.name) +
+                    "\n                "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.filters.services,
+                      expression: "filters.services"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    name: service.name,
+                    id: service.name
+                  },
+                  domProps: {
+                    value: service.id,
+                    checked: Array.isArray(_vm.filters.services)
+                      ? _vm._i(_vm.filters.services, service.id) > -1
+                      : _vm.filters.services
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.filters.services,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = service.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.filters, "services", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.filters,
+                              "services",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.filters, "services", $$c)
+                      }
+                    }
+                  }
+                })
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c("label", { attrs: { for: "distance" } }, [
+              _vm._v("Distanza massima")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters.distance,
+                  expression: "filters.distance"
+                }
+              ],
+              attrs: {
+                type: "range",
+                id: "ditance",
+                name: "distance",
+                min: "5",
+                max: "50",
+                step: "1",
+                list: "tickmarks"
+              },
+              domProps: { value: _vm.filters.distance },
+              on: {
+                __r: function($event) {
+                  return _vm.$set(_vm.filters, "distance", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      ),
+      _vm._v(" "),
       _vm._l(_vm.filteredApartment, function(apartment) {
-        return _c("apartment-card", {
-          key: apartment.id,
-          attrs: {
-            id: apartment.title,
-            title: apartment.title,
-            description: apartment.description,
-            link: apartment.link
-          }
-        })
-      }),
-      1
-    )
-  ])
+        return _c(
+          "section",
+          { key: apartment.id },
+          [
+            apartment.sponsorships.length
+              ? _c("div", [
+                  _c("p", [_vm._v(_vm._s(apartment.id))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v(_vm._s(apartment.title))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v(_vm._s(apartment.description))])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
+              return _c("div", [_vm._v(_vm._s(sponsorshipStatus.name))])
+            })
+          ],
+          2
+        )
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -51018,8 +51044,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

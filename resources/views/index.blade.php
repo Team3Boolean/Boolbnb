@@ -5,7 +5,10 @@
 @section('content')
     <div id="app">
         <div class="jumbotron bg-jumbotron">
-            <home-filter-apartment></home-filter-apartment>
+            <home-filter-apartment>
+             
+
+            </home-filter-apartment>
         </div>
         <section class="adv-section">
             <div class="container">
