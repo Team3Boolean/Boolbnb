@@ -75,6 +75,10 @@
             </form>
         </div>
 
+        <section>
+            <div id="map" style="width: 500px; height: 400px; margin-bottom: 50px"></div>
+        </section>
+
         
         <div v-if="showSponsorized">
             <section v-for="apartment in sponsorizedApartments" :key="apartment.id">
@@ -128,6 +132,8 @@ export default {
             showSponsorized: true,
             showFiltered: false,
             showAdvancedFilters: false,
+            searchPlaceLat: null,
+            searchPlaceLng: null,
         };
     },
     methods: {
@@ -142,13 +148,22 @@ export default {
                     // quando attivo il filtro cambio il vaolre della variabile show
                     // cosi da mostrare il div che voglio
                     this.showSponsorized = false;
-                    this.showFiltered = true;    
+                    this.showFiltered = true;
+                    this.searchedPosition = resp.data.position;
+                    this.searchPlaceLat = this.searchedPosition['lat'];
+                    this.searchPlaceLng = this.searchedPosition['lng'];
+                    var apartmentLat = this.filteredApartment[0]["gps_lat"];
+
+                    console.log(apartmentLat + "latitudine primo appartamento lista appartamenti filtrati");
+
+                    console.log(this.searchPlaceLat, this.searchPlaceLng);
                 })
                 .catch(er => {
                     console.error(er);
                     alert("Errore nel caricamento dei dati");
                 });
         },
+
         onReset() {
             //reset dei filtri
             this.filters.address = null,
@@ -159,6 +174,59 @@ export default {
             this.showFiltered = false,
             this.showSponsorized = true,
             this.filteredApartment = this.apartmentList;
+        },
+
+        createMap() {
+            //recupero la posizione del centro della mappa
+            var position = [this.searchPlaceLng, this.searchPlaceLat];
+            const APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
+            
+            var map = tt.map({
+                key: APIKEY,
+                container: 'map',
+                center: position,
+                zoom: 5,
+                //basePath: 'sdk/',
+                theme: {
+                    style: 'main',
+                    layer: 'basic',
+                    source: 'vector'
+                }
+            
+            });
+
+            map.addControl(new tt.FullscreenControl());
+            map.addControl(new tt.NavigationControl());
+
+            var marker = new tt.Marker({
+                draggable: false
+            }).setLngLat(position).addTo(map);
+
+            this.getApartmentsPos().forEach(position => {
+                //console.log(position);
+                new tt.Marker().setLngLat(position).addTo(map);
+            });
+        },
+
+        getApartmentsPos() {
+            var houses = this.filteredApartment;
+
+            var apartmentsPosition = [];
+
+            for (var i = 0; i < houses.length; i++) {
+                var singleApartmentLat = houses[i]['gps_lat'];
+                var singleApartmentLng = houses[i]['gps_lng'];
+
+                console.log([singleApartmentLng, singleApartmentLat]);
+                apartmentsPosition.push([singleApartmentLng, singleApartmentLat]);    
+            }
+
+            return apartmentsPosition;
+
+        },
+
+        showMap() {
+            setTimeout(()=>this.createMap(), 10000);
         },
 
         getSponsorized(list) {
@@ -178,7 +246,7 @@ export default {
         advancedFilters() {
             this.showAdvancedFilters = !this.showAdvancedFilters;
         },
-    },
+    },    
     mounted() {
         axios
             .get("/api/apartments")

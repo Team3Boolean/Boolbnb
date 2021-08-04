@@ -2033,6 +2033,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeFilterApartment",
   data: function data() {
@@ -2052,7 +2080,9 @@ __webpack_require__.r(__webpack_exports__);
       serviceList: [],
       showSponsorized: true,
       showFiltered: false,
-      showAdvancedFilters: false
+      showAdvancedFilters: false,
+      searchPlaceLat: null,
+      searchPlaceLng: null
     };
   },
   methods: {
@@ -2068,6 +2098,12 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.showSponsorized = false;
         _this.showFiltered = true;
+        _this.searchedPosition = resp.data.position;
+        _this.searchPlaceLat = _this.searchedPosition['lat'];
+        _this.searchPlaceLng = _this.searchedPosition['lng'];
+        var apartmentLat = _this.filteredApartment[0]["gps_lat"];
+        console.log(apartmentLat + "latitudine primo appartamento lista appartamenti filtrati");
+        console.log(_this.searchPlaceLat, _this.searchPlaceLng);
       })["catch"](function (er) {
         console.error(er);
         alert("Errore nel caricamento dei dati");
@@ -2076,6 +2112,52 @@ __webpack_require__.r(__webpack_exports__);
     onReset: function onReset() {
       //reset dei filtri
       this.filters.address = null, this.filters.rooms = null, this.filters.beds = null, this.filters.services = [], this.filters.distance = "20", this.showFiltered = false, this.showSponsorized = true, this.filteredApartment = this.apartmentList;
+    },
+    createMap: function createMap() {
+      //recupero la posizione del centro della mappa
+      var position = [this.searchPlaceLng, this.searchPlaceLat];
+      var APIKEY = 'rO0rNeCiaH7GWWFhA2L2ZWahHr3ArAoQ';
+      var map = tt.map({
+        key: APIKEY,
+        container: 'map',
+        center: position,
+        zoom: 5,
+        //basePath: 'sdk/',
+        theme: {
+          style: 'main',
+          layer: 'basic',
+          source: 'vector'
+        }
+      });
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      var marker = new tt.Marker({
+        draggable: false
+      }).setLngLat(position).addTo(map);
+      this.getApartmentsPos().forEach(function (position) {
+        //console.log(position);
+        new tt.Marker().setLngLat(position).addTo(map);
+      });
+    },
+    getApartmentsPos: function getApartmentsPos() {
+      var houses = this.filteredApartment;
+      var apartmentsPosition = [];
+
+      for (var i = 0; i < houses.length; i++) {
+        var singleApartmentLat = houses[i]['gps_lat'];
+        var singleApartmentLng = houses[i]['gps_lng'];
+        console.log([singleApartmentLng, singleApartmentLat]);
+        apartmentsPosition.push([singleApartmentLng, singleApartmentLat]);
+      }
+
+      return apartmentsPosition;
+    },
+    showMap: function showMap() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        return _this2.createMap();
+      }, 10000);
     },
     getSponsorized: function getSponsorized(list) {
       var sponsorizedApartments = [];
@@ -2095,18 +2177,18 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get("/api/apartments").then(function (resp) {
       console.log(resp.data.results);
-      _this2.apartmentList = resp.data.results;
-      _this2.filteredApartment = resp.data.results;
-      _this2.sponsorizedApartments = _this2.getSponsorized(_this2.apartmentList);
+      _this3.apartmentList = resp.data.results;
+      _this3.filteredApartment = resp.data.results;
+      _this3.sponsorizedApartments = _this3.getSponsorized(_this3.apartmentList);
     })["catch"](function (er) {
       alert("Impossibile recuperare l'elenco degli appartamenti");
     });
     axios.get("/api/services").then(function (resp) {
-      _this2.serviceList = resp.data.results;
+      _this3.serviceList = resp.data.results;
     })["catch"](function (er) {
       cosole.error(er);
     });
@@ -38096,9 +38178,9 @@ var render = function() {
                 return _c("div", { key: service.id }, [
                   _c("label", { attrs: { for: "service.name" } }, [
                     _vm._v(
-                      "\n                    " +
+                      "\n                        " +
                         _vm._s(service.name) +
-                        "\n                    "
+                        "\n                        "
                     ),
                     _c("input", {
                       directives: [
@@ -38234,6 +38316,8 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
     _vm.showSponsorized
       ? _c(
           "div",
@@ -38330,6 +38414,21 @@ var staticRenderFns = [
       _c("option", { attrs: { value: "45" } }),
       _vm._v(" "),
       _c("option", { attrs: { value: "50" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", [
+      _c("div", {
+        staticStyle: {
+          width: "500px",
+          height: "400px",
+          "margin-bottom": "50px"
+        },
+        attrs: { id: "map" }
+      })
     ])
   }
 ]
