@@ -1,71 +1,78 @@
 <template>
     <div class="container">
-        <form @submit.prevent="filter()" @reset="onReset()">
-            <search-apartment
-                placeholder="Dove vuoi andare?"
-                v-model="filters.address"
-            ></search-apartment>
-
-            <filter-input
-                placeholder="camere"
-                type="number"
-                min="1"
-                v-model="filters.rooms"
-            ></filter-input>
-
-            <filter-input
-                placeholder="letti"
-                type="number"
-                min="1"
-                v-model="filters.beds"
-            ></filter-input>
-
-            <div v-for="service in serviceList" :key="service.id">
-                <label for="service.name">
-                    {{ service.name }}
-                    <input
-                        type="checkbox"
-                        v-model="filters.services"
-                        :value="service.id"
-                        :name="service.name"
-                        :id="service.name"
-                    />
-                </label>
-            </div>
-
-            <div>
-                <label for="distance">Distanza massima</label>
-                <input
-                    type="range"
-                    id="ditance"
-                    name="distance"
-                    min="5"
-                    max="50"
-                    step="1"
-                    list="tickmarks"
-                    v-model="filters.distance"
-                />
-
-                <datalist id="tickmarks">
-                    <option value="0"></option>
-                    <option value="5"></option>
-                    <option value="10"></option>
-                    <option value="15"></option>
-                    <option value="20"></option>
-                    <option value="25"></option>
-                    <option value="30"></option>
-                    <option value="35"></option>
-                    <option value="40"></option>
-                    <option value="45"></option>
-                    <option value="50"></option>
-                </datalist>
-            </div>
-
-            <div class="d-flex f-end">
+        <div class="jumbotron bg-jumbotron">
+            <form @submit.prevent="filter()" @reset="onReset()">
+                <search-apartment
+                    placeholder="Dove vuoi andare?"
+                    v-model="filters.address"
+                ></search-apartment>
                 <button class="btn-primary" type="submit">Viaggia</button>
-                <button class="btn-primary" type="reset">Annulla</button>
-            </div>
-        </form>
+
+                <div v-if="!showAdvancedFilters" @click="advancedFilters()" style="color: white; cursor: pointer;">Filtri avanzati</div>
+                <div v-show="showAdvancedFilters">
+                    <filter-input
+                        placeholder="camere"
+                        type="number"
+                        min="1"
+                        v-model="filters.rooms"
+                    ></filter-input>
+
+                    <filter-input
+                        placeholder="letti"
+                        type="number"
+                        min="1"
+                        v-model="filters.beds"
+                    ></filter-input>
+
+                    <div v-for="service in serviceList" :key="service.id">
+                        <label for="service.name">
+                            {{ service.name }}
+                            <input
+                                type="checkbox"
+                                v-model="filters.services"
+                                :value="service.id"
+                                :name="service.name"
+                                :id="service.name"
+                            />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label for="distance">Distanza massima</label>
+                        <input
+                            type="range"
+                            id="ditance"
+                            name="distance"
+                            min="5"
+                            max="50"
+                            step="1"
+                            list="tickmarks"
+                            v-model="filters.distance"
+                        />
+
+                        <datalist id="tickmarks">
+                            <option value="0"></option>
+                            <option value="5"></option>
+                            <option value="10"></option>
+                            <option value="15"></option>
+                            <option value="20"></option>
+                            <option value="25"></option>
+                            <option value="30"></option>
+                            <option value="35"></option>
+                            <option value="40"></option>
+                            <option value="45"></option>
+                            <option value="50"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="d-flex f-end">
+                        <button class="btn-primary" @click="filter()">Filtra</button>
+                        <button class="btn-primary" type="reset">Annulla</button>
+                    </div>
+                    <div v-if="showAdvancedFilters" @click="advancedFilters()" style="cursor: pointer;">Chiudi filtri avanzati</div>
+                </div>    
+            </form>
+        </div>
 
         
         <div v-if="showSponsorized">
@@ -119,6 +126,7 @@ export default {
             serviceList: [],
             showSponsorized: true,
             showFiltered: false,
+            showAdvancedFilters: false,
         };
     },
     methods: {
@@ -164,6 +172,10 @@ export default {
                 }
             }
             return sponsorizedApartments;    
+        },
+
+        advancedFilters() {
+            this.showAdvancedFilters = !this.showAdvancedFilters;
         },
     },
     mounted() {
