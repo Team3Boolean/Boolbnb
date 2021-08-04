@@ -32,6 +32,10 @@ a{
 .blue-t{
     color:$blue;
 }
+.blue-bg{
+    background-color: $secondary_dark_blue;
+    color: white;
+}
 //shortcuts per flex e no wrap
 .d-flex{
     display: flex;
@@ -51,6 +55,9 @@ a{
 }
 .m-right-0{
     margin-right: 0;
+}
+.m-right{
+    margin-right: $spacing;
 }
 .m-top{
     margin-top: $spacing;
@@ -107,4 +114,20 @@ a{
 }
 .all-pd{
     padding:  2*$spacing 2*$spacing;
+}
+//ho usato bold invece che la classe bootstrap
+.bold{
+    font-weight:bold;
+}
+.p-relative{
+    position: relative;
+}
+.p-absolute{
+    position: absolute;
+}
+
+@media screen and (max-width: 991px){
+    h2{
+        font-size: 24px;
+    }
 }

@@ -35,3 +35,19 @@ form{
         outline: none;
     }
 }
+
+.payment-action{
+    input[type='radio']:checked:after {
+        width: 14px;
+        height: 14px;
+        border-radius: 14px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: $third_purple;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid $white;
+    }
+}

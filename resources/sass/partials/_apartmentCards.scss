@@ -7,7 +7,7 @@
         border-radius: $radius;
         border: 2px solid $secondary_blue;
         width: calc(100% / 3);
-        height: 500px;
+        min-height: 600px;
         background-color: $white;
         padding: $spacing $spacing*2;
         margin:$spacing/2 $spacing;
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         .cover-box{
-            height: 250px;
+            height: 300px;
             width: 100%;
             img{
                 width: 100%;
@@ -23,6 +23,11 @@
                 object-fit: cover;
                 border-radius: $radius;
             }
+        }
+        .app-title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .apartment-link{
             background-color: $secondary_blue;
@@ -37,4 +42,52 @@
             }
         }
     }
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px){
+    .admin-apartment-box{
+        .admin-apartment-cards{
+            width: 100%;
+            height: 400px;
+            background-color: $white;
+            padding: $spacing $spacing;
+            //margin:$spacing/2 $spacing;
+            .cover-box{
+                height: 250px;
+                width: 100%;
+                img{
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                    border-radius: $radius;
+                }
+            }
+            h3{
+                font-size: 18px;
+            }
+        }
+    }    
+}
+
+@media screen and (max-width: 768px){
+    .admin-apartment-box{
+        .admin-apartment-cards{
+            width: 100%;
+            height: 400px;
+            background-color: $white;
+            padding: $spacing $spacing;
+            //margin:$spacing/2 $spacing;
+            .cover-box{
+                height: 200px;
+                width: 100%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: $radius;
+                }
+            }
+
+        }
+    }    
 }

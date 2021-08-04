@@ -2,7 +2,7 @@
 @section('pageTitle', 'Dettagli Appartamento')
 @section('content')
 <section class="single-aprtm">
-    
+    @dump($apartment);
     
     <div class="container">
                    

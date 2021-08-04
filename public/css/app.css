@@ -10986,6 +10986,11 @@ a:hover {
   color: #3b4c59;
 }
 
+.blue-bg {
+  background-color: #5f7389;
+  color: white;
+}
+
 .d-flex {
   display: flex;
 }
@@ -11009,6 +11014,10 @@ a:hover {
 
 .m-right-0 {
   margin-right: 0;
+}
+
+.m-right {
+  margin-right: 15px;
 }
 
 .m-top {
@@ -11071,6 +11080,24 @@ a:hover {
 
 .all-pd {
   padding: 30px 30px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+@media screen and (max-width: 991px) {
+  h2 {
+    font-size: 24px;
+  }
 }
 
 header {
@@ -11263,7 +11290,7 @@ header {
   transition-duration: 1.2s;
   background-color: #d4e4bc;
   border: 1px solid #d4e4bc;
-  color: #5f7389;
+  color: #ffffff;
 }
 
 .btn-cirle {
@@ -11294,6 +11321,26 @@ header {
   transition-duration: 1.2s;
 }
 
+.btn-cirle.back-btn {
+  position: absolute;
+  left: 7.5px;
+  border: 1px solid #5f7389;
+}
+
+.btn-cirle.back-btn:hover {
+  background-color: none;
+}
+
+.btn-cirle.back-btn a {
+  color: #5f7389;
+}
+
+.btn-cirle.back-btn a:hover {
+  background-color: none;
+  transform: translateX(-5px);
+  transition-duration: 1.2s;
+}
+
 form.delete-form {
   background-color: none;
   border: none;
@@ -11317,8 +11364,9 @@ form .btn-delete:hover {
   cursor: pointer;
   text-decoration: none;
   transition-duration: 1.2s;
-  background-color: #E1E2E1;
-  border: 1px solid #E1E2E1;
+  background-color: #5f7389;
+  border: 1px solid #5f7389;
+  color: #ffffff;
 }
 
 .btn-all-pg {
@@ -11356,7 +11404,7 @@ form .btn-delete:hover {
 }
 
 .btn-drop {
-  width: 33.3%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11413,6 +11461,20 @@ form input:active {
 form textarea:focus,
 form textarea:active {
   outline: none;
+}
+
+.payment-action input[type=radio]:checked:after {
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #8e6178;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid #ffffff;
 }
 
 .dashboard-box {
@@ -11517,7 +11579,7 @@ form textarea:active {
   border-radius: 8px;
   border: 2px solid #8da1b9;
   width: calc(100% / 3);
-  height: 500px;
+  min-height: 600px;
   background-color: #ffffff;
   padding: 15px 30px;
   margin: 7.5px 15px;
@@ -11527,7 +11589,7 @@ form textarea:active {
 }
 
 .admin-apartment-box .admin-apartment-cards .cover-box {
-  height: 250px;
+  height: 300px;
   width: 100%;
 }
 
@@ -11537,6 +11599,12 @@ form textarea:active {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 8px;
+}
+
+.admin-apartment-box .admin-apartment-cards .app-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .admin-apartment-box .admin-apartment-cards .apartment-link {
@@ -11552,6 +11620,54 @@ form textarea:active {
 .admin-apartment-box .admin-apartment-cards .apartment-link a:hover {
   transition-duration: 1.2s;
   color: #5f7389;
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .admin-apartment-box .admin-apartment-cards {
+    width: 100%;
+    height: 400px;
+    background-color: #ffffff;
+    padding: 15px 15px;
+  }
+
+  .admin-apartment-box .admin-apartment-cards .cover-box {
+    height: 250px;
+    width: 100%;
+  }
+
+  .admin-apartment-box .admin-apartment-cards .cover-box img {
+    width: 100%;
+    height: 250px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .admin-apartment-box .admin-apartment-cards h3 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin-apartment-box .admin-apartment-cards {
+    width: 100%;
+    height: 400px;
+    background-color: #ffffff;
+    padding: 15px 15px;
+  }
+
+  .admin-apartment-box .admin-apartment-cards .cover-box {
+    height: 200px;
+    width: 100%;
+  }
+
+  .admin-apartment-box .admin-apartment-cards .cover-box img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    border-radius: 8px;
+  }
 }
 
 section.single-aprtm {

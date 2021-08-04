@@ -19,11 +19,12 @@ id=sponsorship+SponsorchipName // --}}
         <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">bronze</h5>
-                    <span class="card-text"> 24 ore di sponsorizzazione </span>                    
+                    <h5 class="card-title blue-t">bronze</h5>
+                    <span class="card-text blue-t"> 24 ore di sponsorizzazione </span>                    
                 </div>
-                <div class="card-footer">
-                    <span>2,99 &euro;</span>
+                <div class="card-footer blue-bg">
+                    <span class="m-right">2,99 &euro;</span>
+                    
                     <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipBronze" value="2.99">
                 </div>
             </div>
@@ -31,11 +32,12 @@ id=sponsorship+SponsorchipName // --}}
         <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">silver</h5>
-                    <span class="card-text"> 72 ore di sponsorizzazione </span>                    
+                    <h5 class="card-title blue-t">silver</h5>
+                    <span class="card-text blue-t"> 72 ore di sponsorizzazione </span>                    
                 </div>
-                <div class="card-footer">
-                    <span>5,99 &euro;</span>
+                <div class="card-footer blue-bg">
+                    <span class="m-right">5,99 &euro;</span>
+                    
                     <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipSilver" value="5.99" checked>
                 </div>
             </div>
@@ -43,22 +45,23 @@ id=sponsorship+SponsorchipName // --}}
         <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">gold</h5>
-                    <span class="card-text">144 ore di sponsorizzazione </span>                     
+                    <h5 class="card-title blue-t">gold</h5>
+                    <span class="card-text blue-t">144 ore di sponsorizzazione </span>                     
                 </div>
-                <div class="card-footer">
-                    <span>9,99 &euro;</span>
+                <div class="card-footer blue-bg">
+                    <span class="m-right">9,99 &euro;</span>
+                    
                     <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipGold" value="9.99">
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+        <div class="col all-pd">
             <button class="btn-drop text-uppercase" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             effettua il pagamento
             </button>
-    </div>
+        </div>
     </div>
     <div class="row">
             <div class="col">

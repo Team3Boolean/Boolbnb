@@ -15,7 +15,7 @@
         transition-duration: 1.2s;
         background-color: $primary_green;
         border: 1px solid $primary_green;
-        color: $secondary_dark_blue;
+        color: $white;
     }
 
 }
@@ -57,7 +57,22 @@
         transition-duration: 1.2s;
         //background-color: $body-dark-bg;
     }
-    
+    &.back-btn{
+        position: absolute;
+        left: $spacing/2;
+        border: 1px solid $secondary_dark_blue;
+        &:hover{
+            background-color: none;
+        }
+        a{
+            color: $secondary_dark_blue;
+            &:hover{
+                background-color: none;
+                transform: translateX(-$spacing/3);
+                transition-duration: $t-duration;
+            }
+        }  
+    }    
 }
 form{
     &.delete-form{
@@ -80,8 +95,9 @@ form{
             cursor: pointer;
             text-decoration: none;
             transition-duration: 1.2s;
-            background-color: $body-dark-bg;
-            border: 1px solid $body-dark-bg;
+            background-color: $secondary_dark_blue;
+            border: 1px solid $secondary_dark_blue;
+            color:$white;
         }
     }
 }
@@ -117,7 +133,7 @@ form{
     }
 }
 .btn-drop{
-    width: 33.3%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
