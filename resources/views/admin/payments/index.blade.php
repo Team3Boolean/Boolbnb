@@ -42,7 +42,7 @@ id=sponsorship+SponsorchipName // --}}
                 </div>
             </div>
         </div>
-        <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title blue-t">gold</h5>

@@ -1,11 +1,21 @@
 <template>
     <div>
-        <h3>{{ title }}</h3>
-        <p>{{ description }}</p>
-        <a :href="link">Vai ai dettagli...</a>
-        <!-- {{ route('apartments.show', $apartment->id) }} -->
-        <p>{{ sponsorships}}</p>
-    </div>    
+        <div class="row all-pd">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <img class="card-img-top" :src="coverUrl" alt="casa">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ title }}</h3>
+                        <p>{{ price }} &euro;/notte</p>
+                    </div>
+                    <div class="card-footer blue-bg">
+                        <a :href="link">Vai ai dettagli...</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!-- {{ route('apartments.show', $apartment->id) }} -->
 </template>
 
 <script>
@@ -17,6 +27,7 @@ export default {
         description: String,
         link: String,
         coverUrl: String,
+        price: Number,
         sponsorships: String
     },
     computed: {
@@ -26,5 +37,6 @@ export default {
             return this.coverUrl ? ("storage/" + this.coverUrl) : defaultImg
         }
     }
+    
 }
 </script>
