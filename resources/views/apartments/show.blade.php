@@ -1,11 +1,68 @@
 @extends('layouts/map')
-{{-- @section('pageTitle', 'Home Page') --}}
+@section('pageTitle', 'Home Page')
 @section('content')
-   <h1>{{ $apartment->title }}</h1>
-    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/150
-C/O https://placeholder.com/' }}" alt="casa">
-    <br>
-    <a href="{{ route('home.index') }}">Torna alla Homepage</a>
+<section class="single-aprtm">
+    <div class="container">
+        <span class="btn-cirle blue">
+            <a href="{{ route('home.index') }}"><i class="fas fa-arrow-left"></i></a>
+        </span>
+        <span class="border-title">
+            <h1>{{ $apartment->title }}</h1>
+        </span>
+         
+        <div class="row">   
+            <div class="col-7 all-pd">
+                <div class="cover-box">
+                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/150
+                        C/O https://placeholder.com/' }}" alt="casa">
+                </div>          
+            </div>
+            <div class="col-5 all-pd">
+                <div class="d-flex-col">
+                    <span class="text-uppercase" >indirizzo:</span>
+                    <span class="text-capitalize">{{ $apartment->address }}</span>
+                    <span class="text-uppercase">metri quadri:</span>
+                    <span class="text-capitalize">{{ $apartment->mq}}</span>
+                    <span class="text-uppercase">prezzo a notte:</span>
+                    <span> {{ $apartment->price }} 	&euro; </span>
+                    <span class="text-uppercase">numero di stanze:</span>
+                    <span class="text-capitalize">{{ $apartment->rooms }}</span>
+                    <span class="text-uppercase">posti letto:</span>
+                    <span class="text-capitalize">{{ $apartment->beds }}</span>
+                    <span class="text-uppercase">numero di bagni:</span>
+                    <span class="text-capitalize">{{ $apartment->bathrooms}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row r-l-pd">
+            <div class="col-3">
+                <span class="text-uppercase">descrizione:</span>
+            </div>
+            <div class="col-9 text-left">
+                {{ $apartment->description}}
+            </div>
+        </div>
+        <div class="row r-l-pd end-link">
+            <div class="d-flex-col">
+                <span class="text-uppercase">
+                    Servizi aggiuntivi
+                </span>
+                <div>
+                    @if(count($apartment->services) > 0)
+                    @foreach($apartment->services as $service)
+                        <span class="service-tag">{{ $service->name }}</span>
+                    @endforeach
+                @else
+                    <span>Questo appartamento non presenta servizi aggiuntivi:</span>
+                @endif
+                </div>
+            </div>
+        </div>   
+        <div class="row">
+        <span class="btn-primary">contatta l'host</span>
+        </div>        
+    </div>
+</section>  
 
     <div id="app" class="container">
         <form action="{{ route('messages.store') }}" method="POST">
@@ -44,6 +101,7 @@ C/O https://placeholder.com/' }}" alt="casa">
 
     <div id="map" style="width: 550px; height: 450px;"></div>
     {{-- <script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script> --}}
+
     <script type="application/javascript">
         console.log({{$apartment->gps_lng}});
         console.log({{$apartment->gps_lat}});

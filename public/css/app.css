@@ -11474,6 +11474,7 @@ section.single-aprtm .cover-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 2px solid #8e6178;
 }
 
 section.single-aprtm .cover-box img {
@@ -11524,6 +11525,12 @@ section.single-aprtm .end-info {
 
 section.single-aprtm .end-info .btn-delete {
   background-color: #F5F5F6;
+}
+
+section.single-aprtm .btn-cirle {
+  position: absolute;
+  right: 15px;
+  transform: translateY(30px);
 }
 
 .button {

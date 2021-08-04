@@ -5,6 +5,9 @@
     
     
     <div class="container">
+        <span class="btn-cirle blue">
+            <a href="{{ route('admin.apartments.index') }}"><i class="fas fa-arrow-left"></i></a>
+        </span>            
         <span class="border-title">
                     <h2>{{ $apartment->title }}</h2>
         </span>
@@ -64,11 +67,6 @@
             </div>
         </div>
         <div class="row all-pd">
-            <div class="col">
-                <span class="btn-cirle blue">
-                    <a href="{{ route('admin.apartments.index') }}"><i class="fas fa-arrow-left"></i></a>
-                </span>            
-            </div>
             <div class="col">
                 <form  class="delete-form text-center" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}" method="post">
                 @csrf

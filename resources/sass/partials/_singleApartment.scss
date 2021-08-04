@@ -12,6 +12,7 @@ section{
             display: flex;
             justify-content: center;
             align-items: center;
+            border-right: 2px solid $third_purple;
             img{
                 height: 300px;
                 width: 300px;
@@ -53,6 +54,11 @@ section{
             .btn-delete{
                 background-color: $body-light-bg;
             }
+        }
+        .btn-cirle{
+            position: absolute;
+            right: $spacing;
+            transform: translateY($spacing*2);
         }
 
     }
