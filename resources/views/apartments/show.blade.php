@@ -1,4 +1,5 @@
 @extends('layouts/map')
+
 @section('pageTitle', 'Home Page')
 @section('content')
 <section class="single-aprtm">
@@ -59,43 +60,52 @@
             </div>
         </div>   
         <div class="row">
-        <span class="btn-primary">contatta l'host</span>
-        </div>        
+            <div class="col">
+                <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                CONTATTA L'HOST
+                </button>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col">
+                <div class="collapse" id="collapseExample">
+                    <form action="{{ route('messages.store') }}" method="POST">
+                    @csrf
+                        <div class="form-group">
+                            <!-- your email -->
+                            <label for="email">Email</label>
+                            @guest
+                            <input type="text" name="email" id="email" class="form-control" required>
+                            @else
+                            <input type="text" name="email" id="email" class="form-control" value="{{Auth::user()->email}}" required>
+                            @endguest                
+                        </div>
+                        <div class="form-group">
+                            <!-- text -->
+                            <label for="text">Messaggio:</label>
+                            <textarea type="text" name="text" id="text" class="form-control" rows="10" required></textarea> 
+                        </div>
+                        @if (Session::has('success'))
+                                <div class="form-group">
+                                    <div class="alert alert-success">
+                                        <p>{{ Session::get('success') }}</p>
+                                    </div>
+                                </div>
+                        @endif
+                        <div class="form-group">
+                            <!-- apartment_id -->
+                            <input type="text" name="apartment_id" id="apartment_id" value="{{$apartment->id}}" class="form-control" hidden>   
+                        </div>                          
+                        <input  class="btn btn-primary" type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>       
     </div>
 </section>  
 
     <div id="app" class="container">
-        <form action="{{ route('messages.store') }}" method="POST">
-            @csrf
-                <div class="form-group">
-                    <!-- your email -->
-                    <label for="email">Email</label>
-                    @guest
-                    <input type="text" name="email" id="email" class="form-control" required>
-                    @else
-                    <input type="text" name="email" id="email" class="form-control" value="{{Auth::user()->email}}" required>
-                    @endguest                
-                </div>
-                <div class="form-group">
-                    <!-- text -->
-                    <label for="text">Messaggio:</label>
-                    <textarea type="text" name="text" id="text" class="form-control" rows="10" required></textarea> 
-                </div>
-                @if (Session::has('success'))
-                        <div class="form-group">
-                            <div class="alert alert-success">
-                                <p>{{ Session::get('success') }}</p>
-                            </div>
-                        </div>
-                @endif
-                <div class="form-group">
-                    <!-- apartment_id -->
-                    <input type="text" name="apartment_id" id="apartment_id" value="{{$apartment->id}}" class="form-control" hidden>   
-                </div>                          
-                <input  class="btn btn-primary" type="submit">
-                
-                
-        </form>
+        
     </div>
 
 

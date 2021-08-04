@@ -36,79 +36,56 @@
 
 
     <div id="appModified">
-        <nav class="mm-basic-nav">
-            <div>
-                <a href="{{ url('/') }}">home</a>
-            </div>
-                
-            <div>
+        <header>
+            <nav class="basic-nav">
                 <div>
-                    @guest
-                        <div>
-                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </div>
-                        @if (Route::has('register'))
-                            <div>
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </div>
-                        @endif
-                    @else
-                        <div>
-                            <div><a href="{{ route('admin.index') }}">Dashboard</a></div>
-                            <a href="#">
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </div>
-                    @endguest
+                    <a href="{{ url('/') }}">
+                        <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
+                    </a>
                 </div>
-                
-                {{-- <ul>
-                    
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li>
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li>
-                            <a href="#">
-                                {{ Auth::user()->name }}
+                {{-- div vuoto per spaziatura --}}
+                <div class="g-2"></div>                    
+                @guest
+                    <div>
+                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </div>
+                    @if (Route::has('register'))
+                        <div>
+                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </div>
+                    @endif
+                @else
+                    <div>
+                        <div class="g-2"></div>
+                        <div>
+                            <span> 
+                                <span class="user-name">{{ Auth::user()->name }},  </span>
+                                sei pronto per una nuova avventura?
+                            </span>
+                        </div>
+
+                        <div>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
-
-                            <div>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul> --}}
-
-            </div>
-    
-        </nav>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @endguest    
+            </nav>
+            {{-- mostrare barra per la dashboard se loggato --}}
+            @auth
+                <div class="dashboard-bar">
+                    <div>
+                        <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
+                    </div>
+                </div>
+            @endauth
+        </header>
         <main class="py-4">
             
             @yield('content')
