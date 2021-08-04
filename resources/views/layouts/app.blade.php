@@ -36,33 +36,31 @@
 </head>
 <body>
 
-    <header>
+    
         <nav class="basic-nav">
-            <div>
+            <div class="basic-nav-left1">
                 <a href="{{ url('/') }}">
                     <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
                 </a>
             </div>
+             <div class="basic-nav-left2">
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_xs_gray.png') }}" alt="logo_boolbnb">
+                </a>
+            </div>
             {{-- div vuoto per spaziatura --}}
-            <div class="g-2"></div>                    
-            @guest
-                <div>
+            <div class="basic-nav-right">
+                @guest
+                <div class="basic-nav-right-1">
                     <a href="{{ route('login') }}">{{ __('Login') }}</a>
                 </div>
                 @if (Route::has('register'))
-                    <div>
+                    <div class="basic-nav-right-2">
                         <a href="{{ route('register') }}">{{ __('Register') }}</a>
                     </div>
                 @endif
             @else
-                <div>
-                    <div class="g-2"></div>
-                    <div>
-                        <span> 
-                            <span class="user-name">{{ Auth::user()->name }},  </span>
-                            sei pronto per una nuova avventura?
-                        </span>
-                    </div>
+                <div class="basic-nav-right-auth">
 
                     <div>
                         <a href="{{ route('logout') }}"
@@ -76,15 +74,25 @@
                     </div>
                 </div>
             @endguest    
+            </div>  
+            
         </nav>
         {{-- mostrare barra per la dashboard se loggato --}}
         @auth
-            <div class="dashboard-bar">
-                <div>
-                    <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
-                </div>
+             <div class="dashboard-bar1">
+            <div>
+                <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
             </div>
+        </div>
+
+        <div class="dashboard-bar2">
+            <div>
+                <a href="{{ route('admin.index') }}"><i class="fas fa-user-shield"></i></a>
+            </div>
+        </div>
         @endauth
+
+    <header>
     </header>
     <main>
     

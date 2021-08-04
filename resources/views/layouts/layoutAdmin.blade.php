@@ -34,23 +34,31 @@
 </head>
 <body>
 
-    <header>
-        <nav class="basic-nav-admin">
-            <div>
+    <nav class="basic-nav-admin">
+
+            <div class="basic-nav-admin-left1">
                 <a href="{{ url('/') }}">
                     <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
                 </a>
             </div>
-            {{-- div vuoto per spaziatura --}}
-            <div class="g-2"></div>
-            <div>
-                <span> 
-                    <span class="user-name">{{ Auth::user()->name }},  </span>
-                    sei pronto per una nuova avventura?
-                </span>
+
+            <div class="basic-nav-admin-left2">
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_xs_gray.png') }}" alt="logo_boolbnb">
+                </a>
+            </div>
+
+
+           
+            <div class="basic-nav-admin-center">
+                
+                {{ Auth::user()->name }},  sei pronto per una nuova avventura?
+               
+                    
+               
             </div>
                 
-            <div>
+            <div class="basic-nav-admin-right">
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -62,12 +70,26 @@
                 </form>
                 
             </div>
+
+    
+
         </nav>
-        <div class="dashboard-bar">
+
+        <div class="dashboard-bar1">
             <div>
                 <a href="{{ route('admin.index') }}">visita la tua pagina personale</a>
             </div>
         </div>
+
+        <div class="dashboard-bar2">
+            <div>
+                <a href="{{ route('admin.index') }}"><i class="fas fa-user-shield"></i></a>
+            </div>
+        </div>
+
+    <header>
+        
+
     </header>
     
 
