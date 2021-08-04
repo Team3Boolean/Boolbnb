@@ -20,6 +20,11 @@ section{
                 border-radius: $radius;
                 padding-right: 2*$spacing;
             }
+        }
+        .info-ap{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }   
         .service-tag{
             color: $third_purple;
@@ -96,4 +101,94 @@ section{
 
     }
     
+}
+@media screen and (max-width: 991px){
+    section{
+        &.single-aprtm{
+            .cover-box{
+                border-right: none;
+                img{
+                    height: 300px;
+                    width: 100%;
+                    object-fit: contain;
+                    border-radius: $radius;
+                    padding-right: 2*$spacing;
+                }
+            }   
+            .service-tag{
+                color: $third_purple;
+                margin-right: 2*$spacing;
+                &:before {
+                    content: "\2022";
+                    color: $blue;
+                    margin-right: $spacing;
+                }
+            }
+            .border-title{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: $radius;
+                background-color: $third_purple;
+                color: $white;
+                position: relative;
+                transform: translateY(-2*$spacing);
+                border: 2px solid $body-light-bg;
+                border-bottom: none;
+                position: relative;
+            }
+            .bottom-link{
+                align-self: flex-end;
+                position:relative;
+            }
+            .add-info{
+                position: absolute;
+                transform: translate(-75%, 100%);
+            }
+            .end-info{
+                align-items: center;
+                .btn-delete{
+                    background-color: $body-light-bg;
+                }
+            }
+            .btn-cirle{
+                &.back-btn{
+                    position: absolute;
+                    left: $spacing/2;
+                    border-color: $white;
+                    &:hover{
+                        background-color: none;
+                    }
+                    a{
+                        color: $white;
+                        &:hover{
+                            background-color: none;
+                            transform: translateX(-$spacing/3);
+                            transition-duration: $t-duration;
+                        }
+                    }  
+                }
+            }
+            .map-box{
+                align-items: center;
+                justify-content: center;
+            }
+            .buy-sponsorship{
+                border-top: 2px solid $third_purple;
+                a{
+                    &.link-sponsor{
+                        font-weight: bold;
+                        text-decoration:underline;
+                        color:$blue;
+                        &:hover{
+                            transform: scale(6px);
+                            transition-duration: $t-duration;
+                        }
+                    }
+                }
+            }
+    
+        }
+        
+    }
 }

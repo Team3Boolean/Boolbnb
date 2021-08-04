@@ -109,11 +109,18 @@ a{
 .t-b-pd{
     padding: 2*$spacing 0 2*$spacing;
 }
+//metà sopratotto
+.half-t-b-pd{
+    padding: $spacing 0 $spacing;
+}
 .r-l-pd{
     padding:  0 2*$spacing 0 2*$spacing;
 }
 .all-pd{
     padding:  2*$spacing 2*$spacing;
+}
+.all-half-pd{
+    padding:  $spacing $spacing;
 }
 //ho usato bold invece che la classe bootstrap
 .bold{
