@@ -9,8 +9,8 @@
       <div class="row">
           <div class="col text-center">
               <h2 class="text-uppercase"> 
-                  <span class="user-name">{{ Auth::user()->name }}</span>
-                  benvenuto nella tua pagina personale
+                benvenuto 
+                <span class="user-name">{{ Auth::user()->name }}</span>
               </h2>
               <p>gestisci con facilità i tuoi appartamenti</p>
           </div>

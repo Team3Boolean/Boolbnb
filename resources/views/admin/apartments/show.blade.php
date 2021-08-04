@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-7 all-pd">
                 <div class="cover-box">
-                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : asset('public/images/no_cover.png') }}" alt="img_cover" style="width:300px;height:300px;">
+                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : asset('public/images/no_cover.png') }}" alt="img_cover">
                 </div>
             </div>
             <div class="col-5 all-pd">
@@ -39,36 +39,47 @@
             </div>
         </div>
         <div class="row r-l-pd">
-            <div class="col text-right text-box">
-                <div class="d-flex-col">
-                    <span class="text-uppercase">
-                    descrizione del tuo appartamento:
-                    </span>
-                    <span>
-                     {{$apartment->description}}
-                    </span>
-                </div>
+            <div class="col-4 text-right text-box">               
+                <span class="text-uppercase">
+                descrizione:
+                </span>
             </div>
+            <div class="col-8">
+                <span>
+                     {{$apartment->description}}
+                </span>
+            </div>    
         </div>
-        <div class="row r-l-pd end-link">
-            <div class="d-flex-col">
+        <div class="row all-pd">
+            <div class="col-4 text-right">
                 <span class="text-uppercase">
                     Servizi aggiuntivi
                 </span>
-                <div>
-                    @if(count($apartment->services) > 0)
-                    @foreach($apartment->services as $service)
-                        <span class="service-tag">{{ $service->name }}</span>
-                    @endforeach
-                @else
-                    <span>Non e' stato selezionato nessun servizio aggiuntivo...</span>
-                @endif
-                </div>
+            </div>
+
+            <div class="col-8">
+            @if(count($apartment->services) > 0)
+                @foreach($apartment->services as $service)
+                    <span class="service-tag">{{ $service->name }}</span>
+                @endforeach
+            @else
+                <span>Non e' stato selezionato nessun servizio aggiuntivo...</span>
+            @endif
             </div>
         </div>
+        <section class="buy-sponsorship all-pd">
+            <div class="row">
+                <div class="col text-center"> aumenta la visibilità del tuo appartamentoacquistando, acquistando una nostra </div>
+            </div>   
+            <div class="row">
+                <div class="col text-center t-b-pd">
+                    <a class="link-sponsor" href="{{ route('admin.payments.index', $apartment)}}">sponsorizzazione</a>
+                </div>
+            </div>         
+        </section>
         <div class="row all-pd">
             <div class="col">
-                <form  class="delete-form text-center" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}" method="post">
+                <form  class="delete-form text-right" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}" method="post">
                 @csrf
                 @method('DELETE')
                     <button type="submit" class="btn-delete">
@@ -77,20 +88,6 @@
                 </form>
             </div>
         </div>
-        
-        
-        <section class="buy-sponsorship">
-            <div>
-                <a href="{{ route('admin.payments.index', $apartment)}}"> ecco le sponsorizzazioni</a>
-            </div>
-        </section>
-        
-
-        
-        
-            
-
-            
     </div>
 </section>
 

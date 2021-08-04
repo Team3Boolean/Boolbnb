@@ -15,9 +15,10 @@ section{
             border-right: 2px solid $third_purple;
             img{
                 height: 300px;
-                width: 300px;
+                width: 100%;
                 object-fit: cover;
                 border-radius: $radius;
+                padding-right: 2*$spacing;
             }
         }   
         .service-tag{
@@ -59,6 +60,24 @@ section{
             position: absolute;
             right: $spacing;
             transform: translateY($spacing*2);
+        }
+        .map-box{
+            align-items: center;
+            justify-content: center;
+        }
+        .buy-sponsorship{
+            border-top: 2px solid $third_purple;
+            a{
+                &.link-sponsor{
+                    font-weight: bold;
+                    text-decoration:underline;
+                    color:$blue;
+                    &:hover{
+                        transform: scale(6px);
+                        transition-duration: $t-duration;
+                    }
+                }
+            }
         }
 
     }

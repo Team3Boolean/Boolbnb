@@ -14,7 +14,7 @@
         text-decoration: none;
         transition-duration: 1.2s;
         background-color: $primary_green;
-        border: 2px solid $primary_green;
+        border: 1px solid $primary_green;
         color: $secondary_dark_blue;
     }
 
@@ -68,20 +68,66 @@ form{
     .btn-delete{
         text-align: center;
         background-color: $white;
-        border: 2px solid $secondary_dark_blue;
+        border: 1px solid $secondary_dark_blue;
         color:  $secondary_dark_blue;
         padding: $spacing*0.4 $spacing*0.8;
         border-radius: $radius;
         text-transform: uppercase;
         text-decoration: none;
-        width:125px;
+        width:120px;
         font-weight: bold;
         &:hover{
             cursor: pointer;
             text-decoration: none;
             transition-duration: 1.2s;
             background-color: $body-dark-bg;
-            border: 2px solid $body-dark-bg;
+            border: 1px solid $body-dark-bg;
         }
+    }
+}
+.btn-all-pg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    border-bottom: none;
+    border: 2px solid $secondary_dark_blue;
+    background-color: none;
+    font-weight: bold;
+    color: $blue;
+    &:hover{
+        background-color: $secondary_dark_blue;
+        color: $white;
+        transition-duration: $t-duration;
+    }
+    
+}
+.btn-pay{
+    border-radius: $radius;
+    color:$white;
+    border:none;
+    background-color: $primary_dark_green;
+    &:hover{
+        background-color: $primary_green;
+        color: $blue;
+        transition-duration: $t-duration;
+    }
+}
+.btn-drop{
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $radius;
+    border: 2px solid $secondary_dark_blue;
+    background-color: $secondary_dark_blue;
+    font-weight: bold;
+    color: $white;
+    &:hover{
+        background-color: $hover_s_blue;
+        color: $secondary_dark_blue;
+        transition-duration: $t-duration;
     }
 }

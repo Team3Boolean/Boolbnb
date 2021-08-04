@@ -4,14 +4,18 @@
 @section('pageTitle', 'Aggiungi Appartamento')
 @section('content')
 <div class="container">
-		<h3>Ciao <span>{{ Auth::user()->name }}</span>, rendi il tuo annuncio più accattivante e fai in modo che lo vedano più persone!</h3>
-		<h4>Scegli il tuo piano di sponsorizzazione per il tuo appartamento <span>{{ $apartment->title }}</span> situato in <span>{{ $apartment->address }}</span></h4>
-        <h5>Il tuo appartamento sarà pubblicato in homepage e più visibile</h5>
+    <div class="d-flex">
+        <div class="text-center m-top">
+             <h3><span class="text-capitalize">{{ Auth::user()->name }}</span>, rendi il tuo annuncio più accattivante e fai in modo che lo vedano più persone!</h3>
+            <h4>Scegli il tuo piano di sponsorizzazione per il tuo appartamento <span class="text-uppercase font-weight-bold">{{ $apartment->title }}</span>, in <span class="text-capitalize">{{ $apartment->address }}.</span></h4>
+            <h5 class="t-b-pd">Il tuo appartamento sarà pubblicato nella home page del nostro sito!</h5>
+        </div>
+    </div>
 </div>
 {{-- // seleziona una sponsorizzazione con relativo prezzo :
 id=sponsorship+SponsorchipName // --}}
-<div class="payment-action container">
-    <div class="container">
+<div class="container">
+    <div class="container payment-action all-pd">
         <div class="payment-card">
             <section class="payment-card-header ">
                 <h5>bronze</h5>
@@ -51,39 +55,54 @@ id=sponsorship+SponsorchipName // --}}
             </section>
         </div>
     </div>
-</div>
-
-{{-- INSERIAMO FORM METOdO POST --}}
-<div class="container checkout">
-    <form method="post" id="payment-form" action="{{ route('admin.payments.checkout', $apartment) }}">
-    @csrf
-    @method('post')
-        <label for="amount">
-            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="" style="display:none">
-            <p id="amount_preview">€ 5.99 </p>
-        </label>
-        
-
-        <input id="client_token" name="client_token" type="hidden" value="{{ $client_token }}"/>
-        <input id="nonce" name="payment_method_nonce" type="hidden" />
-        <input id="sponsorship" name="sponsorship" type="hidden" value="" />
-
-        {{-- Drop-in nella pagina (dalla documentazione) --}}
-        <div class="bt-drop-in-wrapper">
-            <div id="bt-dropin"></div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn-drop text-uppercase" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            effettua il pagamento
+            </button>
         </div>
+    </div>
+    <div class="row">
+            <div class="col">
+                <div class="collapse" id="collapseExample">
+                    {{-- INSERIAMO FORM METOdO POST --}}
+                    <div class="checkout t-b-pd">
+                        <form method="post" id="payment-form" action="{{ route('admin.payments.checkout', $apartment) }}">
+                        @csrf
+                        @method('post')
+                            <label for="amount">
+                                <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="" style="display:none">
+                                <p>importo totale:</p>
+                                <p id="amount_preview">€ 5.99 </p>
+                                <p>compila i dati per effettuare il pagamento:</p>
+                            </label>
+                            <input id="client_token" name="client_token" type="hidden" value="{{ $client_token }}"/>
+                            <input id="nonce" name="payment_method_nonce" type="hidden" />
+                            <input id="sponsorship" name="sponsorship" type="hidden" value="" />
+
+                            {{-- Drop-in nella pagina (dalla documentazione) --}}
+                            <div class="bt-drop-in-wrapper">
+                                <div id="bt-dropin"></div>
+                            </div>
 
 
-        {{-- <button id="submit-button" class="button button--small button--green">Purchase</button> --}}
-        <button class="btn btn-success btn-pay" type="submit">
-				<span>Purchase</span>
-		</button>
-    </form>
+                            {{-- <button id="submit-button" class="button button--small button--green">Purchase</button> --}}
+                            <button class="btn btn-pay m-top" type="submit">
+                                    <span>Purchase</span>
+                            </button>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+    </div>
+
 </div>
 
 
 
-<div class="container checkout">
+
+
+
 
     
     <script type="text/javascript">
@@ -167,7 +186,7 @@ id=sponsorship+SponsorchipName // --}}
         });
 
     </script>
-</div>
+
    
 
    {{-- button.addEventListener('click', function() {

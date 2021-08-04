@@ -49,6 +49,9 @@ a{
 .m-right-0{
     margin-right: 0;
 }
+.m-top{
+    margin-top: $spacing;
+}
 .title-label{
     display: flex;
     padding: $spacing 2*$spacing;

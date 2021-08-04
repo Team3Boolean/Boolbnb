@@ -11007,6 +11007,10 @@ a:hover {
   margin-right: 0;
 }
 
+.m-top {
+  margin-top: 15px;
+}
+
 .title-label {
   display: flex;
   padding: 15px 30px;
@@ -11254,7 +11258,7 @@ header {
   text-decoration: none;
   transition-duration: 1.2s;
   background-color: #d4e4bc;
-  border: 2px solid #d4e4bc;
+  border: 1px solid #d4e4bc;
   color: #5f7389;
 }
 
@@ -11297,13 +11301,13 @@ form.delete-form {
 form .btn-delete {
   text-align: center;
   background-color: #ffffff;
-  border: 2px solid #5f7389;
+  border: 1px solid #5f7389;
   color: #5f7389;
   padding: 6px 12px;
   border-radius: 8px;
   text-transform: uppercase;
   text-decoration: none;
-  width: 125px;
+  width: 120px;
   font-weight: bold;
 }
 
@@ -11312,7 +11316,58 @@ form .btn-delete:hover {
   text-decoration: none;
   transition-duration: 1.2s;
   background-color: #E1E2E1;
-  border: 2px solid #E1E2E1;
+  border: 1px solid #E1E2E1;
+}
+
+.btn-all-pg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: none;
+  border: 2px solid #5f7389;
+  background-color: none;
+  font-weight: bold;
+  color: #3b4c59;
+}
+
+.btn-all-pg:hover {
+  background-color: #5f7389;
+  color: #ffffff;
+  transition-duration: 1.2s;
+}
+
+.btn-pay {
+  border-radius: 8px;
+  color: #ffffff;
+  border: none;
+  background-color: #a3b28c;
+}
+
+.btn-pay:hover {
+  background-color: #d4e4bc;
+  color: #3b4c59;
+  transition-duration: 1.2s;
+}
+
+.btn-drop {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid #5f7389;
+  background-color: #5f7389;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.btn-drop:hover {
+  background-color: rgba(141, 161, 185, 0.4);
+  color: #5f7389;
+  transition-duration: 1.2s;
 }
 
 form {
@@ -11479,10 +11534,11 @@ section.single-aprtm .cover-box {
 
 section.single-aprtm .cover-box img {
   height: 300px;
-  width: 300px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 8px;
+  padding-right: 30px;
 }
 
 section.single-aprtm .service-tag {
@@ -11531,6 +11587,26 @@ section.single-aprtm .btn-cirle {
   position: absolute;
   right: 15px;
   transform: translateY(30px);
+}
+
+section.single-aprtm .map-box {
+  align-items: center;
+  justify-content: center;
+}
+
+section.single-aprtm .buy-sponsorship {
+  border-top: 2px solid #8e6178;
+}
+
+section.single-aprtm .buy-sponsorship a.link-sponsor {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #3b4c59;
+}
+
+section.single-aprtm .buy-sponsorship a.link-sponsor:hover {
+  transform: scale(6px);
+  transition-duration: 1.2s;
 }
 
 .button {

@@ -36,32 +36,32 @@
             </div>
         </div>
         <div class="row r-l-pd">
-            <div class="col-3">
+            <div class="col-4 text-right">
                 <span class="text-uppercase">descrizione:</span>
             </div>
-            <div class="col-9 text-left">
+            <div class="col-8 text-left">
                 {{ $apartment->description}}
             </div>
         </div>
-        <div class="row r-l-pd end-link">
-            <div class="d-flex-col">
+        <div class="row r-l-pd">
+            <div class="col-4 text-right all-pd">
                 <span class="text-uppercase">
-                    Servizi aggiuntivi
+                    Servizi aggiuntivi:
                 </span>
-                <div>
-                    @if(count($apartment->services) > 0)
-                    @foreach($apartment->services as $service)
-                        <span class="service-tag">{{ $service->name }}</span>
-                    @endforeach
-                @else
-                    <span>Questo appartamento non presenta servizi aggiuntivi:</span>
-                @endif
-                </div>
             </div>
+            <div class="col-8 all-pd">
+            @if(count($apartment->services) > 0)
+                @foreach($apartment->services as $service)
+                    <span class="service-tag">{{ $service->name }}</span>
+                @endforeach
+            @else
+                <span>Questo appartamento non presenta servizi aggiuntivi:</span>
+            @endif
+            </div>            
         </div>   
         <div class="row">
-            <div class="col">
-                <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <div class="col text-center">
+                <button class="btn-all-pg text-uppercase" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 CONTATTA L'HOST
                 </button>
             </div>
@@ -100,16 +100,13 @@
                     </form>
                 </div>
             </div>
-        </div>       
+        </div>
+        <div class="map-box d-flex all-pd">
+            <div id="map" style="width: 550px; height: 450px;"></div>
+        </div>
     </div>
 </section>  
-
-    <div id="app" class="container">
-        
-    </div>
-
-
-    <div id="map" style="width: 550px; height: 450px;"></div>
+    
     {{-- <script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script> --}}
 
     <script type="application/javascript">
