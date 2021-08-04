@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-7 all-pd">
                 <div class="cover-box">
-                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : asset('public/images/no_cover.png') }}" alt="img_cover">
+                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://i.ibb.co/J59PxKr/cover-casa.png' }}" alt="img_cover">
                 </div>
             </div>
             <div class="col-5 all-pd">

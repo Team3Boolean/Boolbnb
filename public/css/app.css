@@ -10982,6 +10982,10 @@ a:hover {
   border-radius: 8px;
 }
 
+.blue-t {
+  color: #3b4c59;
+}
+
 .d-flex {
   display: flex;
 }

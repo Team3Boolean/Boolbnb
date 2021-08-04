@@ -2,31 +2,38 @@
 @section('content')
 <div class="container">
     @if($received_messages)
-
-        @foreach($received_messages as $message)
-        {{-- @dump($message); --}}
-        <div class="row">
-            <div class="col">
-                    {{$message->apartment_title}}
-            </div>
-            <div class="col">
-                    {{$message->email}}
-            </div>
-            <div class="col">
-                    {{$message->text}}
-            </div>
-            {{-- decidere se fare vie admin.messages.show o div nascosto al click si apre messagio --}}
-
-            {{-- <div class="col">
-                <a href="{{ route('admin.messages.show', $message->id) }}" class="btn-outline-primary">mostra messaggio</a>
-            </div> --}}
-
-            {{-- <div class="hidden">
-                {{$message->text}}
-            </div> --}}
-
-        </div>
-        @endforeach
+    <div class="table-responsive">
+        <table class="table"> 
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="blue-t bold">ora</th>
+                    <th class="blue-t bold">appartamento</th>
+                    <th class="blue-t bold">mittente</th>
+                    <th class="blue-t bold">richiesta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($received_messages as $message)
+                <tr>
+                    <td class="action"><input type="checkbox" /></td>
+                    <td class="blue-t">{{$message->created_at}}</td>
+                    <td class="blue-t">{{$message->apartment_title}}</td>
+                    <td class="blue-t">{{$message->email}}</td>
+                    <td class="blue-t">
+                        <a class="blue-t" data-toggle="collapse" href="#show-text" role="button" aria-expanded="false" aria-controls="show-text">
+                            leggi il messaggio
+                        </a>
+                        <div class="collapse" id="show-text">
+                            {{$message->text}}
+                    </div>
+                    </td>
+                    
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @else
         <div class="row">
             <div class="col">
@@ -40,7 +47,7 @@
             </div>
         </div> 
     @endif
-
- 
 </div>
+ 
+
 @endsection

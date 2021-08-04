@@ -29,6 +29,9 @@ a{
     border: 2px solid $primary_dark_green;
     border-radius: $radius;
 }
+.blue-t{
+    color: $blue;
+}
 //shortcuts per flex e no wrap
 .d-flex{
     display: flex;

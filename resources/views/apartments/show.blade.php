@@ -14,8 +14,7 @@
         <div class="row">   
             <div class="col-7 all-pd">
                 <div class="cover-box">
-                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://via.placeholder.com/150
-                        C/O https://placeholder.com/' }}" alt="casa">
+                    <img src="{{ $apartment->img_cover ? asset('storage/' . $apartment->img_cover) : 'https://i.ibb.co/J59PxKr/cover-casa.png' }}" alt="casa">
                 </div>          
             </div>
             <div class="col-5 all-pd">
