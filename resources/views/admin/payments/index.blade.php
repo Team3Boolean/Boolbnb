@@ -15,52 +15,50 @@
 {{-- // seleziona una sponsorizzazione con relativo prezzo :
 id=sponsorship+SponsorchipName // --}}
 <div class="container">
-    <div class="container payment-action all-pd">
-        <div class="payment-card">
-            <section class="payment-card-header ">
-                <h5>bronze</h5>
-            </section>
-            <section class="payment-card-main">
-                <span class="bold">
-                    24 ore di sponsorizzazione
-                </span>
-                <span>2,99 &euro;</span>
-                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipBronze" value="2.99">
-            </section>	
+    <div class="row payment-action all-pd">
+        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">bronze</h5>
+                    <span class="card-text"> 24 ore di sponsorizzazione </span>                    
+                </div>
+                <div class="card-footer">
+                    <span>2,99 &euro;</span>
+                    <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipBronze" value="2.99">
+                </div>
+            </div>
         </div>
-        
-        <div class="payment-card">
-            <section class="payment-card-header m">
-                <h5>silver</h5>
-            </section>
-            <section class="payment-card-main">
-                <span class="bold">
-                    72 ore di sponsorizzazione
-                </span>
-                <span>5.99 &euro;</span>
-                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipSilver" value="5.99" checked>
-            </section>		
+        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">bronze</h5>
+                    <span class="card-text"> 72 ore di sponsorizzazione </span>                    
+                </div>
+                <div class="card-footer">
+                    <span>5,99 &euro;</span>
+                    <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipSilver" value="5.99" checked>
+                </div>
+            </div>
         </div>
-        
-        <div class="payment-card">
-            <section class="payment-card-header">
-                <h5>gold</h5>
-            </section>
-            <section class="payment-card-main">
-                <span class="bold">
-                    144 ore di sponsorizzazione
-                </span>
-                <span>9.99 &euro; </span>
-                <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipGold" value="9.99">
-            </section>
+        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">bronze</h5>
+                    <span class="card-text">144 ore di sponsorizzazione </span>                     
+                </div>
+                <div class="card-footer">
+                    <span>9,99 &euro;</span>
+                    <input class="" type="radio" name="sponsorshipRadios" id="sponsorshipGold" value="9.99">
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col text-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
             <button class="btn-drop text-uppercase" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             effettua il pagamento
             </button>
-        </div>
+    </div>
     </div>
     <div class="row">
             <div class="col">
