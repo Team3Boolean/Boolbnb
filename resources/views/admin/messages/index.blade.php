@@ -17,7 +17,7 @@
                 @foreach($received_messages as $message)
                 <tr>
                     <td class="action"><input type="checkbox" /></td>
-                    <td class="blue-t">{{$message->created_at}}</td>
+                    <td class="blue-t">{{$message->received}}</td>
                     <td class="blue-t">{{$message->apartment_title}}</td>
                     <td class="blue-t">{{$message->email}}</td>
                     <td class="blue-t">

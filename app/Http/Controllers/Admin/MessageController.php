@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Message;
 use App\Apartment;
 use App\User;
+use Carbon\Carbon;
 class MessageController extends Controller
 {
     /**
@@ -31,10 +32,11 @@ class MessageController extends Controller
             // ciclo su messaggi
       
             foreach ($apartment->messages as $message){
-       
+                $message['received'] =  Carbon::parse($message->created_at)->format("d/m/y h:i:s");
                 
                 if($message->apartment_id === $apartment->id){
                     $message['apartment_title'] = $apartment->title;
+                    
                     $received_messages[] = $message;
                 }
                 
