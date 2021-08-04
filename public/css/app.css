@@ -11343,6 +11343,7 @@ form .btn-delete:hover {
   border-radius: 8px;
   color: #ffffff;
   border: none;
+  width: 300px;
   background-color: #a3b28c;
 }
 
@@ -11499,7 +11500,7 @@ form textarea:active {
 }
 
 .admin-apartment-box .admin-apartment-cards .apartment-link {
-  background-color: #8e6178;
+  background-color: #8da1b9;
   border-radius: 8px;
 }
 

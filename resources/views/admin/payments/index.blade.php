@@ -16,7 +16,7 @@
 id=sponsorship+SponsorchipName // --}}
 <div class="container">
     <div class="row payment-action all-pd">
-        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">bronze</h5>
@@ -28,10 +28,10 @@ id=sponsorship+SponsorchipName // --}}
                 </div>
             </div>
         </div>
-        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">bronze</h5>
+                    <h5 class="card-title">silver</h5>
                     <span class="card-text"> 72 ore di sponsorizzazione </span>                    
                 </div>
                 <div class="card-footer">
@@ -40,10 +40,10 @@ id=sponsorship+SponsorchipName // --}}
                 </div>
             </div>
         </div>
-        <div class="col-lg 3 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg 3 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">bronze</h5>
+                    <h5 class="card-title">gold</h5>
                     <span class="card-text">144 ore di sponsorizzazione </span>                     
                 </div>
                 <div class="card-footer">

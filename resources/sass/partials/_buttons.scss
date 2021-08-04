@@ -108,6 +108,7 @@ form{
     border-radius: $radius;
     color:$white;
     border:none;
+    width: 300px;
     background-color: $primary_dark_green;
     &:hover{
         background-color: $primary_green;
