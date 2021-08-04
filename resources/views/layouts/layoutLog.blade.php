@@ -22,18 +22,28 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  
 
-        <header>
+        
             <nav class="basic-nav-log">
 
-                <div>
+                {{-- <div>
                     <a href="{{ url('/') }}">
                         home
                     </a>
-                </div>
+                </div> --}}
+                 <div class="basic-nav-log-left1">
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_lg_gray.png') }}" alt="logo_boolbnb">
+                </a>
+            </div>
 
-                <div>
+            <div class="basic-nav-log-left2">
+                <a href="{{ url('/') }}">
+                    <img class="img-logo" src="{{ asset('images/logo_xs_gray.png') }}" alt="logo_boolbnb">
+                </a>
+            </div>
+
+                <div class="basic-nav-log-center">
                     @guest
                         <a href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if (Route::has('register'))
@@ -65,6 +75,7 @@
                 </div>
             </nav>
 
+        <header>
         </header>
         
 

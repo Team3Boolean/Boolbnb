@@ -11116,159 +11116,179 @@ header {
 .basic-nav-admin {
   width: 100%;
   height: 67.5px;
-  padding: 7.5px 15px;
+  padding-left: 25px;
+  padding-right: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background-color: #a3b28c;
 }
 
-.basic-nav-admin > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0, 30px;
+.basic-nav-admin-left2 {
+  display: none;
 }
 
-.basic-nav-admin > div a {
-  color: #3b4c59;
-  font-weight: bold;
-  padding: 15px;
+.basic-nav-admin-left1,
+.basic-nav-admin-left2 {
+  height: 100%;
 }
 
-.basic-nav-admin > div a:hover {
-  opacity: 0.7;
+.basic-nav-admin-left1 a img,
+.basic-nav-admin-left2 a img {
+  height: 100%;
 }
 
-.basic-nav-admin > div span {
-  font-weight: bold;
-  color: #3b4c59;
-}
-
-.basic-nav-admin > div span.user-name {
-  text-transform: uppercase;
-}
-
-.basic-nav-admin > div:first-of-type a {
-  display: flex;
-  align-items: center;
-}
-
-.basic-nav-admin > div:first-of-type a:hover {
-  opacity: 0.7;
-}
-
-.basic-nav-admin > div:first-of-type a .img-logo {
-  height: 100px;
-  width: 300px;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.basic-nav-admin > div:last-of-type {
-  margin-left: 37.5px;
-}
-
-.dashboard-bar {
+.dashboard-bar1 {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 30px;
   background-color: #d4e4bc;
   height: 45px;
-  padding: 7.5px 15px;
-  margin-right: -60px;
 }
 
-.dashboard-bar div {
-  margin-right: 60px;
-}
-
-.dashboard-bar div a {
-  color: #8e6178;
-  font-weight: bold;
-  padding: 15px;
-}
-
-.dashboard-bar div a:hover {
-  opacity: 0.7;
+.dashboard-bar2 {
+  display: none;
 }
 
 .basic-nav-log {
-  width: 100%;
   height: 67.5px;
-  padding: 7.5px 15px;
+  background-color: #a3b28c;
   display: flex;
-  align-items: center;
-}
-
-.basic-nav-log > div {
-  width: 50%;
-  margin: 0, 30px;
-}
-
-.basic-nav-log > div:first-of-type a {
-  display: flex;
-  align-items: center;
-}
-
-.basic-nav-log > div:first-of-type a .img-logo {
-  height: 100px;
-  width: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.basic-nav-log > div:last-of-type {
-  display: flex;
-  justify-content: flex-end;
+  padding-left: 30px;
   padding-right: 30px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.basic-nav-log > div:last-of-type a {
-  color: #3b4c59;
-  font-weight: bold;
-  padding-left: 10px;
-  margin-right: 30px;
+.basic-nav-log-left2 {
+  display: none;
+}
+
+.basic-nav-log-left1,
+.basic-nav-log-left2 {
+  height: 100%;
+}
+
+.basic-nav-log-left1 a img,
+.basic-nav-log-left2 a img {
+  height: 100%;
+}
+
+.basic-nav-log-center a {
+  padding-left: 20px;
 }
 
 .basic-nav {
-  width: 100%;
   height: 67.5px;
-  padding: 0, 30px;
+  background-color: #a3b28c;
   display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: space-between;
   align-items: center;
 }
 
-.basic-nav > div {
+.basic-nav-left2 {
+  display: none;
+}
+
+.basic-nav-left1,
+.basic-nav-left2 {
+  height: 100%;
+}
+
+.basic-nav-left1 a img,
+.basic-nav-left2 a img {
+  height: 100%;
+}
+
+.basic-nav-right {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0, 30px;
 }
 
-.basic-nav > div a {
-  color: #3b4c59;
-  font-weight: bold;
-  padding: 15px;
+.basic-nav-right-2 {
+  padding-left: 20px;
 }
 
-.basic-nav > div span {
-  font-weight: bold;
-  color: #3b4c59;
-}
-
-.basic-nav > div span.user-name {
-  text-transform: uppercase;
-}
-
-.basic-nav > div:first-of-type a {
+.basic-nav-right-auth {
   display: flex;
-  align-items: center;
 }
 
-.basic-nav > div:first-of-type a .img-logo {
-  height: 100px;
-  width: 300px;
-  -o-object-fit: contain;
-     object-fit: contain;
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .basic-nav-admin-left1 {
+    display: none;
+  }
+
+  .basic-nav-admin-left2 {
+    display: block;
+  }
+
+  .basic-nav-left1 {
+    display: none;
+  }
+
+  .basic-nav-left2 {
+    display: block;
+  }
+
+  .basic-nav-log-left1 {
+    display: none;
+  }
+
+  .basic-nav-log-left2 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .basic-nav-admin-left1 {
+    display: none;
+  }
+
+  .basic-nav-admin-left2 {
+    display: block;
+  }
+
+  .basic-nav-admin-center {
+    display: none;
+  }
+
+  .basic-nav-left1 {
+    display: none;
+  }
+
+  .basic-nav-left2 {
+    display: block;
+  }
+
+  .basic-nav-log-left1 {
+    display: none;
+  }
+
+  .basic-nav-log-left2 {
+    display: block;
+  }
+
+  .dashboard-bar1 {
+    display: none;
+  }
+
+  .dashboard-bar2 {
+    display: block;
+    background-color: #d4e4bc;
+    height: 45px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    align-items: center;
+  }
+
+  .dashboard-bar2 i {
+    font-size: 20px;
+    color: #fff;
+  }
 }
 
 .btn-primary {

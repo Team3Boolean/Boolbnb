@@ -1,140 +1,307 @@
 .basic-nav-admin{
     width: 100%;
     height: $spacing*4.5;
-    padding: $spacing/2  $spacing;
+    padding-left: 25px;
+    padding-right: 30px;
     display: flex;
     align-items: center;
-    &>div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0, $spacing*2;
+    justify-content: space-between;
+     background-color: $primary_dark_green;
+    &-left2{
+        display: none;
+    }
+    &-left1, &-left2{
+        height: 100%;
         a{
-            color: $blue;
-            font-weight: bold;
-            padding: $spacing;
-            &:hover{
-                opacity: 0.7;
+            img{
+            height: 100%;
             }
         }
-        span{
-            font-weight: bold;
-            color: $blue;
-            &.user-name{
-                text-transform: uppercase;
-                
-            }
-        } 
-    }
-    &>div:first-of-type{
-        a{
-            display: flex;
-            align-items: center;
-            &:hover{
-                opacity: 0.7;
-            }
-            .img-logo {
-                height:100px;
-                width: $logo-size;
-                object-fit: contain;
-            } 
-        }
-    }
-    &>div:last-of-type{
-        margin-left: 2.5*$spacing;
     }
 }
-//barra con link dashboard
-.dashboard-bar{
+
+.dashboard-bar1{
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 30px;
     background-color: $primary_green;
     height: 3*$spacing;
-    padding: $spacing/2 $spacing;
-    margin-right: -4*$spacing;
-    div{
-        margin-right: 4*$spacing;
+ }
+.dashboard-bar2{
+    display: none;
+}
+
+.basic-nav-log{
+    height: $spacing*4.5;
+    background-color: $primary_dark_green;
+   display: flex;
+   padding-left: 30px;
+   padding-right: 30px;
+   justify-content: space-between;
+   align-items: center;
+   &-left2{
+        display: none;
+    }
+    &-left1, &-left2{
+        height: 100%;
         a{
-            color: $third_purple;
-            font-weight: bold;
-            padding: $spacing;
-            &:hover{
-                opacity: 0.7;
+            img{
+            height: 100%;
             }
         }
     }
-    
+   &-center{
+    a{
+       padding-left: 20px;
+    }
+   }
 }
 
-
-.basic-nav-log{
-    width: 100%;
+.basic-nav{
     height: $spacing*4.5;
-    padding: $spacing/2 $spacing;
-    display: flex;
-    align-items: center;
-    &>div{
-        width: 50%;
-        margin: 0, $spacing*2;
+    background-color: $primary_dark_green;
+   display: flex;
+   padding-left: 30px;
+   padding-right: 30px;
+   justify-content: space-between;
+   align-items: center;
+   &-left2{
+        display: none;
     }
-    &>div:first-of-type{
+    &-left1, &-left2{
+        height: 100%;
         a{
-            display: flex;
-            align-items: center;
-            .img-logo {
-                height:100px;
-                width: $logo-size;
-                object-fit: cover;
-            } 
+            img{
+            height: 100%;
+            }
         }
     }
-    &>div:last-of-type{
-        display: flex;
-        justify-content: flex-end;
-        padding-right: $spacing*2;
-        a{
-            color: $blue;
-            font-weight: bold;
-            padding-left: 10px;
-            margin-right: $spacing*2;
-        }
+   &-right{
+       display: flex;
+       &-2{
+           padding-left: 20px;
+       }
+       &-auth{
+           display: flex;
+       }
+   }
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px){
+.basic-nav-admin{
+    &-left1{
+        display: none;
+    }
+    &-left2{
+        display: block;
     }
 }
 .basic-nav{
-    width: 100%;
-    height: $spacing*4.5;
-    padding: 0, 30px;
-    display: flex;
-    align-items: center;
-    &>div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0, $spacing*2;
-        a{
-            color: $blue;
-            font-weight: bold;
-            padding: $spacing;
-        }
-        span{
-            font-weight: bold;
-            color: $blue;
-            &.user-name{
-                text-transform: uppercase;
-                
-            }
-        } 
+    &-left1{
+        display: none;
     }
-    &>div:first-of-type{
-        a{
-            display: flex;
-            align-items: center;
-            .img-logo {
-                height:100px;
-                width: $logo-size;
-                object-fit: contain;
-            } 
-        }
+    &-left2{
+        display: block;
     }
 }
+.basic-nav-log{
+    &-left1{
+        display: none;
+    }
+    &-left2{
+        display: block;
+    }
+}
+}
+
+@media screen and (max-width: 768px){
+.basic-nav-admin{
+    &-left1{
+        display: none;
+    }
+    &-left2{
+        display: block;
+    }
+    &-center{
+        display: none;
+    }
+}
+
+.basic-nav{
+    &-left1{
+        display: none;
+    }
+    &-left2{
+        display: block;
+    }
+}
+
+.basic-nav-log{
+    &-left1{
+        display: none;
+    }
+    &-left2{
+        display: block;
+    }
+}
+
+.dashboard-bar1{
+    display: none;
+}
+
+.dashboard-bar2{
+    display: block;
+    background-color: $primary_green;
+    height: 3*$spacing;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    align-items: center;
+    i{
+        font-size: 20px;
+        color: #fff;
+    }
+}
+}
+// .basic-nav-admin{
+//     width: 100%;
+//     height: $spacing*4.5;
+//     padding: $spacing/2  $spacing;
+//     display: flex;
+//     align-items: center;
+//     &>div{
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         margin: 0, $spacing*2;
+//         a{
+//             color: $blue;
+//             font-weight: bold;
+//             padding: $spacing;
+//             &:hover{
+//                 opacity: 0.7;
+//             }
+//         }
+//         span{
+//             font-weight: bold;
+//             color: $blue;
+//             &.user-name{
+//                 text-transform: uppercase;
+                
+//             }
+//         } 
+//     }
+//     &>div:first-of-type{
+//         a{
+//             display: flex;
+//             align-items: center;
+//             &:hover{
+//                 opacity: 0.7;
+//             }
+//             .img-logo {
+//                 height:100px;
+//                 width: $logo-size;
+//                 object-fit: contain;
+//             } 
+//         }
+//     }
+//     &>div:last-of-type{
+//         margin-left: 2.5*$spacing;
+//     }
+// }
+// //barra con link dashboard
+// .dashboard-bar{
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     background-color: $primary_green;
+//     height: 3*$spacing;
+//     padding: $spacing/2 $spacing;
+//     margin-right: -4*$spacing;
+//     div{
+//         margin-right: 4*$spacing;
+//         a{
+//             color: $third_purple;
+//             font-weight: bold;
+//             padding: $spacing;
+//             &:hover{
+//                 opacity: 0.7;
+//             }
+//         }
+//     }
+    
+// }
+
+
+// .basic-nav-log{
+//     width: 100%;
+//     height: $spacing*4.5;
+//     padding: $spacing/2 $spacing;
+//     display: flex;
+//     align-items: center;
+//     &>div{
+//         width: 50%;
+//         margin: 0, $spacing*2;
+//     }
+//     &>div:first-of-type{
+//         a{
+//             display: flex;
+//             align-items: center;
+//             .img-logo {
+//                 height:100px;
+//                 width: $logo-size;
+//                 object-fit: cover;
+//             } 
+//         }
+//     }
+//     &>div:last-of-type{
+//         display: flex;
+//         justify-content: flex-end;
+//         padding-right: $spacing*2;
+//         a{
+//             color: $blue;
+//             font-weight: bold;
+//             padding-left: 10px;
+//             margin-right: $spacing*2;
+//         }
+//     }
+// }
+// .basic-nav{
+//     width: 100%;
+//     height: $spacing*4.5;
+//     padding: 0, 30px;
+//     display: flex;
+//     align-items: center;
+//     &>div{
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         margin: 0, $spacing*2;
+//         a{
+//             color: $blue;
+//             font-weight: bold;
+//             padding: $spacing;
+//         }
+//         span{
+//             font-weight: bold;
+//             color: $blue;
+//             &.user-name{
+//                 text-transform: uppercase;
+                
+//             }
+//         } 
+//     }
+//     &>div:first-of-type{
+//         a{
+//             display: flex;
+//             align-items: center;
+//             .img-logo {
+//                 height:100px;
+//                 width: $logo-size;
+//                 object-fit: contain;
+//             } 
+//         }
+//     }
+// }
