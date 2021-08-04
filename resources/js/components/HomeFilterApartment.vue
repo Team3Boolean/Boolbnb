@@ -86,7 +86,7 @@
                  
             </div>
 
-            <div v-for="sponsorshipStatus in apartment.sponsorships">{{sponsorshipStatus.name}}</div>
+            <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">{{sponsorshipStatus.name}}</div>
         </section>
     </div>
 </template>
