@@ -62,32 +62,40 @@
             </div>
 
             <div class="d-flex f-end">
-                <button class="btn-primary" type="submit">Filtra</button>
+                <button class="btn-primary" type="submit">Viaggia</button>
                 <button class="btn-primary" type="reset">Annulla</button>
             </div>
         </form>
 
-        <!--    <section v-for="apartment in filteredApartment" :key="apartment.id">
-            <apartment-card>
-                :id="apartment.title"
-                :title="apartment.title"
-                :description="apartment.description"
-                :link="apartment.link"
-                :sponsorships="apartment.sponsorships.name"
-            </apartment-card>
-        </section>
-    -->
-        <section v-for="apartment in filteredApartment" :key="apartment.id">
-            <!--   -->
-            <div >
-                <p>{{ apartment.id }}</p>
-                <p>{{ apartment.title }}</p>
-                <p>{{ apartment.description }}</p>
-                 
-            </div>
+        
+        <div v-if="showSponsorized">
+            <section v-for="apartment in sponsorizedApartments" :key="apartment.id">
+                <div>
+                    <p>{{ apartment.id }}</p>
+                    <p>{{ apartment.title }}</p>
+                    <p>{{ apartment.description }}</p>     
+                </div>
 
-            <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">{{sponsorshipStatus.name}}</div>
-        </section>
+                <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+                    {{sponsorshipStatus.name}}
+                </div>
+            </section>
+        </div>
+
+        <div v-else-if="showFiltered">
+            <h1>Ciao dal div Filtrato</h1>
+            <section v-for="apartment in filteredApartment" :key="apartment.id">
+                <div>
+                    <p>{{ apartment.id }}</p>
+                    <p>{{ apartment.title }}</p>
+                    <p>{{ apartment.description }}</p>     
+                </div>
+
+                <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+                    {{sponsorshipStatus.name}}
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -98,7 +106,7 @@ export default {
         return {
             apartmentList: [],
             filteredApartment: [],
-            sponsorizedApartment: [],
+            sponsorizedApartments: [],
             filters: {
                 //metto valore di default null
                 //cosi' axios non inserisce il campo nella query se non e' compilato
@@ -108,7 +116,9 @@ export default {
                 distance: "20",
                 services: []
             },
-            serviceList: []
+            serviceList: [],
+            showSponsorized: true,
+            showFiltered: false,
         };
     },
     methods: {
@@ -119,9 +129,11 @@ export default {
                     params: this.filters
                 })
                 .then(resp => {
-                    console.log(resp.data.results);
                     this.filteredApartment = resp.data.results;
-                    console.log("messaggio dal then della funzione filter");
+                    // quando attivo il filtro cambio il vaolre della variabile show
+                    // cosi da mostrare il div che voglio
+                    this.showSponsorized = false;
+                    this.showFiltered = true;    
                 })
                 .catch(er => {
                     console.error(er);
@@ -130,12 +142,14 @@ export default {
         },
         onReset() {
             //reset dei filtri
-            (this.filters.address = null),
-                (this.filters.rooms = null),
-                (this.filters.beds = null),
-                (this.filters.services = []),
-                (this.filters.distance = "20"),
-                (this.filteredApartment = this.apartmentList);
+            this.filters.address = null,
+            this.filters.rooms = null,
+            this.filters.beds = null,
+            this.filters.services = [],
+            this.filters.distance = "20",
+            this.showFiltered = false,
+            this.showSponsorized = true,
+            this.filteredApartment = this.apartmentList;
         },
 
         getSponsorized(list) {
@@ -148,13 +162,9 @@ export default {
                 if(sponsorizedApartment.sponsorships.length > 0) {
                     sponsorizedApartments.push(sponsorizedApartment);
                 }
-
             }
-
-            
-            return sponsorizedApartments;
-            
-        }
+            return sponsorizedApartments;    
+        },
     },
     mounted() {
         axios
@@ -163,7 +173,7 @@ export default {
                 console.log(resp.data.results);
                 this.apartmentList = resp.data.results;                
                 this.filteredApartment = resp.data.results;
-                this.sponsorizedApartment = this.getSponsorized(this.apartmentList);
+                this.sponsorizedApartments = this.getSponsorized(this.apartmentList);
             })
             .catch(er => {
                 alert("Impossibile recuperare l'elenco degli appartamenti");
@@ -177,8 +187,6 @@ export default {
             .catch(er => {
                 cosole.error(er);
             });
-        
-
     },
 };
 </script>
