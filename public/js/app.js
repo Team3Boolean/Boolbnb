@@ -2081,7 +2081,16 @@ __webpack_require__.r(__webpack_exports__);
       this.filters.address = null, this.filters.rooms = null, this.filters.beds = null, this.filters.services = [], this.filters.distance = "20", this.filteredApartment = this.apartmentList;
     },
     getSponsorized: function getSponsorized(list) {
-      var sponsorizedApartments = list.filter(list.sponsorships.length = 1);
+      var sponsorizedApartments = [];
+
+      for (var i = 0; i < list.length; i++) {
+        var sponsorizedApartment = list[i];
+
+        if (sponsorizedApartment.sponsorships.length > 0) {
+          sponsorizedApartments.push(sponsorizedApartment);
+        }
+      }
+
       return sponsorizedApartments;
     }
   },
@@ -2092,9 +2101,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(resp.data.results);
       _this2.apartmentList = resp.data.results;
       _this2.filteredApartment = resp.data.results;
-      console.log(setTimeout(function () {
-        return _this2.getSponsorized(_this2.apartmentList);
-      }, 3000));
+      _this2.sponsorizedApartment = _this2.getSponsorized(_this2.apartmentList);
     })["catch"](function (er) {
       alert("Impossibile recuperare l'elenco degli appartamenti");
     });

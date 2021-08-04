@@ -139,9 +139,21 @@ export default {
         },
 
         getSponsorized(list) {
-            var sponsorizedApartments = list.filter(list.sponsorships.length = 1);
+            var sponsorizedApartments = [];
+
+            for(var i = 0; i < list.length; i++) {
+
+                var sponsorizedApartment = list[i];
+                
+                if(sponsorizedApartment.sponsorships.length > 0) {
+                    sponsorizedApartments.push(sponsorizedApartment);
+                }
+
+            }
+
             
             return sponsorizedApartments;
+            
         }
     },
     mounted() {
@@ -151,7 +163,7 @@ export default {
                 console.log(resp.data.results);
                 this.apartmentList = resp.data.results;                
                 this.filteredApartment = resp.data.results;
-                console.log(setTimeout(() => this.getSponsorized(this.apartmentList), 3000));
+                this.sponsorizedApartment = this.getSponsorized(this.apartmentList);
             })
             .catch(er => {
                 alert("Impossibile recuperare l'elenco degli appartamenti");
