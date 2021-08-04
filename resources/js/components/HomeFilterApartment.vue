@@ -80,7 +80,8 @@
                 <div>
                     <p>{{ apartment.id }}</p>
                     <p>{{ apartment.title }}</p>
-                    <p>{{ apartment.description }}</p>     
+                    <p>{{ apartment.description }}</p>   
+                    <a href=this.homeIndex>Clicca qui</a>
                 </div>
 
                 <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
@@ -109,6 +110,7 @@
 <script>
 export default {
     name: "HomeFilterApartment",
+    props:['homeIndex'],
     data() {
         return {
             apartmentList: [],
