@@ -93,7 +93,6 @@
             </div>
 
             <div v-else-if="showFiltered" class="row all-pd">
-                <h1>Ciao dal div Filtrato</h1>
                 <div v-for="apartment in filteredApartment" :key="apartment.id">
                     <apartment-card
                         :title="apartment.title"
