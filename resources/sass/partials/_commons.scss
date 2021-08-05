@@ -7,6 +7,10 @@ body {
     font-family: $font_family;
     font-size: $font_size;
     background-color: $body-light-bg;
+    
+}
+main{
+    min-height: calc(100vh - 150px);
 }
 a{
     text-decoration: none;
@@ -122,6 +126,7 @@ a{
 .all-half-pd{
     padding:  $spacing $spacing;
 }
+
 //ho usato bold invece che la classe bootstrap
 .bold{
     font-weight:bold;

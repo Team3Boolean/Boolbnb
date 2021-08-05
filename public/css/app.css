@@ -10958,6 +10958,10 @@ body {
   background-color: #F5F5F6;
 }
 
+main {
+  min-height: calc(100vh - 150px);
+}
+
 a {
   text-decoration: none;
   text-transform: uppercase;

@@ -1,10 +1,10 @@
 @extends('layouts.layoutAdmin')
 @section('pageTitle', 'Modifica Appartamento')
 @section('content')
-<div class="container">
-
-
-    <a href="{{ route('admin.apartments.index') }}">Torna alla Homepage</a>
+<section class="t-b-pd green-bg">
+  <div class="container">
+  
+    {{-- <a href="{{ route('admin.apartments.index') }}">Torna alla Homepage</a> --}}
     <div class="title-label blue-label">
       <h3>Modifica il tuo appartamento</h3>
     </div>
@@ -57,7 +57,7 @@
         <div class="form-group d-flex-col">
           <input class="input-basic" type="text" name="gps_lng" id="gps_lng" value="{{ old('gps_lng', $apartment->gps_lng) }}">
         </div>
-       
+      
         <div class="form-group d-flex-col">
           <input class="input-basic" type="text" name="gps_lat" id="gps_lat" value="{{ old('gps_lat', $apartment->gps_lat) }}">
         </div>
@@ -66,7 +66,7 @@
           <label for="rooms">numero di camere</label>
           <input class="input-basic" type="number" name="rooms" id="rooms" value="{{ old('rooms', $apartment->rooms) }}">
         </div>
- 
+
         <div class="form-group d-flex-col">
           <label for="beds">numero di posti letto</label>
           <input class="input-basic" type="number" name="beds" id="beds" value="{{ old('beds', $apartment->beds) }}">
@@ -100,5 +100,7 @@
           <input type="submit" value="Send" class="btn-primary">
         </div>
     </form>
-</div>
+  </div>
+</section>
+
 @endsection
