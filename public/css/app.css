@@ -10960,6 +10960,10 @@ body {
 
 main {
   min-height: calc(100vh - 150px);
+}
+
+main {
+  min-height: calc(100vh - 150px);
   background-color: #d4e4bc;
 }
 

@@ -16,7 +16,7 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Apartment $apartments)
+    public function index(Apartment $apartment)
     {   
        
         //recuper utente
@@ -32,22 +32,18 @@ class MessageController extends Controller
             // ciclo su messaggi
       
             foreach ($apartment->messages as $message){
+                
+
                 $message['received'] =  Carbon::parse($message->created_at)->format("d/m/y h:i:s");
                 
                 if($message->apartment_id === $apartment->id){
+
                     $message['apartment_title'] = $apartment->title;
-                    
                     $received_messages[] = $message;
                 }
-                
             }
         }
         return view('admin.messages.index', ['received_messages' => $received_messages]);
-        // $data = [
-        //     'messages' => Message::join("apartments", "apartments.id", "=", "messages.apartment_id")
-        //     ->get()
-        // ];
-        // return view("admin.messages.index", $data);
     }
 
     /**
