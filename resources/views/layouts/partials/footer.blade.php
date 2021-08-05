@@ -70,9 +70,8 @@
     <!-- Section: Text -->
     <section class="mb-4">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
+        Bollbnb è un' applicazione che permette ai suoi utenti di trovare appartamenti adatti alle lore esigenze, si prefigge inoltre
+        l' ambizioso obiettivo di creare una rete globale che permetta ai propri admin di affittare uno o più appartamenti.
       </p>
     </section>
     <!-- Section: Text -->

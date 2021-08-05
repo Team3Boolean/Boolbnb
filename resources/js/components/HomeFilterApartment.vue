@@ -84,6 +84,7 @@
         </div>
 
         <div class="container">
+            <h3 classe="blue-t">I nostri super-host</h3>
             <div v-if="showSponsorized" style="display: flex; justify-content: space-between;">
                 <div v-for="apartment in sponsorizedApartments" :key="apartment.id" style="flex-basis: 30%;">
                     <apartment-card
@@ -93,9 +94,9 @@
                         :price="apartment.price"
                     ></apartment-card>
 
-                    <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+                    <!-- <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
                         {{sponsorshipStatus.name}}
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -108,9 +109,9 @@
                         :coverUrl="apartment.img_cover"
                     ></apartment-card>
 
-                    <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+<!--                     <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
                         {{sponsorshipStatus.name}}
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -2079,6 +2079,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -38246,9 +38247,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                " +
+                            "\n                                    " +
                               _vm._s(service.name) +
-                              "\n                                "
+                              "\n                                    "
                           ),
                           _c("input", {
                             directives: [
@@ -38399,6 +38400,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
+      _c("h3", { attrs: { classe: "blue-t" } }, [
+        _vm._v("I nostri super-host")
+      ]),
+      _vm._v(" "),
       _vm.showSponsorized
         ? _c(
             "div",
@@ -38420,19 +38425,9 @@ var render = function() {
                       link: apartment.link,
                       price: apartment.price
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
-                    return _c("div", { key: sponsorshipStatus.id }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(sponsorshipStatus.name) +
-                          "\n                "
-                      )
-                    ])
                   })
                 ],
-                2
+                1
               )
             }),
             0
@@ -38458,19 +38453,9 @@ var render = function() {
                       link: apartment.link,
                       coverUrl: apartment.img_cover
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
-                    return _c("div", { key: sponsorshipStatus.id }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(sponsorshipStatus.name) +
-                          "\n                "
-                      )
-                    ])
                   })
                 ],
-                2
+                1
               )
             }),
             0
@@ -51352,8 +51337,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Huawei\Desktop\boolean\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\rakha\Desktop\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rakha\Desktop\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
