@@ -3,10 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
     color:$blue;
+    margin-top:-60px;
     .admin-apartment-cards{
         border-radius: $radius;
         border: 2px solid $secondary_blue;
-        width: calc(100% / 3);
+        width: calc(100% / 3 - 30px);
         height: 500px;
         background-color: $white;
         padding: $spacing $spacing*2;
@@ -36,5 +37,9 @@
                 }
             }
         }
+       
+    }
+    .homepage-card{
+        height: 350px;
     }
 }

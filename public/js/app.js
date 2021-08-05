@@ -2056,6 +2056,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeFilterApartment",
   data: function data() {
@@ -38119,9 +38126,9 @@ var render = function() {
                 return _c("div", { key: service.id }, [
                   _c("label", { attrs: { for: "service.name" } }, [
                     _vm._v(
-                      "\n                    " +
+                      "\n                        " +
                         _vm._s(service.name) +
-                        "\n                    "
+                        "\n                        "
                     ),
                     _c("input", {
                       directives: [
@@ -38260,17 +38267,23 @@ var render = function() {
     _vm.showSponsorized
       ? _c(
           "div",
+          { staticClass: "admin-apartment-box" },
           _vm._l(_vm.sponsorizedApartments, function(apartment) {
             return _c(
               "section",
-              { key: apartment.id },
+              {
+                key: apartment.id,
+                staticClass: "admin-apartment-cards homepage-card"
+              },
               [
                 _c("div", [
-                  _c("p", [_vm._v(_vm._s(apartment.id))]),
+                  _c("div", { staticClass: "cover-box" }, [
+                    _c("img", { attrs: { src: apartment.img_cover } })
+                  ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.title))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.description))])
+                  _c("h3", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(apartment.title))
+                  ])
                 ]),
                 _vm._v(" "),
                 _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
@@ -51188,8 +51201,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Boolbnb\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lorco\Desktop\Project Finale\Boolbnb4.0\Boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

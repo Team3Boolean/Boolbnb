@@ -11065,6 +11065,16 @@ a:hover {
   padding: 30px 30px;
 }
 
+.img-logo {
+  position: relative;
+  top: 15px;
+}
+
+#app {
+  background-color: #d4e4bc;
+  height: 100%;
+}
+
 header {
   background-color: #a3b28c;
   padding-right: 60px;
@@ -11415,12 +11425,13 @@ form textarea:active {
   flex-wrap: wrap;
   justify-content: center;
   color: #3b4c59;
+  margin-top: -60px;
 }
 
 .admin-apartment-box .admin-apartment-cards {
   border-radius: 8px;
   border: 2px solid #8da1b9;
-  width: calc(100% / 3);
+  width: calc(100% / 3 - 30px);
   height: 500px;
   background-color: #ffffff;
   padding: 15px 30px;
@@ -11456,6 +11467,10 @@ form textarea:active {
 .admin-apartment-box .admin-apartment-cards .apartment-link a:hover {
   transition-duration: 1.2s;
   color: #5f7389;
+}
+
+.admin-apartment-box .homepage-card {
+  height: 350px;
 }
 
 section.single-aprtm {
