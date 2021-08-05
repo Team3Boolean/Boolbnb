@@ -1,118 +1,124 @@
 <template>
-
-    <div class="container">
+    <div>
         <div class="jumbotron bg-jumbotron">
-            <form @submit.prevent="filter()" @reset="onReset()">
-                <search-apartment
-                    placeholder="Dove vuoi andare?"
-                    v-model="filters.address"
-                ></search-apartment>
-                <button class="btn-primary" type="submit">Viaggia</button>
+            <div class="container">
+                <form @submit.prevent="filter()" @reset="onReset()">
+                    <search-apartment
+                        placeholder="Dove vuoi andare?"
+                        v-model="filters.address"
+                    ></search-apartment>
+                    <button class="btn-primary" type="submit">Viaggia</button>
 
-                <div v-if="!showAdvancedFilters" @click="advancedFilters()" style="color: white; cursor: pointer;">Filtri avanzati</div>
-                <div v-show="showAdvancedFilters">
-                    <filter-input
-                        placeholder="camere"
-                        type="number"
-                        min="1"
-                        v-model="filters.rooms"
-                    ></filter-input>
+                    <div v-if="!showAdvancedFilters" @click="advancedFilters()" style="color: white; cursor: pointer;">Filtri avanzati</div>
+                    <div v-show="showAdvancedFilters">
+                        <filter-input
+                            placeholder="camere"
+                            type="number"
+                            min="1"
+                            v-model="filters.rooms"
+                        ></filter-input>
 
-                    <filter-input
-                        placeholder="letti"
-                        type="number"
-                        min="1"
-                        v-model="filters.beds"
-                    ></filter-input>
+                        <filter-input
+                            placeholder="letti"
+                            type="number"
+                            min="1"
+                            v-model="filters.beds"
+                        ></filter-input>
 
-                    <div v-for="service in serviceList" :key="service.id">
-                        <label for="service.name">
-                            {{ service.name }}
+                        <div v-for="service in serviceList" :key="service.id">
+                            <label for="service.name">
+                                {{ service.name }}
+                                <input
+                                    type="checkbox"
+                                    v-model="filters.services"
+                                    :value="service.id"
+                                    :name="service.name"
+                                    :id="service.name"
+                                />
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="distance">Distanza massima</label>
                             <input
-                                type="checkbox"
-                                v-model="filters.services"
-                                :value="service.id"
-                                :name="service.name"
-                                :id="service.name"
+                                type="range"
+                                id="ditance"
+                                name="distance"
+                                min="5"
+                                max="50"
+                                step="1"
+                                list="tickmarks"
+                                v-model="filters.distance"
                             />
-                        </label>
-                    </div>
 
-                    <div>
-                        <label for="distance">Distanza massima</label>
-                        <input
-                            type="range"
-                            id="ditance"
-                            name="distance"
-                            min="5"
-                            max="50"
-                            step="1"
-                            list="tickmarks"
-                            v-model="filters.distance"
-                        />
+                            <datalist id="tickmarks">
+                                <option value="0"></option>
+                                <option value="5"></option>
+                                <option value="10"></option>
+                                <option value="15"></option>
+                                <option value="20"></option>
+                                <option value="25"></option>
+                                <option value="30"></option>
+                                <option value="35"></option>
+                                <option value="40"></option>
+                                <option value="45"></option>
+                                <option value="50"></option>
+                            </datalist>
+                        </div>
 
-                        <datalist id="tickmarks">
-                            <option value="0"></option>
-                            <option value="5"></option>
-                            <option value="10"></option>
-                            <option value="15"></option>
-                            <option value="20"></option>
-                            <option value="25"></option>
-                            <option value="30"></option>
-                            <option value="35"></option>
-                            <option value="40"></option>
-                            <option value="45"></option>
-                            <option value="50"></option>
-                        </datalist>
-                    </div>
-
-                    <div class="d-flex f-end">
-                        <button class="btn-primary" @click="filter()">Filtra</button>
-                        <button class="btn-primary" type="reset">Annulla</button>
-                    </div>
-                    <div v-if="showAdvancedFilters" @click="advancedFilters()" style="cursor: pointer;">Chiudi filtri avanzati</div>
-                </div>    
-            </form>
+                        <div class="d-flex f-end">
+                            <button class="btn-primary" @click="filter()">Filtra</button>
+                            <button class="btn-primary" type="reset">Annulla</button>
+                        </div>
+                        <div v-if="showAdvancedFilters" @click="advancedFilters()" style="cursor: pointer;">Chiudi filtri avanzati</div>
+                    </div>    
+                </form>
+            </div>
         </div>
 
-        <section>
-            <div id="map" style="width: 500px; height: 400px; margin-bottom: 50px"></div>
-        </section>
+        <div class="container">
+            <div v-if="showSponsorized">
+                <div v-for="apartment in sponsorizedApartments" :key="apartment.id">
+                    <apartment-card
+                        :coverUrl="apartment.img_cover"
+                        :title="apartment.title"
+                        :link="apartment.link"
+                        :price="apartment.price"
+                    ></apartment-card>
 
-        
-        <div v-if="showSponsorized">
-            <section v-for="apartment in sponsorizedApartments" :key="apartment.id">
-                <div>
-                    <p>{{ apartment.id }}</p>
-                    <p>{{ apartment.title }}</p>
-                    <p>{{ apartment.description }}</p>     
+                    <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+                        {{sponsorshipStatus.name}}
+                    </div>
                 </div>
+            </div>
 
-                <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
-                    {{sponsorshipStatus.name}}
+            <div v-else-if="showFiltered">
+                <h1>Ciao dal div Filtrato</h1>
+                <div v-for="apartment in filteredApartment" :key="apartment.id">
+                    <apartment-card
+                        :title="apartment.title"
+                        :price="apartment.price"
+                        :link="apartment.link"
+                        :coverUrl="apartment.img_cover"
+                    ></apartment-card>
+
+                    <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
+                        {{sponsorshipStatus.name}}
+                    </div>
                 </div>
-            </section>
+            </div>
         </div>
 
-        <div v-else-if="showFiltered">
-            <h1>Ciao dal div Filtrato</h1>
-            <section v-for="apartment in filteredApartment" :key="apartment.id">
-                <div>
-                    <p>{{ apartment.id }}</p>
-                    <p>{{ apartment.title }}</p>
-                    <p>{{ apartment.description }}</p>     
-                </div>
-
-                <div v-for="sponsorshipStatus in apartment.sponsorships" :key="sponsorshipStatus.id">
-                    {{sponsorshipStatus.name}}
-                </div>
-            </section>
-        </div>
+        <!-- <div class="container">
+            <div id="map" style="width: 500px; height: 400px;"></div>
+        </div> -->
     </div>
 </template>
 
 <script>
+import ApartmentCard from './ApartmentCard.vue';
 export default {
+  components: { ApartmentCard },
     name: "HomeFilterApartment",
     data() {
         return {

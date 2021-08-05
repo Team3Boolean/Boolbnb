@@ -5,5 +5,6 @@
 @section('content')
     <div id="app">
         <home-filter-apartment></home-filter-apartment>
+       
     </div>
 @endsection

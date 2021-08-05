@@ -1918,6 +1918,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ApartmentCard",
   props: {
@@ -1926,6 +1936,7 @@ __webpack_require__.r(__webpack_exports__);
     description: String,
     link: String,
     coverUrl: String,
+    price: Number,
     sponsorships: String
   },
   computed: {
@@ -1948,6 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ApartmentCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ApartmentCard.vue */ "./resources/js/components/ApartmentCard.vue");
 //
 //
 //
@@ -2061,7 +2073,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ApartmentCard: _ApartmentCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   name: "HomeFilterApartment",
   data: function data() {
     return {
@@ -38060,13 +38080,30 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v(_vm._s(_vm.title))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.description))]),
-    _vm._v(" "),
-    _c("a", { attrs: { href: _vm.link } }, [_vm._v("Vai ai dettagli...")]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.sponsorships))])
+    _c("div", { staticClass: "row all-pd" }, [
+      _c("div", { staticClass: "col-lg-3 col-md-12 col-sm-12 col-xs-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.coverUrl, alt: "casa" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.price) + " €/notte")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer blue-bg" }, [
+            _c("a", { attrs: { href: _vm.link } }, [
+              _vm._v("Vai ai dettagli...")
+            ])
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38091,300 +38128,304 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _c("div", { staticClass: "jumbotron bg-jumbotron" }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.filter()
-            },
-            reset: function($event) {
-              return _vm.onReset()
-            }
-          }
-        },
-        [
-          _c("search-apartment", {
-            attrs: { placeholder: "Dove vuoi andare?" },
-            model: {
-              value: _vm.filters.address,
-              callback: function($$v) {
-                _vm.$set(_vm.filters, "address", $$v)
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.filter()
               },
-              expression: "filters.address"
+              reset: function($event) {
+                return _vm.onReset()
+              }
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Viaggia")]
-          ),
-          _vm._v(" "),
-          !_vm.showAdvancedFilters
-            ? _c(
-                "div",
-                {
-                  staticStyle: { color: "white", cursor: "pointer" },
-                  on: {
-                    click: function($event) {
-                      return _vm.advancedFilters()
-                    }
-                  }
+          },
+          [
+            _c("search-apartment", {
+              attrs: { placeholder: "Dove vuoi andare?" },
+              model: {
+                value: _vm.filters.address,
+                callback: function($$v) {
+                  _vm.$set(_vm.filters, "address", $$v)
                 },
-                [_vm._v("Filtri avanzati")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.showAdvancedFilters,
-                  expression: "showAdvancedFilters"
-                }
-              ]
-            },
-            [
-              _c("filter-input", {
-                attrs: { placeholder: "camere", type: "number", min: "1" },
-                model: {
-                  value: _vm.filters.rooms,
-                  callback: function($$v) {
-                    _vm.$set(_vm.filters, "rooms", $$v)
-                  },
-                  expression: "filters.rooms"
-                }
-              }),
-              _vm._v(" "),
-              _c("filter-input", {
-                attrs: { placeholder: "letti", type: "number", min: "1" },
-                model: {
-                  value: _vm.filters.beds,
-                  callback: function($$v) {
-                    _vm.$set(_vm.filters, "beds", $$v)
-                  },
-                  expression: "filters.beds"
-                }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.serviceList, function(service) {
-                return _c("div", { key: service.id }, [
-                  _c("label", { attrs: { for: "service.name" } }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(service.name) +
-                        "\n                        "
-                    ),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.filters.services,
-                          expression: "filters.services"
-                        }
-                      ],
-                      attrs: {
-                        type: "checkbox",
-                        name: service.name,
-                        id: service.name
-                      },
-                      domProps: {
-                        value: service.id,
-                        checked: Array.isArray(_vm.filters.services)
-                          ? _vm._i(_vm.filters.services, service.id) > -1
-                          : _vm.filters.services
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.filters.services,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = service.id,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.filters,
-                                  "services",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.filters,
-                                  "services",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.filters, "services", $$c)
-                          }
-                        }
+                expression: "filters.address"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn-primary", attrs: { type: "submit" } },
+              [_vm._v("Viaggia")]
+            ),
+            _vm._v(" "),
+            !_vm.showAdvancedFilters
+              ? _c(
+                  "div",
+                  {
+                    staticStyle: { color: "white", cursor: "pointer" },
+                    on: {
+                      click: function($event) {
+                        return _vm.advancedFilters()
                       }
-                    })
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("label", { attrs: { for: "distance" } }, [
-                  _vm._v("Distanza massima")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.filters.distance,
-                      expression: "filters.distance"
                     }
-                  ],
-                  attrs: {
-                    type: "range",
-                    id: "ditance",
-                    name: "distance",
-                    min: "5",
-                    max: "50",
-                    step: "1",
-                    list: "tickmarks"
                   },
-                  domProps: { value: _vm.filters.distance },
-                  on: {
-                    __r: function($event) {
-                      return _vm.$set(
-                        _vm.filters,
-                        "distance",
-                        $event.target.value
-                      )
-                    }
+                  [_vm._v("Filtri avanzati")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showAdvancedFilters,
+                    expression: "showAdvancedFilters"
+                  }
+                ]
+              },
+              [
+                _c("filter-input", {
+                  attrs: { placeholder: "camere", type: "number", min: "1" },
+                  model: {
+                    value: _vm.filters.rooms,
+                    callback: function($$v) {
+                      _vm.$set(_vm.filters, "rooms", $$v)
+                    },
+                    expression: "filters.rooms"
                   }
                 }),
                 _vm._v(" "),
-                _vm._m(0)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex f-end" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn-primary",
+                _c("filter-input", {
+                  attrs: { placeholder: "letti", type: "number", min: "1" },
+                  model: {
+                    value: _vm.filters.beds,
+                    callback: function($$v) {
+                      _vm.$set(_vm.filters, "beds", $$v)
+                    },
+                    expression: "filters.beds"
+                  }
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.serviceList, function(service) {
+                  return _c("div", { key: service.id }, [
+                    _c("label", { attrs: { for: "service.name" } }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(service.name) +
+                          "\n                            "
+                      ),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filters.services,
+                            expression: "filters.services"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          name: service.name,
+                          id: service.name
+                        },
+                        domProps: {
+                          value: service.id,
+                          checked: Array.isArray(_vm.filters.services)
+                            ? _vm._i(_vm.filters.services, service.id) > -1
+                            : _vm.filters.services
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.filters.services,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = service.id,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.filters,
+                                    "services",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.filters,
+                                    "services",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.filters, "services", $$c)
+                            }
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c("label", { attrs: { for: "distance" } }, [
+                    _vm._v("Distanza massima")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filters.distance,
+                        expression: "filters.distance"
+                      }
+                    ],
+                    attrs: {
+                      type: "range",
+                      id: "ditance",
+                      name: "distance",
+                      min: "5",
+                      max: "50",
+                      step: "1",
+                      list: "tickmarks"
+                    },
+                    domProps: { value: _vm.filters.distance },
                     on: {
-                      click: function($event) {
-                        return _vm.filter()
+                      __r: function($event) {
+                        return _vm.$set(
+                          _vm.filters,
+                          "distance",
+                          $event.target.value
+                        )
                       }
                     }
-                  },
-                  [_vm._v("Filtra")]
-                ),
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn-primary", attrs: { type: "reset" } },
-                  [_vm._v("Annulla")]
-                )
-              ]),
-              _vm._v(" "),
-              _vm.showAdvancedFilters
-                ? _c(
-                    "div",
+                _c("div", { staticClass: "d-flex f-end" }, [
+                  _c(
+                    "button",
                     {
-                      staticStyle: { cursor: "pointer" },
+                      staticClass: "btn-primary",
                       on: {
                         click: function($event) {
-                          return _vm.advancedFilters()
+                          return _vm.filter()
                         }
                       }
                     },
-                    [_vm._v("Chiudi filtri avanzati")]
+                    [_vm._v("Filtra")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn-primary", attrs: { type: "reset" } },
+                    [_vm._v("Annulla")]
                   )
-                : _vm._e()
-            ],
-            2
-          )
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm.showSponsorized
-      ? _c(
-          "div",
-          _vm._l(_vm.sponsorizedApartments, function(apartment) {
-            return _c(
-              "section",
-              { key: apartment.id },
-              [
-                _c("div", [
-                  _c("p", [_vm._v(_vm._s(apartment.id))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.title))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(apartment.description))])
                 ]),
                 _vm._v(" "),
-                _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
-                  return _c("div", { key: sponsorshipStatus.id }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(sponsorshipStatus.name) +
-                        "\n            "
+                _vm.showAdvancedFilters
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.advancedFilters()
+                          }
+                        }
+                      },
+                      [_vm._v("Chiudi filtri avanzati")]
                     )
-                  ])
-                })
+                  : _vm._e()
               ],
               2
             )
-          }),
-          0
+          ],
+          1
         )
-      : _vm.showFiltered
-      ? _c(
-          "div",
-          [
-            _c("h1", [_vm._v("Ciao dal div Filtrato")]),
-            _vm._v(" "),
-            _vm._l(_vm.filteredApartment, function(apartment) {
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _vm.showSponsorized
+        ? _c(
+            "div",
+            _vm._l(_vm.sponsorizedApartments, function(apartment) {
               return _c(
-                "section",
+                "div",
                 { key: apartment.id },
                 [
-                  _c("div", [
-                    _c("p", [_vm._v(_vm._s(apartment.id))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(apartment.title))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(apartment.description))])
-                  ]),
+                  _c("apartment-card", {
+                    attrs: {
+                      coverUrl: apartment.img_cover,
+                      title: apartment.title,
+                      link: apartment.link,
+                      price: apartment.price
+                    }
+                  }),
                   _vm._v(" "),
                   _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
                     return _c("div", { key: sponsorshipStatus.id }, [
                       _vm._v(
-                        "\n                " +
+                        "\n                    " +
                           _vm._s(sponsorshipStatus.name) +
-                          "\n            "
+                          "\n                "
                       )
                     ])
                   })
                 ],
                 2
               )
-            })
-          ],
-          2
-        )
-      : _vm._e()
+            }),
+            0
+          )
+        : _vm.showFiltered
+        ? _c(
+            "div",
+            [
+              _c("h1", [_vm._v("Ciao dal div Filtrato")]),
+              _vm._v(" "),
+              _vm._l(_vm.filteredApartment, function(apartment) {
+                return _c(
+                  "div",
+                  { key: apartment.id },
+                  [
+                    _c("apartment-card", {
+                      attrs: {
+                        title: apartment.title,
+                        price: apartment.price,
+                        link: apartment.link,
+                        coverUrl: apartment.img_cover
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
+                      return _c("div", { key: sponsorshipStatus.id }, [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(sponsorshipStatus.name) +
+                            "\n                "
+                        )
+                      ])
+                    })
+                  ],
+                  2
+                )
+              })
+            ],
+            2
+          )
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38414,21 +38455,6 @@ var staticRenderFns = [
       _c("option", { attrs: { value: "45" } }),
       _vm._v(" "),
       _c("option", { attrs: { value: "50" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("div", {
-        staticStyle: {
-          width: "500px",
-          height: "400px",
-          "margin-bottom": "50px"
-        },
-        attrs: { id: "map" }
-      })
     ])
   }
 ]
