@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Schema::defaultStringLength(191);
+        Schema::defaultStringLength(191);
 
         // tramite singleton importiamo il gateway di braintree
         $this->app->singleton(Gateway::class, function ($app) {

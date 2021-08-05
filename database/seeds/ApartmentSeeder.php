@@ -180,7 +180,7 @@ class ApartmentSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Apartment::truncate();
 
-        foreach ($apartments as $apartment){
+        /* foreach ($apartments as $apartment){
             $newApartment = new Apartment();
 
             $newApartment->user_id = 11;
@@ -198,7 +198,7 @@ class ApartmentSeeder extends Seeder
             $newApartment->price = $apartment['price'];
 
             $newApartment->save();
-        }
+        } */
     }
 
 }
