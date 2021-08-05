@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="row all-pd">
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <img class="card-img-top" :src="coverUrl" alt="casa">
                     <div class="card-body">

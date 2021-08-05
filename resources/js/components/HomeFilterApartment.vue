@@ -77,7 +77,7 @@
         </div>
 
         <div class="container">
-            <div v-if="showSponsorized">
+            <div v-if="showSponsorized" class="row all-pd">
                 <div v-for="apartment in sponsorizedApartments" :key="apartment.id">
                     <apartment-card
                         :coverUrl="apartment.img_cover"
@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <div v-else-if="showFiltered">
+            <div v-else-if="showFiltered" class="row all-pd">
                 <h1>Ciao dal div Filtrato</h1>
                 <div v-for="apartment in filteredApartment" :key="apartment.id">
                     <apartment-card
