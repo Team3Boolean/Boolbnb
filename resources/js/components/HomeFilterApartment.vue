@@ -77,8 +77,8 @@
         </div>
 
         <div class="container">
-            <div v-if="showSponsorized" class="row all-pd">
-                <div v-for="apartment in sponsorizedApartments" :key="apartment.id">
+            <div v-if="showSponsorized" style="display: flex; justify-content: space-between;">
+                <div v-for="apartment in sponsorizedApartments" :key="apartment.id" style="flex-basis: 30%;">
                     <apartment-card
                         :coverUrl="apartment.img_cover"
                         :title="apartment.title"
@@ -92,8 +92,8 @@
                 </div>
             </div>
 
-            <div v-else-if="showFiltered" class="row all-pd">
-                <div v-for="apartment in filteredApartment" :key="apartment.id">
+            <div v-else-if="showFiltered" style="display: flex; justify-content: space-between;">
+                <div v-for="apartment in filteredApartment" :key="apartment.id" style="flex-basis: 30%;">
                     <apartment-card
                         :title="apartment.title"
                         :price="apartment.price"

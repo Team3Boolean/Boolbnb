@@ -1924,10 +1924,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ApartmentCard",
   props: {
@@ -1960,7 +1956,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ApartmentCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ApartmentCard.vue */ "./resources/js/components/ApartmentCard.vue");
-//
 //
 //
 //
@@ -38080,28 +38075,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _c("div", { staticClass: "col-lg-4 col-md-12 col-sm-12 col-xs-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: _vm.coverUrl, alt: "casa" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h3", { staticClass: "card-title" }, [
-              _vm._v(_vm._s(_vm.title))
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.price) + " €/notte")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer blue-bg" }, [
-            _c("a", { attrs: { href: _vm.link } }, [
-              _vm._v("Vai ai dettagli...")
-            ])
-          ])
-        ])
+    _c("div", { staticClass: "card" }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        staticStyle: { width: "100%", height: "225px" },
+        attrs: { src: _vm.coverUrl, alt: "casa" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.price) + " €/notte")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer blue-bg" }, [
+        _c("a", { attrs: { href: _vm.link } }, [_vm._v("Vai ai dettagli...")])
       ])
     ])
   ])
@@ -38359,11 +38347,16 @@ var render = function() {
       _vm.showSponsorized
         ? _c(
             "div",
-            { staticClass: "row all-pd" },
+            {
+              staticStyle: {
+                display: "flex",
+                "justify-content": "space-between"
+              }
+            },
             _vm._l(_vm.sponsorizedApartments, function(apartment) {
               return _c(
                 "div",
-                { key: apartment.id },
+                { key: apartment.id, staticStyle: { "flex-basis": "30%" } },
                 [
                   _c("apartment-card", {
                     attrs: {
@@ -38392,39 +38385,40 @@ var render = function() {
         : _vm.showFiltered
         ? _c(
             "div",
-            { staticClass: "row all-pd" },
-            [
-              _c("h1", [_vm._v("Ciao dal div Filtrato")]),
-              _vm._v(" "),
-              _vm._l(_vm.filteredApartment, function(apartment) {
-                return _c(
-                  "div",
-                  { key: apartment.id },
-                  [
-                    _c("apartment-card", {
-                      attrs: {
-                        title: apartment.title,
-                        price: apartment.price,
-                        link: apartment.link,
-                        coverUrl: apartment.img_cover
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
-                      return _c("div", { key: sponsorshipStatus.id }, [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(sponsorshipStatus.name) +
-                            "\n                "
-                        )
-                      ])
-                    })
-                  ],
-                  2
-                )
-              })
-            ],
-            2
+            {
+              staticStyle: {
+                display: "flex",
+                "justify-content": "space-between"
+              }
+            },
+            _vm._l(_vm.filteredApartment, function(apartment) {
+              return _c(
+                "div",
+                { key: apartment.id, staticStyle: { "flex-basis": "30%" } },
+                [
+                  _c("apartment-card", {
+                    attrs: {
+                      title: apartment.title,
+                      price: apartment.price,
+                      link: apartment.link,
+                      coverUrl: apartment.img_cover
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._l(apartment.sponsorships, function(sponsorshipStatus) {
+                    return _c("div", { key: sponsorshipStatus.id }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(sponsorshipStatus.name) +
+                          "\n                "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            }),
+            0
           )
         : _vm._e()
     ])
