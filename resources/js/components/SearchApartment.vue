@@ -11,6 +11,7 @@
                 :value="value"
                 @input="$emit('input', $event.currentTarget.value)"
                 class="input-basic"
+                style="border: none;"
             >   
         </div>
     </div>

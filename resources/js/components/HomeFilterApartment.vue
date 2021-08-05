@@ -2,44 +2,51 @@
     <div>
         <div class="jumbotron bg-jumbotron">
             <div class="container">
-                <form @submit.prevent="filter()" @reset="onReset()">
-                    <search-apartment
-                        placeholder="Dove vuoi andare?"
-                        v-model="filters.address"
-                    ></search-apartment>
-                    <button class="btn-primary" type="submit">Viaggia</button>
-
-                    <div v-if="!showAdvancedFilters" @click="advancedFilters()" style="color: white; cursor: pointer;">Filtri avanzati</div>
+                <form @submit.prevent="filter()" @reset="onReset()" class="search-box">
+                    <div class="d-flex white-bg" style="border-radius: 8px;">
+                        <search-apartment
+                            class="g-2"
+                            placeholder="Dove vuoi andare?"
+                            v-model="filters.address"
+                        ></search-apartment>
+                        <button class="btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div v-if="!showAdvancedFilters" @click="advancedFilters()" style="color: white; cursor: pointer;" class="all-pd">Filtri avanzati</div>
                     <div v-show="showAdvancedFilters">
-                        <filter-input
-                            placeholder="camere"
-                            type="number"
-                            min="1"
-                            v-model="filters.rooms"
-                        ></filter-input>
+                        <div class="d-flex half-t-b-pd">
+                            <filter-input
+                                class="m-right"
+                                placeholder="camere"
+                                type="number"
+                                min="1"
+                                v-model="filters.rooms"
+                            ></filter-input>
 
-                        <filter-input
-                            placeholder="letti"
-                            type="number"
-                            min="1"
-                            v-model="filters.beds"
-                        ></filter-input>
-
-                        <div v-for="service in serviceList" :key="service.id">
-                            <label for="service.name">
-                                {{ service.name }}
-                                <input
-                                    type="checkbox"
-                                    v-model="filters.services"
-                                    :value="service.id"
-                                    :name="service.name"
-                                    :id="service.name"
-                                />
-                            </label>
+                            <filter-input
+                                placeholder="letti"
+                                type="number"
+                                min="1"
+                                v-model="filters.beds"
+                            ></filter-input>
                         </div>
-
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                            <div v-for="service in serviceList" :key="service.id">
+                                <label for="service.name" class="m-right" style=" color: white;">
+                                    {{ service.name }}
+                                    <input
+                                        type="checkbox"
+                                        v-model="filters.services"
+                                        :value="service.id"
+                                        :name="service.name"
+                                        :id="service.name"
+                                    />
+                                </label>
+                            </div>
+                        </div>
                         <div>
-                            <label for="distance">Distanza massima</label>
+                            <label for="distance" style=" color: white;">Distanza massima</label>
                             <input
                                 type="range"
                                 id="ditance"
@@ -67,8 +74,8 @@
                         </div>
 
                         <div class="d-flex f-end">
-                            <button class="btn-primary" @click="filter()">Filtra</button>
-                            <button class="btn-primary" type="reset">Annulla</button>
+                            <button class="btn-primary" style="color: #3b4c59;" @click="filter()">Filtra</button>
+                            <button class="btn-primary" style="color: #3b4c59;" type="reset">Annulla</button>
                         </div>
                         <div v-if="showAdvancedFilters" @click="advancedFilters()" style="cursor: pointer;">Chiudi filtri avanzati</div>
                     </div>    

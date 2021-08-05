@@ -2072,6 +2072,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2221,6 +2228,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -38122,6 +38130,7 @@ var render = function() {
         _c(
           "form",
           {
+            staticClass: "search-box",
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -38133,27 +38142,35 @@ var render = function() {
             }
           },
           [
-            _c("search-apartment", {
-              attrs: { placeholder: "Dove vuoi andare?" },
-              model: {
-                value: _vm.filters.address,
-                callback: function($$v) {
-                  _vm.$set(_vm.filters, "address", $$v)
-                },
-                expression: "filters.address"
-              }
-            }),
-            _vm._v(" "),
             _c(
-              "button",
-              { staticClass: "btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Viaggia")]
+              "div",
+              {
+                staticClass: "d-flex white-bg",
+                staticStyle: { "border-radius": "8px" }
+              },
+              [
+                _c("search-apartment", {
+                  staticClass: "g-2",
+                  attrs: { placeholder: "Dove vuoi andare?" },
+                  model: {
+                    value: _vm.filters.address,
+                    callback: function($$v) {
+                      _vm.$set(_vm.filters, "address", $$v)
+                    },
+                    expression: "filters.address"
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ],
+              1
             ),
             _vm._v(" "),
             !_vm.showAdvancedFilters
               ? _c(
                   "div",
                   {
+                    staticClass: "all-pd",
                     staticStyle: { color: "white", cursor: "pointer" },
                     on: {
                       click: function($event) {
@@ -38178,93 +38195,128 @@ var render = function() {
                 ]
               },
               [
-                _c("filter-input", {
-                  attrs: { placeholder: "camere", type: "number", min: "1" },
-                  model: {
-                    value: _vm.filters.rooms,
-                    callback: function($$v) {
-                      _vm.$set(_vm.filters, "rooms", $$v)
-                    },
-                    expression: "filters.rooms"
-                  }
-                }),
-                _vm._v(" "),
-                _c("filter-input", {
-                  attrs: { placeholder: "letti", type: "number", min: "1" },
-                  model: {
-                    value: _vm.filters.beds,
-                    callback: function($$v) {
-                      _vm.$set(_vm.filters, "beds", $$v)
-                    },
-                    expression: "filters.beds"
-                  }
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.serviceList, function(service) {
-                  return _c("div", { key: service.id }, [
-                    _c("label", { attrs: { for: "service.name" } }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(service.name) +
-                          "\n                            "
-                      ),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.services,
-                            expression: "filters.services"
-                          }
-                        ],
-                        attrs: {
-                          type: "checkbox",
-                          name: service.name,
-                          id: service.name
+                _c(
+                  "div",
+                  { staticClass: "d-flex half-t-b-pd" },
+                  [
+                    _c("filter-input", {
+                      staticClass: "m-right",
+                      attrs: {
+                        placeholder: "camere",
+                        type: "number",
+                        min: "1"
+                      },
+                      model: {
+                        value: _vm.filters.rooms,
+                        callback: function($$v) {
+                          _vm.$set(_vm.filters, "rooms", $$v)
                         },
-                        domProps: {
-                          value: service.id,
-                          checked: Array.isArray(_vm.filters.services)
-                            ? _vm._i(_vm.filters.services, service.id) > -1
-                            : _vm.filters.services
+                        expression: "filters.rooms"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("filter-input", {
+                      attrs: { placeholder: "letti", type: "number", min: "1" },
+                      model: {
+                        value: _vm.filters.beds,
+                        callback: function($$v) {
+                          _vm.$set(_vm.filters, "beds", $$v)
                         },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.filters.services,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = service.id,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.filters,
-                                    "services",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.filters,
-                                    "services",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
+                        expression: "filters.beds"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "d-flex",
+                    staticStyle: { "flex-wrap": "wrap" }
+                  },
+                  _vm._l(_vm.serviceList, function(service) {
+                    return _c("div", { key: service.id }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "m-right",
+                          staticStyle: { color: "white" },
+                          attrs: { for: "service.name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(service.name) +
+                              "\n                                "
+                          ),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.filters.services,
+                                expression: "filters.services"
                               }
-                            } else {
-                              _vm.$set(_vm.filters, "services", $$c)
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              name: service.name,
+                              id: service.name
+                            },
+                            domProps: {
+                              value: service.id,
+                              checked: Array.isArray(_vm.filters.services)
+                                ? _vm._i(_vm.filters.services, service.id) > -1
+                                : _vm.filters.services
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.filters.services,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = service.id,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.filters,
+                                        "services",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.filters,
+                                        "services",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.filters, "services", $$c)
+                                }
+                              }
                             }
-                          }
-                        }
-                      })
+                          })
+                        ]
+                      )
                     ])
-                  ])
-                }),
+                  }),
+                  0
+                ),
                 _vm._v(" "),
                 _c("div", [
-                  _c("label", { attrs: { for: "distance" } }, [
-                    _vm._v("Distanza massima")
-                  ]),
+                  _c(
+                    "label",
+                    {
+                      staticStyle: { color: "white" },
+                      attrs: { for: "distance" }
+                    },
+                    [_vm._v("Distanza massima")]
+                  ),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -38296,7 +38348,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _vm._m(1)
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "d-flex f-end" }, [
@@ -38304,6 +38356,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn-primary",
+                      staticStyle: { color: "#3b4c59" },
                       on: {
                         click: function($event) {
                           return _vm.filter()
@@ -38315,7 +38368,11 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "button",
-                    { staticClass: "btn-primary", attrs: { type: "reset" } },
+                    {
+                      staticClass: "btn-primary",
+                      staticStyle: { color: "#3b4c59" },
+                      attrs: { type: "reset" }
+                    },
                     [_vm._v("Annulla")]
                   )
                 ]),
@@ -38334,11 +38391,9 @@ var render = function() {
                       [_vm._v("Chiudi filtri avanzati")]
                     )
                   : _vm._e()
-              ],
-              2
+              ]
             )
-          ],
-          1
+          ]
         )
       ])
     ]),
@@ -38429,6 +38484,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn-primary", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "fas fa-search" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("datalist", { attrs: { id: "tickmarks" } }, [
       _c("option", { attrs: { value: "0" } }),
       _vm._v(" "),
@@ -38479,6 +38544,7 @@ var render = function() {
     _c("div", { staticClass: "form-group d-flex-col" }, [
       _c("input", {
         staticClass: "input-basic",
+        staticStyle: { border: "none" },
         attrs: { placeholder: _vm.placeholder, type: _vm.inputType },
         domProps: { value: _vm.value },
         on: {
