@@ -86,6 +86,7 @@
         <div class="container">
             <h3 classe="blue-t">I nostri super-host</h3>
             <div v-if="showSponsorized" style="display: flex; justify-content: space-between;">
+                
                 <div v-for="apartment in sponsorizedApartments" :key="apartment.id" style="flex-basis: 30%;">
                     <apartment-card
                         :coverUrl="apartment.img_cover"
@@ -101,6 +102,7 @@
             </div>
 
             <div v-else-if="showFiltered" style="display: flex; justify-content: space-between;">
+                
                 <div v-for="apartment in filteredApartment" :key="apartment.id" style="flex-basis: 30%;">
                     <apartment-card
                         :title="apartment.title"
